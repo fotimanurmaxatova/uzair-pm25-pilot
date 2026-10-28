@@ -1,0 +1,2 @@
+{"latitude":41.31,"longitude":69.28,"current_units":{"time":"unixtime","interval":"seconds","temperature_2m":"°C","relative_humidity_2m":"%","precipitation":"mm","wind_speed_10m":"m/s","wind_direction_10m":"°","surface_pressure":"hPa"},
+ "current":{"time":1793592300,"interval":900,"temperature_2m":14.2,"relative_humidity_2m":61,"precipitation":0.0,"wind_speed_10m":2.4,"wind_direction_10m":250,"surface_pressure":955.3}}

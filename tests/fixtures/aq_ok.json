@@ -1,0 +1,2 @@
+{"latitude":41.31,"longitude":69.28,"current_units":{"time":"unixtime","interval":"seconds","pm10":"μg/m³","pm2_5":"μg/m³","nitrogen_dioxide":"μg/m³","ozone":"μg/m³"},
+ "current":{"time":1793592000,"interval":3600,"pm10":48.0,"pm2_5":31.5,"nitrogen_dioxide":22.1,"ozone":40.0}}
