@@ -156,6 +156,14 @@ def collect_city(conn, ctx, city):
         conn.commit()
         return "quarantined"
 
+    try:
+        validate.check_time_alignment(weather, air)
+    except validate.ValidationError as err:
+        _quarantine(conn, w_run, err)
+        _quarantine(conn, a_run, err)
+        conn.commit()
+        return "quarantined"
+
     dup = conn.execute("SELECT 1 FROM observations WHERE city_id=? AND observation_hour_utc=?",
                        (city["city_id"], air["observation_hour_utc"])).fetchone()
     if dup:

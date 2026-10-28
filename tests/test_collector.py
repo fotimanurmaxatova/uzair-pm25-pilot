@@ -5,7 +5,6 @@ from uzair import collector, query
 from uzair.collector import HttpResult
 from .conftest import load, make_fetch
 
-
 W, A = load("weather_ok.json"), load("aq_ok.json")
 no_sleep = lambda s: None
 
@@ -75,3 +74,12 @@ def test_duplicate_is_detected_not_overwritten(conn):
 def test_assessed_flag_stores_is_pilot_zero(conn):
     collector.collect_all(conn, is_pilot=0, fetch=make_fetch(W, A), sleep=no_sleep)
     assert conn.execute("SELECT DISTINCT is_pilot FROM observations").fetchone()[0] == 0
+
+
+def test_time_mismatch_goes_to_quarantine(conn):
+    d = json.loads(W)
+    d["current"]["time"] += 7200  # weather 2 h later than air quality
+    res = collector.collect_all(conn, fetch=make_fetch(json.dumps(d), A), sleep=no_sleep)
+    assert set(res.values()) == {"quarantined"}
+    assert conn.execute("SELECT COUNT(*) FROM observations").fetchone()[0] == 0
+    assert conn.execute("SELECT DISTINCT reason_code FROM quarantine").fetchone()[0] == "time_mismatch"

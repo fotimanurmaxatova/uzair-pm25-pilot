@@ -86,7 +86,7 @@ def validate_air_quality(body_text):
     pm25 = _number(cur, "pm2_5", 0, 1000, required=True)
     pm10 = _number(cur, "pm10", 0, 1000)
     if pm10 is not None and pm25 > pm10:
-        raise ValidationError("pm25_exceeds_pm10", f"pm2_5={pm25} > pm10={pm10}")
+        raise ValidationError("pm_inconsistent", f"pm2_5={pm25} > pm10={pm10}")
     return {
         "observation_hour_utc": utc_iso(t),
         "aq_interval_s": interval,
@@ -97,3 +97,16 @@ def validate_air_quality(body_text):
         # native = valid time sits on a 3-hourly boundary (00,03,06... UTC)
         "is_native_step": 1 if t % NATIVE_STEP_S == 0 else 0,
     }
+
+
+MAX_TIME_GAP_S = 3600  # decision 0002: weather and air-quality valid times must be within 1 h
+
+
+def _ts(iso):
+    return datetime.strptime(iso, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+
+
+def check_time_alignment(weather, air, max_gap_s=MAX_TIME_GAP_S):
+    gap = abs((_ts(weather["weather_time_utc"]) - _ts(air["observation_hour_utc"])).total_seconds())
+    if gap > max_gap_s:
+        raise ValidationError("time_mismatch", f"weather/air-quality valid times differ by {gap:.0f}s (max {max_gap_s}s)")

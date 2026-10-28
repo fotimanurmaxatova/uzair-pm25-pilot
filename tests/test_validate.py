@@ -25,7 +25,7 @@ def test_wrong_wind_unit_is_rejected():
     ("pm2_5", -1, "out_of_range"),
     ("pm2_5", "abc", "not_a_number"),
     ("pm2_5", None, "missing_value"),
-    ("pm10", 5.0, "pm25_exceeds_pm10"),
+    ("pm10", 5.0, "pm_inconsistent"),
 ])
 def test_invalid_air_quality_values(key, val, code):
     d = json.loads(load("aq_ok.json"))
@@ -47,3 +47,19 @@ def test_native_step_flag():
     assert validate.validate_air_quality(json.dumps(d))["is_native_step"] == 1
     d["current"]["time"] = 10800 * 1000 + 3600  # off boundary
     assert validate.validate_air_quality(json.dumps(d))["is_native_step"] == 0
+
+
+def test_pm25_equal_to_pm10_is_allowed():
+    d = json.loads(load("aq_ok.json"))
+    d["current"]["pm10"] = d["current"]["pm2_5"]
+    assert validate.validate_air_quality(json.dumps(d))["pm10"] == 31.5
+
+
+def test_time_mismatch_is_rejected_but_small_gap_allowed():
+    w = validate.validate_weather(load("weather_ok.json"))
+    a = validate.validate_air_quality(load("aq_ok.json"))
+    validate.check_time_alignment(w, a)  # 5 min apart: fine
+    w["weather_time_utc"] = "2026-11-02T07:00:00Z"  # 3 h apart
+    with pytest.raises(validate.ValidationError) as e:
+        validate.check_time_alignment(w, a)
+    assert e.value.reason_code == "time_mismatch"
