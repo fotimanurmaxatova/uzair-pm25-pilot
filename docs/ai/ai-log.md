@@ -6,7 +6,9 @@ Tool: Claude (Anthropic), chat interface, used as development support.
 |---|---|---|---|
 | 2026-10-28 | Planning and repository setup guidance | Checkpoint plan, issue and decision-record drafts | Rewrote issues in English; confirmed API parameters against live responses |
 | 2026-10-28 | Time-alignment decision (0002) | Draft decision record | Checked against real API samples (15-min weather vs hourly air-quality interval) |
-| 2026-10-28 | SQLite schema, migration runner, schema tests | Draft SQL and Python | (fill in: what you ran, what you changed) |
+| 2026-10-28 | SQLite schema, migration runner, schema tests | Draft SQL and Python | Ran `pytest`; files were first in the wrong folders (a `src` folder inside `migrations`), found with `dir /s /b`, moved `db.py` to `src\uzair\`; 9 tests passed |
+| 2026-10-28 | Validation, collector, CLI, offline tests | validate.py, collector.py, query.py, cli.py, 16 tests | Ran on my machine; fixed 2 import/path errors (details below); live demo and database checks passed; commit 4572c05 |
+
 
 ## 2026-10-28 — Validation, Collector and CLI
 
@@ -33,3 +35,13 @@ Tool: Claude (Anthropic), chat interface, used as development support.
 ### Reflection
 
 I first investigated the errors by checking file locations, imports, and command behavior. I then used AI to understand the underlying Python packaging concepts and implement appropriate fixes. This helped me distinguish between pytest configuration and Python's package discovery mechanism.
+
+
+### Hourly behavior check (2026-10-28, 15:05 Tashkent)
+
+I assumed that hourly polling creates a new row each hour and that
+`is_native_step` is 1 only on 3-hourly UTC boundaries. I tested this with
+a second collect at 10:05Z: 8 of 8 cities were stored with valid=10:00Z
+and native=0 (the earlier 09:00Z rows have native=1). The assumption was
+confirmed. Native-only analysis will have at most 56 rows per city over
+7 days.
