@@ -23,11 +23,13 @@ BACKOFF_BASE_S = 2
 WEATHER_URL = "https://api.open-meteo.com/v1/forecast"
 AQ_URL = "https://air-quality-api.open-meteo.com/v1/air-quality"
 AQ_DOMAIN = "cams_global"
+WEATHER_MODEL = "best_match"  # requested explicitly and stored with every row (decision 0003)
 
 WEATHER_PARAMS = {
     "current": "temperature_2m,relative_humidity_2m,precipitation,"
                "wind_speed_10m,wind_direction_10m,surface_pressure",
     "wind_speed_unit": "ms",   # Open-Meteo default is km/h
+    "models": WEATHER_MODEL,
     "timeformat": "unixtime",
     "timezone": "GMT",
 }
@@ -172,7 +174,7 @@ def collect_city(conn, ctx, city):
         conn.commit()
         return "duplicate"
 
-    row = {**weather, **air, "aq_domain": AQ_DOMAIN, "city_id": city["city_id"],
+    row = {**weather, **air, "aq_domain": AQ_DOMAIN, "weather_model": WEATHER_MODEL, "city_id": city["city_id"],
            "collected_at_utc": max(w_recv, a_recv), "weather_run_id": w_run, "aq_run_id": a_run,
            "acquisition_mode": ctx["mode"], "is_pilot": ctx["is_pilot"]}
     cols = ", ".join(row)
