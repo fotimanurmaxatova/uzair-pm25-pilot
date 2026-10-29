@@ -9,8 +9,10 @@ def main(argv=None):
     p.add_argument("--db", default=str(db.DEFAULT_DB))
     sub = p.add_subparsers(dest="cmd", required=True)
     c = sub.add_parser("collect", help="poll all cities once")
+    c.add_argument("--assessed", action="store_true",
+                   help="store as assessed data (is_pilot=0). Default is a development run (is_pilot=1).")
     c.add_argument("--scheduled", action="store_true",
-               help="mark run as scheduled (used by the scheduler). Default is manual.")
+                   help="mark the run as scheduled (used by the scheduler). Default is manual.")
     l = sub.add_parser("latest", help="show most recent stored observations")
     l.add_argument("-n", type=int, default=8)
     args = p.parse_args(argv)
@@ -18,8 +20,12 @@ def main(argv=None):
     conn = db.connect(args.db)
     db.init_db(conn)
     if args.cmd == "collect":
-        for city, outcome in collector.collect_all(conn, is_pilot=0 if args.assessed else 1,
-                      mode="scheduled" if args.scheduled else "manual"):
+        results = collector.collect_all(
+            conn,
+            is_pilot=0 if args.assessed else 1,
+            mode="scheduled" if args.scheduled else "manual",
+        )
+        for city, outcome in results.items():
             print(f"{city:<12} {outcome}")
     else:
         for r in query.latest_observations(conn, args.n):
