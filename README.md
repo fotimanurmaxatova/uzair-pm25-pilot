@@ -29,6 +29,7 @@ python -m venv .venv
 .venv\Scripts\activate
 pip install -e .
 pip install pytest
+pip install -r requirements.txt
 ```
 
 ## Run the tests
