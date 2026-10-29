@@ -37,8 +37,9 @@ For Tashkent (largest offset) the API cell returned for the reference point
 (41.300003, 69.2) is identical to the cell in the saved sample, so the offset
 does not change the air-quality values requested. 
 
-The seed values remain unchanged. No edit is made to
-`migrations/0002_seed_cities.sql`.
+The weather endpoint was not re-checked for the reference point; its grid is
+finer, so a 4 km offset could in principle change the weather cell. This is
+accepted for the pilot and noted as a limitation.
 
 ## Consequences
 
