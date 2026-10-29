@@ -86,15 +86,25 @@ def fetch_with_retry(fetch, url, max_retries=MAX_RETRIES, sleep=time.sleep):
     return res, retries
 
 
-def register_version(conn, version=COLLECTOR_VERSION):
+def _git(*args):
+    try:
+        return subprocess.run(["git", *args], capture_output=True, text=True, timeout=5).stdout.strip()
+    except Exception:
+        return ""
+
+def current_version():
+    commit = _git("rev-parse", "HEAD")
+    dirty = bool(_git("status", "--porcelain", "--", "src", "migrations"))
+    tag = (commit[:7] if commit else "nogit") + ("-dirty" if dirty else "")
+    return f"{COLLECTOR_VERSION}+{tag}", commit or None
+
+def register_version(conn, version=None):
+    commit = None
+    if version is None:
+        version, commit = current_version()
     row = conn.execute("SELECT version_id FROM collector_versions WHERE version = ?", (version,)).fetchone()
     if row:
         return row["version_id"]
-    try:
-        commit = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True,
-                                timeout=5).stdout.strip() or None
-    except Exception:
-        commit = None
     cur = conn.execute(
         "INSERT INTO collector_versions (version, git_commit, registered_at_utc) VALUES (?, ?, ?)",
         (version, commit, now_iso()))
