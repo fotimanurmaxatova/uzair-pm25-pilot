@@ -86,12 +86,26 @@ awake during collection; missed times remain gaps (they are not back-filled).
 
 ## Data sources and attribution
 
-- Weather: Open-Meteo forecast API (https://open-meteo.com).
-- Air quality: Open-Meteo air-quality API, CAMS global atmospheric composition
-  forecasts (Copernicus Atmosphere Monitoring Service). Attribution to the
-  CAMS data provider and Open-Meteo is required by the data provider.
-- Collection rate: about 384 requests per day (8 cities x 2 endpoints x 24).
-- City coordinates: reference table, see `docs/decisions/0005-city-coordinates.md`.
+- Weather and air-quality data:
+  [Weather data by Open-Meteo.com](https://open-meteo.com/), licensed
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The data snapshot
+  stored in this repository is redistributed under the same licence. Raw values
+  are stored unchanged; derived values are labelled as derived.
+- Weather: Open-Meteo Forecast API with `models=best_match`. The underlying
+  weather model may depend on location; see the
+  [Open-Meteo documentation](https://open-meteo.com/en/docs).
+- Air quality: Open-Meteo Air Quality API with the `cams_global` domain. The
+  underlying forecasts come from the Copernicus Atmosphere Monitoring Service
+  (CAMS global atmospheric composition forecasts); see the
+  [Open-Meteo Air Quality API documentation](https://open-meteo.com/en/docs/air-quality-api).
+- Request volume: about 384 requests per day (8 cities x 2 endpoints x 24
+  runs), at most 1,536 per day with maximum retries, below the free-API limits
+  (see `docs/decisions/0006-data-licence-and-rate-limits.md`). This assumes the
+  scheduler is configured and running.
+- Pending: the exact CAMS attribution wording for the dashboard and report is
+  verified before CP4 (tracked in decision 0006).
+- City coordinates: reference table, see
+  `docs/decisions/0005-city-coordinates.md`.
 
 ## Project structure
 
@@ -108,7 +122,8 @@ data/, logs/      databases and logs (not committed)
 
 ## Documentation
 
-- `docs/decisions/` (API parameters, time alignment, weather model, coordinates)
+- `docs/decisions/` (API parameters, time alignment, weather model, city
+  coordinates, data licence and rate limits)
 - `docs/approval/approval-record.md`
 - `docs/ai/ai-log.md`
 
