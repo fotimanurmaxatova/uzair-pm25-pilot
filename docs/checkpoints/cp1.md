@@ -29,9 +29,15 @@ collection starts and recorded in a later checkpoint.
   response_sha256; (3) `latest` returns the new record; (4) no key or account is
   needed; (5) development records carry `is_pilot=1`; (6) a wrong wind unit is
   quarantined, never stored as valid.
-- Actual result (clean checkout, 2026-10-29, commit 41f54c7): 32 tests passed;
-  `collect` stored 8 of 8 cities; `latest` returned 8 rows (`pilot=1`);
-  `pip list` shows no unused HTTP library.
+- Actual result (clean checkout, 2026-11-01, commit
+  07265222564e7d64ab45788b55f79cc5c9cec314): 54 tests passed;
+  `collect` stored 8 of 8 cities; `latest` returned 8 rows
+  (`pilot=1`); `provenance -n 2` returned provenance details;
+  `verify` checked 16 raw responses with 0 hash mismatches;
+  `status` reported 8 pilot observations and 16 successful pilot runs.
+  The assessed scheduled collection guard correctly refused collection
+  before its configured opening time (`2026-11-01T19:00:00Z`).
+  Demo output: `docs/checkpoints/cp1-demo-output.txt`.
 
 ## Substantive change in this checkpoint
 Schema and migrations, validation and quarantine, audited collector with retry,

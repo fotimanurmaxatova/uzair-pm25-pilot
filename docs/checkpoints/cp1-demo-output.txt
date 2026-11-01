@@ -1,0 +1,90 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.6, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\admin\UzAir_projects\uzair-pm25-pilot\cp1check\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\admin\UzAir_projects\uzair-pm25-pilot\cp1check
+configfile: pytest.ini
+testpaths: tests
+collecting ... collected 54 items
+
+tests/test_cli.py::test_collect_flags_set_pilot_and_mode PASSED          [  1%]
+tests/test_collector.py::test_stored_and_readable_with_provenance PASSED [  3%]
+tests/test_collector.py::test_valid_time_and_receipt_time_are_separate PASSED [  5%]
+tests/test_collector.py::test_request_asks_for_ms_and_unixtime PASSED    [  7%]
+tests/test_collector.py::test_timeout_retries_then_fails_and_is_audited PASSED [  9%]
+tests/test_collector.py::test_4xx_is_not_retried PASSED                  [ 11%]
+tests/test_collector.py::test_bad_unit_goes_to_quarantine_not_observations PASSED [ 12%]
+tests/test_collector.py::test_duplicate_is_detected_not_overwritten PASSED [ 14%]
+tests/test_collector.py::test_assessed_flag_stores_is_pilot_zero PASSED  [ 16%]
+tests/test_collector.py::test_time_mismatch_goes_to_quarantine PASSED    [ 18%]
+tests/test_collector_quarantine.py::test_null_pm25_goes_to_quarantine_not_observations PASSED [ 20%]
+tests/test_collector_quarantine.py::test_null_wind_speed_goes_to_quarantine_not_observations PASSED [ 22%]
+tests/test_collector_quarantine.py::test_http_500_is_retried_then_recorded_as_failed PASSED [ 24%]
+tests/test_collector_timeout.py::test_requests_use_the_approved_10_second_timeout PASSED [ 25%]
+tests/test_guards.py::test_allowed_inside_window PASSED                  [ 27%]
+tests/test_guards.py::test_refused_before_start_boundary PASSED          [ 29%]
+tests/test_guards.py::test_refused_at_and_after_end_boundary PASSED      [ 31%]
+tests/test_guards.py::test_refused_when_manual_dirty_or_no_git PASSED    [ 33%]
+tests/test_guards.py::test_cli_refuses_assessed_outside_window_and_writes_nothing PASSED [ 35%]
+tests/test_guards.py::test_cli_assessed_runs_inside_window PASSED        [ 37%]
+tests/test_provenance.py::test_provenance_links_row_to_both_requests PASSED [ 38%]
+tests/test_provenance.py::test_verify_passes_then_detects_tampering PASSED [ 40%]
+tests/test_provenance.py::test_cli_verify_exit_code PASSED               [ 42%]
+tests/test_schema.py::test_init_is_idempotent_and_seeds_eight_cities PASSED [ 44%]
+tests/test_schema.py::test_valid_observation_is_stored PASSED            [ 46%]
+tests/test_schema.py::test_duplicate_city_hour_is_blocked PASSED         [ 48%]
+tests/test_schema.py::test_wrong_wind_unit_is_rejected PASSED            [ 50%]
+tests/test_schema.py::test_pm25_above_pm10_rejected_but_equal_allowed PASSED [ 51%]
+tests/test_schema.py::test_humidity_boundaries[0-True] PASSED            [ 53%]
+tests/test_schema.py::test_humidity_boundaries[100-True] PASSED          [ 55%]
+tests/test_schema.py::test_humidity_boundaries[101-False] PASSED         [ 57%]
+tests/test_schema.py::test_humidity_boundaries[-1-False] PASSED          [ 59%]
+tests/test_validate.py::test_valid_weather_and_air_quality_parse PASSED  [ 61%]
+tests/test_validate.py::test_wrong_wind_unit_is_rejected PASSED          [ 62%]
+tests/test_validate.py::test_invalid_air_quality_values[pm2_5--1-out_of_range] PASSED [ 64%]
+tests/test_validate.py::test_invalid_air_quality_values[pm2_5-abc-not_a_number] PASSED [ 66%]
+tests/test_validate.py::test_invalid_air_quality_values[pm2_5-None-missing_value] PASSED [ 68%]
+tests/test_validate.py::test_invalid_air_quality_values[pm10-5.0-pm_inconsistent] PASSED [ 70%]
+tests/test_validate.py::test_garbage_body_is_rejected PASSED             [ 72%]
+tests/test_validate.py::test_native_step_flag PASSED                     [ 74%]
+tests/test_validate.py::test_pm25_equal_to_pm10_is_allowed PASSED        [ 75%]
+tests/test_validate.py::test_time_mismatch_is_rejected_but_small_gap_allowed PASSED [ 77%]
+tests/test_validate_limits.py::test_null_wind_speed_is_rejected_with_reason_code PASSED [ 79%]
+tests/test_validate_limits.py::test_humidity_limits_are_accepted[0] PASSED [ 81%]
+tests/test_validate_limits.py::test_humidity_limits_are_accepted[100] PASSED [ 83%]
+tests/test_validate_limits.py::test_humidity_outside_limits_is_rejected[-1] PASSED [ 85%]
+tests/test_validate_limits.py::test_humidity_outside_limits_is_rejected[101] PASSED [ 87%]
+tests/test_validate_limits.py::test_wind_speed_zero_is_accepted PASSED   [ 88%]
+tests/test_validate_limits.py::test_negative_wind_speed_is_rejected PASSED [ 90%]
+tests/test_validate_limits.py::test_pm25_upper_limit_is_accepted PASSED  [ 92%]
+tests/test_validate_limits.py::test_pm25_above_upper_limit_is_rejected PASSED [ 94%]
+tests/test_weather_model.py::test_migration_0003_adds_weather_model_column PASSED [ 96%]
+tests/test_weather_model.py::test_weather_request_names_the_model_explicitly PASSED [ 98%]
+tests/test_weather_model.py::test_each_observation_records_the_weather_model PASSED [100%]
+
+============================= 54 passed in 2.95s ==============================
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+Urgench      valid=2026-11-01T17:00:00Z recv=2026-11-01T17:30:41Z pm2.5=12.0 wind=1.6m/s native=0 pilot=1
+Nukus        valid=2026-11-01T17:00:00Z recv=2026-11-01T17:30:38Z pm2.5=8.6 wind=2.0m/s native=0 pilot=1
+Fergana      valid=2026-11-01T17:00:00Z recv=2026-11-01T17:30:34Z pm2.5=24.9 wind=1.0m/s native=0 pilot=1
+Namangan     valid=2026-11-01T17:00:00Z recv=2026-11-01T17:30:32Z pm2.5=37.3 wind=2.5m/s native=0 pilot=1
+Andijan      valid=2026-11-01T17:00:00Z recv=2026-11-01T17:30:30Z pm2.5=43.5 wind=1.4m/s native=0 pilot=1
+Bukhara      valid=2026-11-01T17:00:00Z recv=2026-11-01T17:30:27Z pm2.5=12.6 wind=0.2m/s native=0 pilot=1
+Samarkand    valid=2026-11-01T17:00:00Z recv=2026-11-01T17:30:20Z pm2.5=16.1 wind=0.8m/s native=0 pilot=1
+Tashkent     valid=2026-11-01T17:00:00Z recv=2026-11-01T17:30:17Z pm2.5=51.3 wind=1.2m/s native=0 pilot=1
+obs 8 Urgench valid=2026-11-01T17:00:00Z recv=2026-11-01T17:30:41Z mode=manual pilot=1 v=0.1.0+0726522
+  weather run 15 http=200 1657ms retry=0 model=best_match sha256=42d211a5f084d83b
+  air-qual run 16 http=200 2000ms retry=0 domain=cams_global sha256=da16172561ea3924
+obs 7 Nukus valid=2026-11-01T17:00:00Z recv=2026-11-01T17:30:38Z mode=manual pilot=1 v=0.1.0+0726522
+  weather run 13 http=200 1890ms retry=0 model=best_match sha256=d597c6ff90c61cff
+  air-qual run 14 http=200 1421ms retry=0 domain=cams_global sha256=9e69a1e5da14e5b6
+checked 16 raw responses, 0 hash mismatches
+observations is_pilot=1: 8
+runs is_pilot=1 status=success: 16
+REFUSED: assessed collection has not started (opens 2026-11-01T19:00:00Z)
