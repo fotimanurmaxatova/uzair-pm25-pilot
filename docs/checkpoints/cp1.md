@@ -38,7 +38,11 @@ collection starts and recorded in a later checkpoint.
   The assessed scheduled collection guard correctly refused collection
   before its configured opening time (`2026-11-01T19:00:00Z`).
   Demo output: `docs/checkpoints/cp1-demo-output.txt`.
+  Code was tested at commit
+  `07265222564e7d64ab45788b55f79cc5c9cec314`;
+  the following commit (`3ca83b0`) only records this verification result.
 
+  
 ## Substantive change in this checkpoint
 Schema and migrations, validation and quarantine, audited collector with retry,
 CLI, hourly scheduler script, decisions 0001-0006.
