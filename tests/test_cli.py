@@ -1,3 +1,5 @@
+from datetime import datetime, timezone
+
 from uzair import cli, collector
 
 
@@ -14,5 +16,7 @@ def test_collect_flags_set_pilot_and_mode(monkeypatch, tmp_path):
     cli.main(["--db", db_path, "collect"])
     assert seen == {"is_pilot": 1, "mode": "manual"}   # safe default
 
-    cli.main(["--db", db_path, "collect", "--scheduled", "--assessed"])
+    monkeypatch.setattr(collector, "current_version", lambda: ("0.1.0+abc1234", "abc1234"))
+    inside_window = datetime(2026, 11, 1, 19, 5, tzinfo=timezone.utc)
+    cli.main(["--db", db_path, "collect", "--scheduled", "--assessed"], now=inside_window)
     assert seen == {"is_pilot": 0, "mode": "scheduled"}

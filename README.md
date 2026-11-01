@@ -38,7 +38,7 @@ pip install -r requirements.txt
 python -m pytest -v
 ```
 
-Expected: all tests pass (32 at the time of writing).
+Expected: all tests pass (54 at the time of writing).
 
 ## Collect and read back
 
@@ -46,6 +46,9 @@ Expected: all tests pass (32 at the time of writing).
 python -m uzair.cli collect
 python -m uzair.cli latest
 python -m uzair.cli latest -n 16
+python -m uzair.cli provenance -n 2   # runs, HTTP status, latency, retries, hashes, collector version
+python -m uzair.cli verify            # recompute SHA-256 of every stored raw response
+python -m uzair.cli status            # row and run counts by pilot flag
 ```
 
 - `collect` polls all eight cities once (weather + air quality). The database
@@ -54,19 +57,26 @@ python -m uzair.cli latest -n 16
   needs the explicit flag `--assessed` (`is_pilot=0`).
 - `--scheduled` marks the run as scheduled (`acquisition_mode='scheduled'`);
   without it the run is `manual`.
-- `--db data/dev.db` keeps a run in a separate database file.
+- `--db data/dev.db` keeps a run in a separate database file. `--assessed` writes to
+  `data/assessed.db` by default, so assessed and development data never share a database.
+- `--assessed` is refused (exit code 2, nothing written) outside 2 Nov 00:00 to 9 Nov 00:00
+  Asia/Tashkent, without `--scheduled`, or when `src/` or `migrations/` have uncommitted
+  changes (decision 0007).
 
 ## Scheduled collection (Windows Task Scheduler)
 
-`scripts/run_collect.bat` runs `collect --scheduled` and appends to
-`logs/collect.log`. Example (hourly at minute 5):
+Development (rows flagged `is_pilot=1`, database `data/uzair.db`):
 
 ```
 schtasks /create /tn "UzAir-dev-collect" /tr "<repo path>\scripts\run_collect.bat" /sc hourly /mo 1 /st 00:05 /f
 ```
 
-The development task does not use `--assessed`. The computer must stay on and
-awake during collection; missed times remain gaps (they are not back-filled).
+Assessed (2 Nov 00:05 to 8 Nov 23:05, 168 hourly runs, database `data/assessed.db`):
+delete the development task first, then run
+`powershell -ExecutionPolicy Bypass -File scripts\register_assessed_task.ps1`.
+The task runs `scripts/run_collect_assessed.bat` and appends to `logs/assessed.log`.
+The computer must stay on, awake and set to Tashkent time; missed hours remain gaps
+(no catch-up run, no back-filling).
 
 ## How the data is handled
 
@@ -117,6 +127,9 @@ scripts/          scheduler script
 tests/            automated tests; tests/fixtures/ holds fake API responses
 docs/decisions/   decision records
 docs/approval/    written approval record
+docs/protocol/    analysis protocol fixed before assessed collection (class hours, features, rules)
+docs/baseline/    manual baseline for value measures V1 to V3
+docs/checkpoints/ checkpoint specifications and evidence register
 docs/ai/          AI-use log
 data/, logs/      databases and logs (not committed)
 ```
