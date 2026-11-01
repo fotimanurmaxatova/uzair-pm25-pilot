@@ -41,3 +41,20 @@ def test_negative_wind_speed_is_rejected():
     with pytest.raises(validate.ValidationError) as exc:
         validate.validate_weather(weather_body(wind_speed_10m=-0.1))
     assert exc.value.reason_code == "out_of_range"
+
+
+def air_body(**overrides):
+    payload = json.loads((FIXTURES / "aq_ok.json").read_text(encoding="utf-8"))
+    payload["current"].update(overrides)
+    return json.dumps(payload)
+
+
+def test_pm25_upper_limit_is_accepted():
+    result = validate.validate_air_quality(air_body(pm2_5=1000, pm10=1000))
+    assert result["pm2_5"] == 1000
+
+
+def test_pm25_above_upper_limit_is_rejected():
+    with pytest.raises(validate.ValidationError) as exc:
+        validate.validate_air_quality(air_body(pm2_5=1000.1, pm10=1000))
+    assert exc.value.reason_code == "out_of_range"
