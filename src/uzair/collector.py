@@ -16,7 +16,7 @@ from typing import NamedTuple, Optional
 from . import validate
 
 COLLECTOR_VERSION = "0.1.0"
-TIMEOUT_S = 20
+TIMEOUT_S = 10
 MAX_RETRIES = 3
 BACKOFF_BASE_S = 2
 
