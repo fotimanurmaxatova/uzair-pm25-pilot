@@ -63,8 +63,14 @@ Wind API timestamp: 2026-11-01 16:30
 
 ### V2 — Entry errors
 
-- Reported incorrect entries: 9/10.
-- This count should be interpreted as the user's reported error count and retained with the original entry record.
+- Total manually transcribed entries: 10.
+- Correct entries: 9.
+- Incorrect entries: 1.
+- Error rate: 1/10 (10%).
+- Manual entry accuracy: 9/10 (90%).
+- The entries were checked against the corresponding source JSON values. One value was entered incorrectly during manual transcription.
+
+This measures manual transcription accuracy for this single attempt; it does not measure the accuracy of the Open-Meteo source data.
 
 ### V3 — Spreadsheet analysis steps
 

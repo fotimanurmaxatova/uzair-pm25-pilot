@@ -1,8 +1,3 @@
-2. Decision record 0002
-
-Yangi fayl: docs/decisions/0002-time-alignment.md
-
-markdown
 # 0002 — Time alignment of weather and air-quality records
 
 Status: Accepted (2026-10-28)

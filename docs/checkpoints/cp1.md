@@ -54,3 +54,16 @@ coverage monitoring query, manual baselines V1-V3.
 ## AI assistance in this period
 Claude and ChatGPT were used for planning, drafting and debugging; see
 docs/ai/ai-log.md for what was checked, corrected or rejected.
+
+## Addendum 2026-11-04 (written after the CP1 commit; the text above is unchanged)
+- Tag: the checkpoint tag is `cp1-submission` (commit 0726522, code tested and then frozen for
+  collection). The earlier tag `cp1-mvp` marks an intermediate commit (cd6e964) and is kept.
+  Commit f91e034 contains the same code plus the recorded clean-checkout result.
+- Items listed above as open were done before assessed collection started: the manual baseline
+  V1-V3 (docs/baseline/manual-baseline.md, commit 0726522) and the 10 s timeout (commit 2941822).
+- Commit a6a774e bundled several changes in one commit without issue references
+  (assessed-collection guard, provenance and verify commands, protocol, baseline
+  template, scheduler scripts). The assessed-collection controls are documented
+  in decision 0007. The combined implementation is identifiable in commit
+  a6a774e; later commits are kept small and reference issues where applicable.
+- Assessed collection started on 2026-11-02 00:05 (Asia/Tashkent). It is CP2 evidence, not CP1.

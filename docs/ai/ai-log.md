@@ -45,3 +45,14 @@ a second collect at 10:05Z: 8 of 8 cities were stored with valid=10:00Z
 and native=0 (the earlier 09:00Z rows have native=1). The assumption was
 confirmed. Native-only analysis will have at most 56 rows per city over
 7 days.
+
+## ChatGPT assistance
+
+Tool: ChatGPT (OpenAI), chat interface.
+
+| Date | Purpose | Assistance provided | Verification and user contribution |
+|---|---|---|---|
+| 2026-11-03 | Module Leader clarification and analysis protocol | Helped interpret the Module Leader's email on native three-hourly analysis, hourly sensitivity analysis, exact t+6 h matching and sample-size reporting. Helped translate these requirements into documentation changes for the analysis protocol. | The Module Leader's written email was treated as the authoritative requirement. The user reviewed and applied the documentation changes. |
+| 2026-11-04 | CP1 documentation and evidence review | Helped review the CP1 checkpoint addendum, evidence register, decision record and manual baseline. Helped identify documentation inconsistencies and clarify the manual baseline transcription result. | Repository files, Git history and command outputs were checked. The user confirmed that the manual baseline contained 9 correct entries and 1 incorrect entry out of 10. |
+
+ChatGPT suggestions were treated as assistance rather than evidence. Final documentation claims were checked against repository files, Git history, command outputs and the Module Leader's written instructions. Unverified results were not reported as completed.
