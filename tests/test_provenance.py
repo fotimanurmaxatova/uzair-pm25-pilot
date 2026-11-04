@@ -10,10 +10,11 @@ def test_provenance_links_row_to_both_requests(conn):
     rows = query.provenance(conn, 8)
     assert len(rows) == 8
     r = rows[0]
+    assert r["w_endpoint"] == "weather"
+    assert r["a_endpoint"] == "air_quality"
     assert r["w_http"] == 200 and r["a_http"] == 200 and r["w_run"] != r["a_run"]
     assert len(r["w_sha"]) == 64 and len(r["a_sha"]) == 64
     assert r["collector_version"].startswith("0.1.0")
-
 
 def test_verify_passes_then_detects_tampering(conn):
     collector.collect_all(conn, fetch=make_fetch(W, A), sleep=no_sleep)

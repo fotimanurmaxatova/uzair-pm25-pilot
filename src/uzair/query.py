@@ -14,9 +14,11 @@ def provenance(conn, limit=8):
     return conn.execute(
         "SELECT o.obs_id, c.name, o.observation_hour_utc, o.weather_time_utc, o.collected_at_utc,"
         " o.acquisition_mode, o.is_pilot, o.weather_model, o.aq_domain,"
-        " wr.run_id AS w_run, wr.http_status AS w_http, wr.latency_ms AS w_ms, wr.retry_count AS w_retry,"
+        " wr.endpoint AS w_endpoint, wr.run_id AS w_run, wr.http_status AS w_http,"
+        " wr.latency_ms AS w_ms, wr.retry_count AS w_retry,"
         " wraw.response_sha256 AS w_sha,"
-        " ar.run_id AS a_run, ar.http_status AS a_http, ar.latency_ms AS a_ms, ar.retry_count AS a_retry,"
+        " ar.endpoint AS a_endpoint, ar.run_id AS a_run, ar.http_status AS a_http,"
+        " ar.latency_ms AS a_ms, ar.retry_count AS a_retry,"
         " araw.response_sha256 AS a_sha, cv.version AS collector_version"
         " FROM observations o JOIN cities c USING (city_id)"
         " JOIN collection_runs wr ON wr.run_id = o.weather_run_id"
