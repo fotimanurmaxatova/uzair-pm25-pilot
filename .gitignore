@@ -221,3 +221,7 @@ __marimo__/
 
 data/*.db
 logs/
+
+# Local derived and verification data
+derived/
+cp1check/
