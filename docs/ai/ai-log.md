@@ -4,10 +4,11 @@ Tool: Claude (Anthropic), chat interface, used as development support.
 
 | Date | Purpose | What was produced | How it was checked / changed / rejected |
 |---|---|---|---|
-| 2026-10-28 | Planning and repository setup guidance | Checkpoint plan, issue and decision-record drafts | Rewrote issues in English; confirmed API parameters against live responses |
+| 2026-10-28 | Planning and repository setup guidance | Checkpoint plan, issue and decision-record drafts | confirmed API parameters against live responses |
 | 2026-10-28 | Time-alignment decision (0002) | Draft decision record | Checked against real API samples (15-min weather vs hourly air-quality interval) |
 | 2026-10-28 | SQLite schema, migration runner, schema tests | Draft SQL and Python | Ran `pytest`; files were first in the wrong folders (a `src` folder inside `migrations`), found with `dir /s /b`, moved `db.py` to `src\uzair\`; 9 tests passed |
 | 2026-10-28 | Validation, collector, CLI, offline tests | validate.py, collector.py, query.py, cli.py, 16 tests | Ran on my machine; fixed 2 import/path errors (details below); live demo and database checks passed; commit 4572c05 |
+| 2026-11-02 | Windows Task Scheduler setup | Used Claude's guidance to configure Windows Task Scheduler for automatic hourly execution of the UzAir data collector. | Followed the instructions, configured the scheduled task and checked its execution and collection logs. |
 
 
 ## 2026-10-28 — Validation, Collector and CLI
