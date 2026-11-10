@@ -1,0 +1,15 @@
+rows audited: 1311 (pilot rows present in this database: 0)
+
+1. STALE (receipt more than 2 h after valid time): weather 0, air quality 0   (largest receipt lag: weather 8 min, air quality 8 min)
+
+2. LARGE HOURLY JUMPS (|change in PM2.5| > 100 ug/m3 between consecutive hours): 0
+   rows with a quality_flag: 0
+
+3. LOCATION ECHO (grid more than 0.5 deg from the city point): 0 responses
+
+4. GRID CELLS PER CITY (distinct cells echoed by the API)
+   weather: 8 distinct cells for 8 cities; shared cells: none
+   air_quality: 8 distinct cells for 8 cities; shared cells: none
+
+5. SERIES SIMILARITY before 2026-11-06T19:00:00Z (share of identical stored values at the same valid time)
+   no city pair has >= 50% identical values (checked PM2.5 and temperature, pairs with >= 24 common hours)
