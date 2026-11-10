@@ -62,6 +62,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
+
 # Flask stuff:
 instance/
 .webassets-cache
@@ -220,6 +221,7 @@ __marimo__/
 .streamlit/secrets.toml
 
 data/*.db
+*.db-journal
 logs/
 
 # Local derived and verification data
