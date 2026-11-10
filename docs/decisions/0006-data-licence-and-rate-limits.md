@@ -36,19 +36,49 @@ The CLI performs one collection cycle each time the `collect` command is invoked
 
 ### 3. Licensing and data provenance
 
-- Data obtained through the Open-Meteo APIs are subject to the applicable CC BY 4.0 licence conditions.
-- Raw API response bodies are stored unchanged for provenance and audit purposes.
-- Derived or aggregated values, including analytical features and model outputs, will be identified as derived from the source data in the dashboard and report, where applicable.
-- The repository will retain source and provenance information that distinguishes Open-Meteo as the API provider from CAMS Global as the underlying air-quality forecast source.
-- The weather data source associated with `best_match` will be documented using the applicable Open-Meteo model-source documentation.
+- Open-Meteo states that data obtained through its APIs are provided under the Creative Commons Attribution 4.0 International (CC BY 4.0) licence. The applicable attribution must provide appropriate credit, link to the licence and indicate whether changes were made.
+- The selected air-quality domain is `cams_global`. The CAMS Global atmospheric composition forecasts dataset is listed in the Copernicus Atmosphere Data Store (ADS) under CC BY 4.0, with DOI `10.24381/04a0b097`.
+- Open-Meteo is the API provider and CAMS Global is the underlying air-quality forecast source. These roles must be distinguished in project documentation and outputs.
+- The weather endpoint requests `models=best_match`. This is an automatic model-selection mechanism rather than one fixed weather model. According to the Open-Meteo documentation, its global model backbone includes DWD ICON, NOAA GFS and ECMWF IFS. Additional regional models may be selected where applicable.
+- The project will retain the requested model setting and available source/provenance metadata. It will not claim that one specific weather model generated every observation unless this is confirmed by the available source metadata.
+- Derived or transformed values, including analytical features and model outputs, will be identified as derived from the source data. Any modifications will be disclosed where applicable.
 
 ### 4. Attribution in project outputs
 
-Where collected data are displayed in the dashboard, report or report figures, the output will visibly acknowledge Open-Meteo and identify the underlying data sources.
+The attribution requirements were reviewed against the official Open-Meteo and Copernicus documentation on 10 November 2026.
 
-The attribution will link to the [Open-Meteo documentation](https://open-meteo.com/en/docs), the [Open-Meteo Air Quality API documentation](https://open-meteo.com/en/docs/air-quality-api), and the [CAMS Global atmospheric-composition forecasts dataset](https://ads.atmosphere.copernicus.eu/datasets/cams-global-atmospheric-composition-forecasts).
+**Weather data**
 
-The exact CAMS attribution wording and any additional attribution requirements for the weather models selected by `best_match` must be checked against the applicable source documentation before the CP4 dashboard and final report are published. The verification is tracked in Issue #5.
+Weather forecasts obtained through Open-Meteo will be credited to Open-Meteo. The recommended attribution text is:
+
+"Weather data by Open-Meteo.com"
+
+The attribution will link to:
+- https://open-meteo.com/
+
+The model-selection method and contributing weather-model providers will be documented by linking to:
+- https://open-meteo.com/en/docs
+
+The `best_match` setting must not be presented as one fixed weather model. The documented global model backbone includes DWD ICON, NOAA GFS and ECMWF IFS. The applicable model selection may vary depending on location and model coverage.
+
+**Air-quality data**
+
+The air-quality forecast uses the CAMS Global atmospheric composition forecasts dataset through the Open-Meteo Air Quality API.
+
+The project attribution will identify both providers:
+
+"Air-quality forecast data: Copernicus Atmosphere Monitoring Service (CAMS), CAMS Global atmospheric composition forecasts (DOI: 10.24381/04a0b097), accessed through the Open-Meteo Air Quality API."
+
+The attribution will link to:
+- Open-Meteo Air Quality API: https://open-meteo.com/en/docs/air-quality-api
+- CAMS Global dataset: https://ads.atmosphere.copernicus.eu/datasets/cams-global-atmospheric-composition-forecasts
+- CC BY 4.0 licence: https://creativecommons.org/licenses/by/4.0/
+
+Any transformations or derived analytical outputs will be identified, and the attribution will not imply endorsement by Open-Meteo, CAMS or the weather-model providers.
+
+The source attribution must be visible in the CP4 dashboard and included in the final report and relevant figures. A release checklist will verify the attribution before publication.
+
+If the source documentation, selected model configuration or applicable licence conditions change, the attribution must be reviewed again before publication.
 
 ### 5. Privacy
 
