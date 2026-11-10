@@ -9,8 +9,9 @@ decision record.
 Seven-day exploratory pilot, eight cities (Tashkent, Samarkand, Bukhara, Andijan, Namangan,
 Fergana, Nukus, Urgench). Hourly polls at :05, Mon 2.11 00:05 to Sun 8.11 23:05
 (Asia/Tashkent, UTC+5; stored in UTC). Maximum 1,344 city-hours; target at least 1,000 valid
-scheduled rows. Pilot and recovery rows are excluded from the main analysis. Analysis is
-restricted to native three-hourly valid times (CAMS global); hourly rows are not independent.
+scheduled rows (collection coverage, not the number of analytical rows). Pilot and recovery rows
+are excluded from the main analysis. Primary analysis: native three-hourly valid times only;
+all eligible hourly rows are a labelled sensitivity analysis (see the clarification below).
 
 ## Definitions
 - Unit: one city and one air-quality valid time (decision 0002).
@@ -57,7 +58,7 @@ values are shown for transparency and enter no rule.
 ## Screening rules (exploratory; no significance gate)
 - Rule A: the low-wind indicator is "worth a longer study" if the Q3 estimate b_wind <= -2
   ug/m3 per m/s and stays negative in all sensitivity runs (leave-one-day-out, weekday-only,
-  native-step-only). Unstable sign: inconclusive. Between -2 and 0: below practical threshold.
+  all eligible hourly rows). Unstable sign: inconclusive. Between -2 and 0: below practical threshold.
   At 0 or above: no support. A sensitivity run that cannot be estimated makes the result inconclusive.
 - Rule B: the full model is "promising" if test RMSE is at least 10% below persistence and it
   wins in at least 2 of 3 CV folds. Weather adds information only if it also beats the matched
@@ -69,7 +70,30 @@ Day 3: fewer than 400 valid rows -> fix scheduler or host. Day 7: 1,000 or more 
 700 to 999 -> same questions, wider uncertainty; fewer than 700 -> contact the Module Leader
 before any change. Dropping Q4 or Q5 only under an alternative agreed in writing.
 
-## Open points to confirm with the Module Leader (not decided here)
-1. The addendum gives origins in local clock times (00:00 to 15:00) while the analysis is
-   restricted to native 3-hourly UTC times (05:00, 08:00, ... local). Confirm that "origins" means
-   the native-step origins inside those local windows.
+## Clarification of the native three-hourly analysis (Module Leader email, 3 November 2026)
+Added in a new dated commit; earlier commits are preserved. The Module Leader's email names this
+document as `docs/analysis-plan.md`; in this repository it is `docs/protocol/analysis-protocol.md`.
+Analytical definitions, thresholds and split rules are unchanged. This clarification replaces the
+earlier wording that listed "native-step-only" as a sensitivity run (a drafting error).
+- Primary analysis: native three-hourly valid times for all statistical analysis and for model
+  training, validation and testing. Native times are selected by the source's UTC valid-time grid
+  (valid time divisible by 3 hours, stored as `is_native_step`), never by taking every third
+  stored row.
+  Validation origins are the native three-hourly valid times that fall within the specified
+  local 00:00-15:00 window, selected using the source UTC valid-time grid.
+- Sensitivity analysis: repeat the analysis with all eligible hourly rows, with the same
+  chronological boundaries, feature definitions and availability rules. Report these results
+  separately and label them as sensitivity results.
+- The primary configuration follows this rule, not whichever run gives stronger results.
+- Six-hour target: exact t to t+6 h matching on valid time. A missing outcome stays missing; the
+  next available row is never substituted.
+- Collection target: hourly collection continues. The 1,000-row target concerns collection
+  coverage. Hourly coverage, native-step sample sizes and usable forecast pairs are reported
+  separately.
+- Native-step sampling does not remove temporal or spatial dependence; the dependence-aware
+  methods above (wild cluster bootstrap by calendar day) stay in force.
+- Expected maximum sample sizes (derived by arithmetic from the calendar above; actual usable
+  pairs are reported after missingness and lag construction): native valid times fall at local
+  02:00, 05:00, 08:00, 11:00, 14:00, 17:00, 20:00, 23:00. Validation origins from 00:00 to 15:00
+  contain 5 native origins per city and day; the weekend test origins (Sat 00:00 to Sun 17:00)
+  contain at most 14 per city (112 over eight cities), against 336 hourly origins.
