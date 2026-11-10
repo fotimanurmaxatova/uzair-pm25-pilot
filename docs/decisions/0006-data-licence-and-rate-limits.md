@@ -36,6 +36,8 @@ The CLI performs one collection cycle each time the `collect` command is invoked
 
 ### 3. Licensing and data provenance
 
+- Raw API response bodies are stored unchanged for provenance and audit purposes.
+
 - Open-Meteo states that data obtained through its APIs are provided under the Creative Commons Attribution 4.0 International (CC BY 4.0) licence. The applicable attribution must provide appropriate credit, link to the licence and indicate whether changes were made.
 - The selected air-quality domain is `cams_global`. The CAMS Global atmospheric composition forecasts dataset is listed in the Copernicus Atmosphere Data Store (ADS) under CC BY 4.0, with DOI `10.24381/04a0b097`.
 - Open-Meteo is the API provider and CAMS Global is the underlying air-quality forecast source. These roles must be distinguished in project documentation and outputs.
