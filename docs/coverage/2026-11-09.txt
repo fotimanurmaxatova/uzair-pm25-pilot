@@ -1,0 +1,45 @@
+Report time 2026-11-10 13:02Z (Tue 10 Nov 18:02 Tashkent)   elapsed polls: 168/168
+
+1. VALID PRIMARY ROWS (scheduled, is_pilot=0)
+   1311 of 1344 possible = 97.5%   (approved target >= 1000)
+   vs elapsed scheduled city-hours: 1311 of 1344 = 97.5%
+   projection if the observed rate holds: about 1311 rows at the end (above the 1000 target)
+
+2. RUN OUTCOMES PER HOURLY POLL (complete = all 8 cities stored)
+   complete 163, partial 1, failed 2, missed 2
+   Mon 02 Nov 20:00 local  failed   rows 0/8  weather failed HTTP 503 x8
+   Fri 06 Nov 22:00 local  partial  rows 7/8  weather failed URLError: <urlopen error timed out> x1; air_quality failed URLError: <urlopen error [Errno 11001] getaddrinfo failed> x1
+   Sun 08 Nov 17:00 local  missed   rows 0/8  no runs recorded (cause unknown)
+   Sun 08 Nov 18:00 local  missed   rows 0/8  no runs recorded (cause unknown)
+   Sun 08 Nov 20:00 local  failed   rows 0/8  weather failed URLError: <urlopen error [Errno 11001] getaddrinfo failed> x8; air_quality failed URLError: <urlopen error [Errno 11001] getaddrinfo failed> x8
+
+3. COVERAGE BY CITY (hourly rows / native 3-hourly rows) AND LONGEST GAP
+   Tashkent   163/168   native 53/56   longest gap 2 h from Sun 08 Nov 17:00
+   Samarkand  164/168   native 53/56   longest gap 2 h from Sun 08 Nov 17:00
+   Bukhara    164/168   native 53/56   longest gap 2 h from Sun 08 Nov 17:00
+   Andijan    164/168   native 53/56   longest gap 2 h from Sun 08 Nov 17:00
+   Namangan   164/168   native 53/56   longest gap 2 h from Sun 08 Nov 17:00
+   Fergana    164/168   native 53/56   longest gap 2 h from Sun 08 Nov 17:00
+   Nukus      164/168   native 53/56   longest gap 2 h from Sun 08 Nov 17:00
+   Urgench    164/168   native 53/56   longest gap 2 h from Sun 08 Nov 17:00
+
+4. ROWS BY LOCAL DAY (all cities)
+   Mon 02 Nov  184/192
+   Tue 03 Nov  192/192
+   Wed 04 Nov  192/192
+   Thu 05 Nov  192/192
+   Fri 06 Nov  191/192
+   Sat 07 Nov  192/192
+   Sun 08 Nov  168/192
+
+5. USABLE EXACT t -> t+6 h PAIRS (needs t, t-3h, t-6h, t+6h; fitted partitions need outcome received by cut-off)
+   partition           hourly    native 3-hourly      (collected / maximum if nothing is missing)
+   train_final    816/848          248/280     
+   cv1_train      256/288           64/96      
+   cv1_valid      128/128           40/40      
+   cv2_train      448/480          128/160     
+   cv2_valid      128/128           40/40      
+   cv3_train      640/672          192/224     
+   cv3_valid      128/128           40/40      
+   test           302/336           88/112     
+   Not yet counted: missing weather/NO2 values after lag construction (report in the analysis step).
