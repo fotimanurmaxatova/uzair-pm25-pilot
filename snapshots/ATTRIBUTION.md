@@ -1,0 +1,1 @@
+Weather data by Open-Meteo.com (CC BY 4.0), https://open-meteo.com/. Air-quality data are CAMS global model output distributed through the Open-Meteo Air Quality API. Collected by the UzAir collector between 2026-11-02 00:05 and 2026-11-08 23:05 (Asia/Tashkent).

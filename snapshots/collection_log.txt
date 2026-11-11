@@ -1,0 +1,1660 @@
+[Mon 11/02/2026  0:05:01.14] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026  0:05:17.26] exit=0 
+[Mon 11/02/2026  1:05:02.00] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026  1:05:16.75] exit=0 
+[Mon 11/02/2026  2:05:02.21] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026  2:05:17.33] exit=0 
+[Mon 11/02/2026  3:05:02.00] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026  3:05:15.33] exit=0 
+[Mon 11/02/2026  4:05:02.37] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026  4:05:27.71] exit=0 
+[Mon 11/02/2026  5:05:02.03] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026  5:05:17.98] exit=0 
+[Mon 11/02/2026  6:05:02.03] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026  6:05:19.38] exit=0 
+[Mon 11/02/2026  7:05:02.04] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026  7:05:24.72] exit=0 
+[Mon 11/02/2026  8:05:01.05] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026  8:05:17.70] exit=0 
+[Mon 11/02/2026  9:05:01.30] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026  9:05:17.40] exit=0 
+[Mon 11/02/2026 10:05:01.15] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 10:05:23.64] exit=0 
+[Mon 11/02/2026 11:05:01.09] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 11:05:19.25] exit=0 
+[Mon 11/02/2026 12:05:01.19] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 12:05:18.87] exit=0 
+[Mon 11/02/2026 13:05:01.09] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 13:05:18.84] exit=0 
+[Mon 11/02/2026 14:05:01.13] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 14:05:14.20] exit=0 
+[Mon 11/02/2026 15:05:01.13] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 15:05:19.30] exit=0 
+[Mon 11/02/2026 16:05:01.13] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 16:05:22.60] exit=0 
+[Mon 11/02/2026 17:05:01.25] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 17:05:17.59] exit=0 
+[Mon 11/02/2026 18:05:01.43] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 18:05:31.68] exit=0 
+[Mon 11/02/2026 19:05:01.16] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 19:05:21.61] exit=0 
+[Mon 11/02/2026 20:05:01.44] start 
+Tashkent     failed
+Samarkand    failed
+Bukhara      failed
+Andijan      failed
+Namangan     failed
+Fergana      failed
+Nukus        failed
+Urgench      failed
+[Mon 11/02/2026 20:07:51.56] exit=0 
+[Mon 11/02/2026 21:05:01.17] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 21:05:18.57] exit=0 
+[Mon 11/02/2026 22:05:01.19] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 22:05:26.08] exit=0 
+[Mon 11/02/2026 23:05:01.19] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Mon 11/02/2026 23:05:23.53] exit=0 
+[Tue 11/03/2026  0:05:01.20] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026  0:05:19.85] exit=0 
+[Tue 11/03/2026  1:05:01.20] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026  1:05:15.44] exit=0 
+[Tue 11/03/2026  2:05:01.21] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026  2:05:17.43] exit=0 
+[Tue 11/03/2026  3:05:01.23] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026  3:05:13.94] exit=0 
+[Tue 11/03/2026  4:05:01.23] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026  4:05:17.26] exit=0 
+[Tue 11/03/2026  5:05:01.24] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026  5:05:17.46] exit=0 
+[Tue 11/03/2026  6:05:01.25] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026  6:05:20.10] exit=0 
+[Tue 11/03/2026  7:05:01.26] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026  7:05:22.22] exit=0 
+[Tue 11/03/2026  8:05:01.27] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026  8:05:17.47] exit=0 
+[Tue 11/03/2026  9:05:01.29] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026  9:05:24.02] exit=0 
+[Tue 11/03/2026 10:05:01.29] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 10:05:19.99] exit=0 
+[Tue 11/03/2026 11:05:01.31] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 11:05:23.41] exit=0 
+[Tue 11/03/2026 12:05:01.31] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 12:05:17.74] exit=0 
+[Tue 11/03/2026 13:05:01.33] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 13:05:18.86] exit=0 
+[Tue 11/03/2026 14:05:01.33] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 14:05:17.89] exit=0 
+[Tue 11/03/2026 15:05:01.18] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 15:05:15.52] exit=0 
+[Tue 11/03/2026 16:05:01.11] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 16:05:21.00] exit=0 
+[Tue 11/03/2026 17:05:01.26] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 17:05:28.36] exit=0 
+[Tue 11/03/2026 18:05:01.12] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 18:05:16.17] exit=0 
+[Tue 11/03/2026 19:05:01.30] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 19:05:18.24] exit=0 
+[Tue 11/03/2026 20:05:01.13] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 20:05:20.12] exit=0 
+[Tue 11/03/2026 21:05:01.36] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 21:05:22.60] exit=0 
+[Tue 11/03/2026 22:05:01.15] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 22:05:21.31] exit=0 
+[Tue 11/03/2026 23:05:01.24] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Tue 11/03/2026 23:05:22.72] exit=0 
+[Wed 11/04/2026  0:05:01.17] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026  0:05:16.46] exit=0 
+[Wed 11/04/2026  1:05:01.18] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026  1:05:17.98] exit=0 
+[Wed 11/04/2026  2:05:01.25] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026  2:05:15.79] exit=0 
+[Wed 11/04/2026  3:05:01.55] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026  3:05:17.64] exit=0 
+[Wed 11/04/2026  4:05:01.24] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026  4:05:18.86] exit=0 
+[Wed 11/04/2026  5:05:01.21] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026  5:05:15.24] exit=0 
+[Wed 11/04/2026  6:05:01.23] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026  6:05:14.98] exit=0 
+[Wed 11/04/2026  7:05:01.36] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026  7:05:15.75] exit=0 
+[Wed 11/04/2026  8:05:01.24] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026  8:05:16.60] exit=0 
+[Wed 11/04/2026  9:05:01.25] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026  9:05:19.12] exit=0 
+[Wed 11/04/2026 10:05:01.25] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 10:05:15.11] exit=0 
+[Wed 11/04/2026 11:05:01.33] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 11:05:56.16] exit=0 
+[Wed 11/04/2026 12:05:01.36] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 12:05:26.70] exit=0 
+[Wed 11/04/2026 13:05:01.37] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 13:05:50.21] exit=0 
+[Wed 11/04/2026 14:05:01.32] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 14:05:28.91] exit=0 
+[Wed 11/04/2026 15:05:01.32] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 15:05:17.60] exit=0 
+[Wed 11/04/2026 16:05:01.30] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 16:05:16.94] exit=0 
+[Wed 11/04/2026 17:05:01.40] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 17:05:19.62] exit=0 
+[Wed 11/04/2026 18:05:01.33] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 18:05:35.07] exit=0 
+[Wed 11/04/2026 19:05:01.33] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 19:05:18.53] exit=0 
+[Wed 11/04/2026 20:05:01.35] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 20:05:29.75] exit=0 
+[Wed 11/04/2026 21:05:01.35] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 21:05:45.32] exit=0 
+[Wed 11/04/2026 22:05:01.33] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 22:05:20.12] exit=0 
+[Wed 11/04/2026 23:05:01.73] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Wed 11/04/2026 23:05:24.17] exit=0 
+[Thu 11/05/2026  0:05:01.41] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026  0:05:17.72] exit=0 
+[Thu 11/05/2026  1:05:01.36] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026  1:05:15.89] exit=0 
+[Thu 11/05/2026  2:05:01.84] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026  2:05:15.27] exit=0 
+[Thu 11/05/2026  3:05:01.85] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026  3:05:14.93] exit=0 
+[Thu 11/05/2026  4:05:01.39] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026  4:05:16.10] exit=0 
+[Thu 11/05/2026  5:05:01.75] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026  5:05:21.11] exit=0 
+[Thu 11/05/2026  6:05:01.38] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026  6:05:17.34] exit=0 
+[Thu 11/05/2026  7:05:01.39] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026  7:05:17.48] exit=0 
+[Thu 11/05/2026  8:05:01.53] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026  8:05:24.47] exit=0 
+[Thu 11/05/2026  9:05:01.41] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026  9:05:18.61] exit=0 
+[Thu 11/05/2026 10:05:01.96] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 10:05:15.24] exit=0 
+[Thu 11/05/2026 11:05:01.42] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 11:05:16.68] exit=0 
+[Thu 11/05/2026 12:05:01.93] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 12:05:19.47] exit=0 
+[Thu 11/05/2026 13:05:01.91] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 13:05:45.32] exit=0 
+[Thu 11/05/2026 14:05:01.44] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 14:05:19.62] exit=0 
+[Thu 11/05/2026 15:05:01.55] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 15:05:36.95] exit=0 
+[Thu 11/05/2026 16:05:01.45] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 16:05:18.78] exit=0 
+[Thu 11/05/2026 17:05:01.75] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 17:05:18.87] exit=0 
+[Thu 11/05/2026 18:05:01.74] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 18:05:26.44] exit=0 
+[Thu 11/05/2026 19:05:01.49] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 19:05:16.67] exit=0 
+[Thu 11/05/2026 20:05:01.51] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 20:05:26.21] exit=0 
+[Thu 11/05/2026 21:05:02.02] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 21:05:23.10] exit=0 
+[Thu 11/05/2026 22:05:01.52] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 22:05:18.86] exit=0 
+[Thu 11/05/2026 23:05:01.53] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Thu 11/05/2026 23:05:17.38] exit=0 
+[Fri 11/06/2026  0:05:01.55] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026  0:05:20.40] exit=0 
+[Fri 11/06/2026  1:05:01.82] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026  1:05:18.75] exit=0 
+[Fri 11/06/2026  2:05:01.56] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026  2:05:22.44] exit=0 
+[Fri 11/06/2026  3:05:01.69] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026  3:05:17.99] exit=0 
+[Fri 11/06/2026  4:05:01.57] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026  4:05:16.05] exit=0 
+[Fri 11/06/2026  5:05:01.58] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026  5:05:22.70] exit=0 
+[Fri 11/06/2026  6:05:02.12] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026  6:05:16.21] exit=0 
+[Fri 11/06/2026  7:05:01.63] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026  7:05:16.89] exit=0 
+[Fri 11/06/2026  8:05:01.92] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026  8:05:17.69] exit=0 
+[Fri 11/06/2026  9:05:02.09] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026  9:05:26.83] exit=0 
+[Fri 11/06/2026 10:05:01.84] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 10:05:16.54] exit=0 
+[Fri 11/06/2026 11:05:01.98] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 11:05:19.32] exit=0 
+[Fri 11/06/2026 12:05:01.85] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 12:05:21.37] exit=0 
+[Fri 11/06/2026 13:05:02.16] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 13:05:17.65] exit=0 
+[Fri 11/06/2026 14:05:01.66] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 14:05:31.28] exit=0 
+[Fri 11/06/2026 15:05:01.70] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 15:05:21.34] exit=0 
+[Fri 11/06/2026 16:05:01.68] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 16:05:18.43] exit=0 
+[Fri 11/06/2026 17:05:01.67] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 17:05:25.96] exit=0 
+[Fri 11/06/2026 18:05:01.69] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 18:05:20.04] exit=0 
+[Fri 11/06/2026 19:05:01.72] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 19:05:34.09] exit=0 
+[Fri 11/06/2026 20:05:01.72] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 20:05:29.86] exit=0 
+[Fri 11/06/2026 21:05:01.76] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 21:05:38.93] exit=0 
+[Fri 11/06/2026 22:05:01.78] start 
+Tashkent     failed
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 22:07:51.43] exit=0 
+[Fri 11/06/2026 23:05:01.76] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Fri 11/06/2026 23:05:30.73] exit=0 
+[Sat 11/07/2026  0:05:01.81] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026  0:05:35.39] exit=0 
+[Sat 11/07/2026  1:05:01.75] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026  1:05:13.40] exit=0 
+[Sat 11/07/2026  2:05:01.78] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026  2:05:12.15] exit=0 
+[Sat 11/07/2026  3:05:01.79] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026  3:05:11.58] exit=0 
+[Sat 11/07/2026  4:05:01.78] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026  4:05:11.64] exit=0 
+[Sat 11/07/2026  5:05:01.77] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026  5:05:13.75] exit=0 
+[Sat 11/07/2026  6:05:01.80] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026  6:05:16.08] exit=0 
+[Sat 11/07/2026  7:05:01.77] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026  7:05:16.04] exit=0 
+[Sat 11/07/2026  8:05:01.78] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026  8:05:13.68] exit=0 
+[Sat 11/07/2026  9:05:01.82] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026  9:05:16.09] exit=0 
+[Sat 11/07/2026 10:05:01.79] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 10:05:12.60] exit=0 
+[Sat 11/07/2026 11:05:01.84] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 11:05:12.28] exit=0 
+[Sat 11/07/2026 12:05:01.83] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 12:05:13.33] exit=0 
+[Sat 11/07/2026 13:05:01.83] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 13:05:15.68] exit=0 
+[Sat 11/07/2026 14:05:01.84] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 14:05:16.18] exit=0 
+[Sat 11/07/2026 15:05:01.88] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 15:05:14.87] exit=0 
+[Sat 11/07/2026 16:05:01.90] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 16:05:13.50] exit=0 
+[Sat 11/07/2026 17:05:01.90] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 17:05:23.31] exit=0 
+[Sat 11/07/2026 18:05:01.88] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 18:05:15.40] exit=0 
+[Sat 11/07/2026 19:05:01.86] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 19:05:14.26] exit=0 
+[Sat 11/07/2026 20:05:01.90] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 20:05:15.88] exit=0 
+[Sat 11/07/2026 21:05:01.90] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 21:05:13.49] exit=0 
+[Sat 11/07/2026 22:05:01.90] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 22:05:13.03] exit=0 
+[Sat 11/07/2026 23:05:01.88] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sat 11/07/2026 23:05:12.89] exit=0 
+[Sun 11/08/2026  0:05:02.16] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026  0:05:12.03] exit=0 
+[Sun 11/08/2026  1:05:02.19] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026  1:05:14.02] exit=0 
+[Sun 11/08/2026  2:05:01.90] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026  2:05:11.89] exit=0 
+[Sun 11/08/2026  3:05:02.17] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026  3:05:13.33] exit=0 
+[Sun 11/08/2026  4:05:01.94] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026  4:05:12.75] exit=0 
+[Sun 11/08/2026  5:05:02.31] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026  5:05:13.48] exit=0 
+[Sun 11/08/2026  6:05:01.96] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026  6:05:13.04] exit=0 
+[Sun 11/08/2026  7:05:01.96] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026  7:05:12.79] exit=0 
+[Sun 11/08/2026  8:05:02.13] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026  8:05:12.52] exit=0 
+[Sun 11/08/2026  9:05:01.98] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026  9:05:11.74] exit=0 
+[Sun 11/08/2026 10:05:02.03] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026 10:05:47.61] exit=0 
+[Sun 11/08/2026 11:05:02.11] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026 11:05:27.84] exit=0 
+[Sun 11/08/2026 12:05:02.08] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026 12:05:13.26] exit=0 
+[Sun 11/08/2026 13:05:02.06] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026 13:05:12.85] exit=0 
+[Sun 11/08/2026 14:05:02.11] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026 14:05:31.58] exit=0 
+[Sun 11/08/2026 15:05:02.08] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026 15:05:44.13] exit=0 
+[Sun 11/08/2026 16:05:02.07] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026 16:05:25.35] exit=0 
+[Sun 11/08/2026 19:05:01.65] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026 19:05:35.70] exit=0 
+[Sun 11/08/2026 20:05:01.65] start 
+Tashkent     failed
+Samarkand    failed
+Bukhara      failed
+Andijan      failed
+Namangan     failed
+Fergana      failed
+Nukus        failed
+Urgench      failed
+[Sun 11/08/2026 20:08:46.27] exit=0 
+[Sun 11/08/2026 21:05:01.94] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026 21:05:37.61] exit=0 
+[Sun 11/08/2026 22:05:01.89] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026 22:06:03.44] exit=0 
+[Sun 11/08/2026 23:05:01.98] start 
+Tashkent     stored
+Samarkand    stored
+Bukhara      stored
+Andijan      stored
+Namangan     stored
+Fergana      stored
+Nukus        stored
+Urgench      stored
+[Sun 11/08/2026 23:05:33.30] exit=0 

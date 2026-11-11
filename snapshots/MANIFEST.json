@@ -1,0 +1,24 @@
+{
+  "created_utc": "2026-11-11T11:08:40Z",
+  "source_database_name": "assessed.db",
+  "row_counts": {
+    "cities": 8,
+    "collector_versions": 1,
+    "collection_runs": 2656,
+    "observations": 1311,
+    "quarantine": 0,
+    "raw_responses (inside the .db only)": 2638,
+    "observations_valid_primary": 1311
+  },
+  "raw_hash_check": "all raw responses re-hashed, 0 mismatches",
+  "files_sha256": {
+    "assessed_snapshot.db": "9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2",
+    "ATTRIBUTION.md": "fd85702977260e2d95714ce0db927f930071a26aa5ce55cf6df519f257c880a1",
+    "cities.csv": "35586351ac5f5441d4ed8bfb3b9e3d9885520c2b7dc2df7f55794b31d67e17c8",
+    "collection_log.txt": "114df3f0f39f3d344e6ec8b6b12e1b990bf7cd1ec44044b0e08509e8d048d815",
+    "collection_runs.csv": "0c30f85ed1100f7f3cd37a87955ead707a8e672a53990a0e54def462e09faf7c",
+    "collector_versions.csv": "aaffa1af1a386f66e7ff87c0ae5347b5361436d82b4e91587b01106250dff6d7",
+    "observations.csv": "96d5d6acdd7da157c91d9cfe8140a4336079e7d8edb1f57c025347cb4c481b98",
+    "quarantine.csv": "d1ea1ffe33c08b52baafac78ca1cc7c3c26ed685c92f7debf0d038594d68315c"
+  }
+}
