@@ -1,0 +1,66 @@
+1. DAILY VALID ROWS BY CITY (local day; expected 24 per city per day)
+   day         Tashk Samar Bukha Andij Naman Ferga Nukus Urgen  total/expected
+   2026-11-02     23    23    23    23    23    23    23    23  184/192
+   2026-11-03     24    24    24    24    24    24    24    24  192/192
+   2026-11-04     24    24    24    24    24    24    24    24  192/192
+   2026-11-05     24    24    24    24    24    24    24    24  192/192
+   2026-11-06     23    24    24    24    24    24    24    24  191/192
+   2026-11-07     24    24    24    24    24    24    24    24  192/192
+   2026-11-08     21    21    21    21    21    21    21    21  168/192
+
+2. COMPLETENESS BY LOCAL HOUR OF DAY (all cities; maximum 56 = 7 days x 8 cities)
+   00:00   56/56  100.0%
+   01:00   56/56  100.0%
+   02:00   56/56  100.0%
+   03:00   56/56  100.0%
+   04:00   56/56  100.0%
+   05:00   56/56  100.0%
+   06:00   56/56  100.0%
+   07:00   56/56  100.0%
+   08:00   56/56  100.0%
+   09:00   56/56  100.0%
+   10:00   56/56  100.0%
+   11:00   56/56  100.0%
+   12:00   56/56  100.0%
+   13:00   56/56  100.0%
+   14:00   56/56  100.0%
+   15:00   56/56  100.0%
+   16:00   56/56  100.0%
+   17:00   48/56   85.7%
+   18:00   48/56   85.7%
+   19:00   56/56  100.0%
+   20:00   40/56   71.4%
+   21:00   56/56  100.0%
+   22:00   55/56   98.2%
+   23:00   56/56  100.0%
+
+3. REQUEST OUTCOMES BY LOCAL DAY AND ENDPOINT
+   day         endpoint      requests    ok  failed  success%  retried  retries
+   2026-11-02  air_quality       192   192       0    100.0        0        0
+   2026-11-02  weather           192   184       8     95.8        8       24
+   2026-11-03  air_quality       192   192       0    100.0        0        0
+   2026-11-03  weather           192   192       0    100.0        0        0
+   2026-11-04  air_quality       192   192       0    100.0        2        2
+   2026-11-04  weather           192   192       0    100.0        1        1
+   2026-11-05  air_quality       192   192       0    100.0        0        0
+   2026-11-05  weather           192   192       0    100.0        0        0
+   2026-11-06  air_quality       192   191       1     99.5        2        4
+   2026-11-06  weather           192   191       1     99.5        2        6
+   2026-11-07  air_quality       192   192       0    100.0        0        0
+   2026-11-07  weather           192   192       0    100.0        0        0
+   2026-11-08  air_quality       176   168       8     95.5       10       26
+   2026-11-08  weather           176   168       8     95.5        9       25
+
+4. QUARANTINE BY REASON CODE
+   none quarantined (0 of 2656 scheduled requests = 0.0%)
+
+5. API LATENCY OF SUCCESSFUL REQUESTS (ms)
+   endpoint        n    min  median   p95    max
+   weather       1311    453     905  2671  14110
+   air_quality   1319    390     780  2687   8328
+
+6. FAILED REQUESTS BY REASON (times are UTC)
+   weather      http=503  x8   2026-11-02T15:05:01Z .. 2026-11-02T15:07:31Z  HTTP 503
+   weather      http=-    x1   2026-11-06T17:05:02Z .. 2026-11-06T17:05:02Z  URLError: <urlopen error timed out>
+   air_quality  http=-    x9   2026-11-06T17:06:11Z .. 2026-11-08T15:08:32Z  URLError: <urlopen error [Errno 11001] getaddrinfo failed>
+   weather      http=-    x8   2026-11-08T15:05:01Z .. 2026-11-08T15:08:18Z  URLError: <urlopen error [Errno 11001] getaddrinfo failed>
