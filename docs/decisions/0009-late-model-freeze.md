@@ -57,6 +57,8 @@ Entries are added by later commits when each event happens. They are not back-da
 | Planned freeze (protocol) | 2026-11-06 23:30 | - |
 | Deviation reported to the Module Leader | 2026-11-08 | email |
 | Written approval received | 2026-11-10 | email |
+| Audit note and data summary sent to the Module Leader | 2026-11-11 | email |
+| Data snapshot and manifest committed | 2026-11-11 16:13 | 4771474 |
 | This decision committed | see git log | see git log |
 | Selection script committed | | |
 | Selection run | | |
