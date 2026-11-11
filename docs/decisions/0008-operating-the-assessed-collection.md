@@ -1,6 +1,6 @@
 # 0008 - Operating the assessed collection: frozen code, backups, coverage reporting
 
-Status: Accepted (2026-10-28; Module Leader approval)
+Status: Accepted 2026-11-11 (written after the collection window; follows the Module Leader's reliability reply of 2026-10-28)
 Related: 0003, 0005 (as the Module Leader requested), 0007; incidents 2026-11-02-weather-503, 2026-11-06-partial-poll and 2026-11-08-missed-polls; issue #5
 
 ## Context
@@ -17,7 +17,7 @@ The Module Leader's reply on reliability accepted collection on my laptop, allow
 
 - **Overlap prevention:** the scheduled task used `-MultipleInstances IgnoreNew`; no catch-up run was configured (`register_assessed_task.ps1`).
 
-- **Backups:** two identical SQLite backup copies were verified in `C:\UzAir_backup`: `assessed_2026-11-08.db` and `assessed_final.db`. Both have SHA-256 `9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2`. A further copy, `assessed.db`, has SHA-256 `d078c74161aeaba5dfda474070dfae71d7de4df58aacce6673b44e0ae8091256`.
+- **Backups:** three copies are kept in `C:\UzAir_backup` (`assessed.db`, `assessed_2026-11-08.db`, `assessed_final.db`). Checked on 2026-11-11, each contains 1,311 observations (first `2026-11-01T19:05:04Z`, last `2026-11-08T18:05:33Z`) and 2,656 runs (last start `2026-11-08T18:05:29Z`), the same as the live database. The live database and `assessed.db` have SHA-256 `d078c74161aeaba5dfda474070dfae71d7de4df58aacce6673b44e0ae8091256`. The other two copies have SHA-256 `9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2`. The byte-level difference is not explained (the copy method was not recorded). The data snapshot is taken from the live database.
 
 - **Scheduled task:** `\UzAir-assessed-collect` is currently `Disabled`. Its last run was 8 November 2026 at 23:05:01 (Asia/Tashkent), with result `0`. The exact time when the task was disabled is not established. The task registration script is retained in `C:\UzAir_collect\scripts\register_assessed_task.ps1`.
 
