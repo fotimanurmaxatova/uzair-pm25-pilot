@@ -34,6 +34,18 @@ pip install pytest
 pip install -r requirements.txt
 ```
 
+## Clean install (Linux/macOS)
+
+```bash
+git clone https://github.com/fotimanurmaxatova/uzair-pm25-pilot.git
+cd uzair-pm25-pilot
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e .
+python -m pip install pytest
+python -m pip install -r requirements.txt
+```
+
 ## Run the tests
 
 ```cmd

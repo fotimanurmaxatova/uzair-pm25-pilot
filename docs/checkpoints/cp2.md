@@ -21,9 +21,33 @@ This component enables the university student support and campus safety office t
 ## Independent test specification
 - Purpose: show that collection continued genuinely, failures are visible, quality is audited and the analysis-ready table is reproducible.
 - Inputs: `snapshots/assessed_snapshot.db` (SQLite copy of the live collection, 2-8 Nov); synthetic rows in `tests/` (tests only, never analysed).
-- Commands (clean checkout): create a virtual environment with `python -m venv .venv`, install dependencies with `.venv\Scripts\python.exe -m pip install -r requirements.txt`, run `.venv\Scripts\python.exe -m pytest -q`, then set the database path with `set "DB=snapshots\assessed_snapshot.db"` and run:
-  `.venv\Scripts\python.exe -m uzair.cli --db %DB% verify`, `.venv\Scripts\python.exe -m monitoring.coverage --db %DB%`, `.venv\Scripts\python.exe -m monitoring.audit --db %DB%`,
-  `.venv\Scripts\python.exe -m monitoring.queries --db %DB%`, `.venv\Scripts\python.exe -m monitoring.prepare --db %DB% --out derived\analysis_rows.csv`.
+- Commands (clean checkout):
+
+  **Windows CMD:**
+  ```cmd
+  python -m venv .venv
+  .venv\Scripts\python.exe -m pip install -r requirements.txt
+  .venv\Scripts\python.exe -m pytest -q
+  set "DB=snapshots\assessed_snapshot.db"
+  .venv\Scripts\python.exe -m uzair.cli --db %DB% verify
+  .venv\Scripts\python.exe -m monitoring.coverage --db %DB%
+  .venv\Scripts\python.exe -m monitoring.audit --db %DB%
+  .venv\Scripts\python.exe -m monitoring.queries --db %DB%
+  .venv\Scripts\python.exe -m monitoring.prepare --db %DB% --out derived\analysis_rows.csv
+  ```
+
+  **Linux/macOS (bash or zsh):**
+  ```bash
+  python3 -m venv .venv
+  .venv/bin/python -m pip install -r requirements.txt
+  .venv/bin/python -m pytest -q
+  DB=snapshots/assessed_snapshot.db
+  .venv/bin/python -m uzair.cli --db "$DB" verify
+  .venv/bin/python -m monitoring.coverage --db "$DB"
+  .venv/bin/python -m monitoring.audit --db "$DB"
+  .venv/bin/python -m monitoring.queries --db "$DB"
+  .venv/bin/python -m monitoring.prepare --db "$DB" --out derived/analysis_rows.csv
+  ```
 - Expected: tests pass; verify finds 0 mismatches; coverage prints sections 1-5; audit prints sections 1-5; queries print six sections; prepare prints counts only.
 - Acceptance criteria: (1) all tests pass; (2) verify, coverage, audit and stakeholder-query commands do not mutate the source database; `prepare` writes only the derived output file, and snapshot creation writes a separate snapshot; (3) the approved maxima reproduce (336 hourly and 112 native test pairs); (4) failed, missed and partial polls are distinguished; (5) collection and receipt timestamps are preserved for the CP3 strict fitting cut-off; (6) pilot rows are never counted; (7) lags and the target are matched by exact valid time; (8) a tampered raw response causes snapshot verification to fail.
 - Actual result (assessed collection and canonical snapshot; checks run on 2026-11-10 and 2026-11-11): 93 tests passed; `verify`: 2,638 raw responses re-hashed, 0 hash mismatches; coverage: 1,311 of 1,344 valid rows (97.5%), polls complete 163, partial 1, failed 2, missed 2; usable test-partition pairs 88 of 112 (native 3-hourly, primary) and 302 of 336 (hourly, sensitivity analysis); audit: 1,311 rows audited, 0 pilot rows, 0 stale receipts, 0 jumps above 100 ug/m3, 0 quality flags, 0 location mismatches, 0 shared grid cells; queries: 26 failed requests, 8 requests succeeded after retry, 0 quarantined. The clean-checkout run (fresh clone checked out at tag `cp2-submission`, re-run and captured on 2026-11-16) is saved in `docs/checkpoints/cp2-demo-output.txt`; the file was added after the tag, which is unchanged.
