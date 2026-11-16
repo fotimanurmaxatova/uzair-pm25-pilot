@@ -1,0 +1,17 @@
+RECONCILIATION OF REQUESTS, ATTEMPTS AND RETAINED RESPONSES (scheduled, non-pilot)
+1. logical requests (rows of collection_runs)          2656   weather 1328, air quality 1328
+2. retries inside the logical requests                    88   successful requests 10, failed requests 78
+3. HTTP attempts = 1 + 2                                2744
+4. logical requests that succeeded                      2630   of which needed retries 8
+5. logical requests that failed after all retries         26   with a stored error body 8, without a body 18
+6. retained raw responses                               2638   successful 2630 (weather 1311, air quality 1319) + failed with a body 8
+7. valid observations                                   1311   air-quality successes without a weather pair 8, weather successes without an air-quality pair 0
+
+Identities:
+   [ok] logical = successful + failed
+   [ok] retries = retries of successful + retries of failed
+   [ok] failed = failed with a stored body + failed without a body
+   [ok] retained = successful + failed with a body
+   [ok] retained = logical - failed without a body
+   [ok] observations = weather successes - weather successes without a pair
+   [ok] observations = air-quality successes - air-quality successes without a pair
