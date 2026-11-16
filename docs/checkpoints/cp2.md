@@ -44,3 +44,23 @@ Late model freeze (decision 0009): selection script with receipt-time cut-offs t
 
 ## AI assistance in this period
 See `docs/ai/ai-log.md`. Claude (Anthropic) drafted code, tests and text that I reviewed and ran on my machine: the `monitoring/` tools and their tests (first pack, 2026-11-08 to 2026-11-10), the boundary tests (2026-11-10), `monitoring/queries.py` and its tests (2026-11-11), drafts of decisions 0008 and 0009 and of the issue texts. I ran every command myself and pasted the real outputs; facts in the incident records come from my own `incidents.py`, `retries.py`, Event Viewer and coverage outputs. Other tools I used are listed in the AI log.
+
+## Additional evidence recorded after the CP2 submission tag (2026-11-16)
+
+### Request and response reconciliation
+At the Module Leader's request, `monitoring/reconcile.py` reconciles logical collection requests, HTTP attempts including retries, failed requests, retained raw responses and valid observations against `snapshots/assessed_snapshot.db`. All seven accounting identities passed. The retained output is `docs/coverage/reconciliation-2026-11-16.txt`.
+
+- Logical requests: 2,656.
+- HTTP attempts: 2,744, including 88 retries.
+- Successful logical requests: 2,630, including 8 that required retries.
+- Failed logical requests: 26 (8 with a stored error body and 18 without a response body).
+- Retained raw responses: 2,638.
+- Valid observations: 1,311.
+
+The implementation and its five synthetic tests are in `monitoring/reconcile.py` and `tests/test_reconcile.py`. The full test suite passed: 98 tests.
+
+### Archived monitoring scripts
+Four supplementary scripts copied from outside the collector clone on 2026-11-16 are retained in `tools/monitoring-scripts/`: `check_assessed.py`, `incidents.py`, `retries.py` and `compare_backups.py`. Each copy is labelled with its archival date. The original files were not modified.
+
+### Daily output retention limitation
+Daily monitoring outputs for 2-8 Nov 2026 were viewed in the terminal but were not saved as individual output files. They have not been recreated or backdated. The retained aggregate reports and later reconciliation output are listed in `docs/coverage/`.
