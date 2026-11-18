@@ -59,7 +59,7 @@ Entries are added by later commits when each event happens. They are not back-da
 | Written approval received | 2026-11-10 | email |
 | Audit note and data summary sent to the Module Leader | 2026-11-11 | email |
 | Data snapshot and manifest committed | 2026-11-11 16:13 | 4771474 |
-| This decision committed | see git log | see git log |
+| This decision committed | 2026-11-18 08:35:56 | 8c0c09f |
 | Selection script committed | | |
 | Selection run | | |
 | Frozen configurations committed and tagged (`late freeze`) | | |
