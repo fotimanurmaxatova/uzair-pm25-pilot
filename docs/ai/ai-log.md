@@ -83,6 +83,12 @@ Assistance provided:
 - The initial suggestions did not fully match the project's actual database structure and requirements.
 
 My review and contribution:
-I reviewed and substantially edited both files because several parts of the initial suggestions did not match the project's actual database structure and requirements. I checked the final implementation against the repository and the intended stakeholder-query requirements. I treated Claude's initial suggestions as drafts, not as verified evidence.
+
+My changes were limited to targeted corrections rather than substantial edits to both files:
+- Updated the relevant docstring in `monitoring/queries.py`.
+- Corrected the quarantine accounting to count unique requests.
+- Added one corresponding test in `tests/test_queries.py`.
+
+I reviewed the AI-generated suggestions critically and did not treat them as verified evidence.
 
 | 2026-11-18 | CP3 analysis protocol and implementation decisions (Decision 0010) | Review of preprocessing, model configuration, evaluation safeguards, inference and robustness procedures | Used ChatGPT to discuss and critically review the implementation plan. Final decisions and repository changes were reviewed and made by the author. |
