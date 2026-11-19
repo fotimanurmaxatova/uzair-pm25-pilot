@@ -92,3 +92,19 @@ My changes were limited to targeted corrections rather than substantial edits to
 I reviewed the AI-generated suggestions critically and did not treat them as verified evidence.
 
 | 2026-11-18 | CP3 analysis protocol and implementation decisions (Decision 0010) | Review of preprocessing, model configuration, evaluation safeguards, inference and robustness procedures | Used ChatGPT to discuss and critically review the implementation plan. Final decisions and repository changes were reviewed and made by the author. |
+
+### 2026-11-19: Retrospective record of CP2 assistance
+
+Tool: Claude (Anthropic), AI assistant.
+
+**Work period:** 2026-11-08 to 2026-11-11. This entry was added retrospectively on 2026-11-19 after comparing the AI-use log with `docs/cp2.md`.
+
+**Assistance provided:**
+- Helped draft the first set of `monitoring/` tools and their tests, including coverage, audit, preparation, snapshot and stakeholder-query work.
+- Helped draft boundary tests for temperature, pressure and wind direction.
+- Assisted with `monitoring/queries.py` and its tests (also recorded in the separate 2026-11-11 entry above).
+- Helped prepare drafts of Decisions 0008 and 0009 and GitHub issue descriptions.
+
+**My verification and contribution:**
+
+I reviewed and adapted the suggestions to the actual repository and project requirements. I ran the commands and tests myself and checked the resulting outputs. The CP2 documentation and repository evidence were used to verify the scope of this retrospective entry. AI suggestions were treated as development assistance, not as evidence of successful execution.
