@@ -6,7 +6,7 @@ Related: decision 0009, analysis protocol, GitHub issues #8 and #15; monitoring 
 
 ## Context
 
-Decision 0009 fixes the candidates, grid, folds, cut-offs, criterion and tie-break rule. It does not fix implementation details of preprocessing and of the sensitivity and inference steps. Those details are fixed here, before the selection script is written or run, so that no choice can be made after seeing CV or test results. None of them is tuned. If a detail below proves unworkable, the change is recorded as a new decision before the selection run; after the selection run it is recorded as post-test work.
+Decision 0009 fixes the candidates, grid, folds, cut-offs, criterion and tie-break rule. It does not fix implementation details of preprocessing and of the sensitivity and inference steps. Those details are fixed here, before the selection script is run, so that no choice can be made after seeing CV or test results. None of them is tuned. If a detail below proves unworkable, the change is recorded as a new decision before the selection run; after the selection run it is recorded as post-test work.
 
 ## Monitoring independence
 
@@ -100,6 +100,16 @@ The monitoring outputs were also used for collection monitoring and data-quality
 24. Description of the evaluation: a retrospective chronological holdout with a disclosed late freeze and prior aggregate monitoring. Rule B and "weather adds information" findings remain exploratory pilot screening results.
 
 25. Reporting: usable and excluded pairs are reported by city and date; hourly and native pairs are not presented as independent observations; collected rows, logical requests, HTTP attempts and usable pairs are reported separately (see `docs/coverage/reconciliation-2026-11-16.txt`).
+
+## Clarifications added on 2026-11-20, before any selection run
+
+These clarifications were recorded before any model was fitted on the assessed data and before any cross-validation result was seen. The selection script had been drafted but had not been committed or run. These clarifications do not derive from any outcome value or model-performance result.
+
+26. **Simulated prediction time and feature availability.** For a forecast origin \(t\), the simulated prediction time is the receipt time (`collected_at_utc`) of the origin row. The origin features are those recorded in that row. The lag rows at \(t-3\) h and \(t-6\) h, including the \(t-3\) h row used to calculate the three-hour pressure change, must have been received strictly before that prediction time. Otherwise, the pair is not eligible and the exclusion is reported separately. For fitted partitions, the origin row, both lag rows and the target outcome row must also have been received strictly before the relevant fold cut-off. An outcome received exactly at or after that cut-off is ineligible for fitting.
+
+27. **Preprocessing order.** The fixed order is median imputation (including cyclic features), winsorisation of continuous numeric features, and standardisation for Ridge. Imputation medians, winsorisation bounds (1st and 99th percentiles, using NumPy's default linear percentile method) and scaling statistics are computed using the training data of the relevant fold only. Winsorisation bounds are computed on the imputed training values. A zero standard deviation is replaced by 1. A feature with no observed training value causes the run to stop. One-hot city indicators and cyclic sin/cos features are not winsorised; they are not standardised for Ridge.
+
+28. **Strict receipt-time comparison.** The monitoring scripts `monitoring/coverage.py` and `monitoring/prepare.py` use an inclusive `<=` comparison for the relevant outcome receipt-time cut-offs. The analysis implementation uses the strict `<` comparison required by Decision 0009. On the assessed snapshot, the compared monitoring and analysis counts are identical for the corresponding partitions, and the new feature-availability checks exclude zero pairs. The strict analysis rule remains authoritative for model selection and fitting.
 
 ## Consequences
 
