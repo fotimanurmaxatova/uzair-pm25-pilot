@@ -5,9 +5,14 @@ Rules enforced here, not left to the caller:
     from the database (SQL filter), so no later-received row is ever loaded.
   * A loaded row received at or after that cut-off, or whose valid time is a test origin or later
     (>= 7 Nov 00:00 local), raises GuardError.  Violations stop processing; they are never dropped silently.
+  * Simulated prediction time of origin t = the receipt time (collected_at_utc) of the origin row.  All features
+    of the origin row are available then.  The lag rows (t-3 h, t-6 h; the 3-hour pressure change uses the t-3 h
+    row) must have been received STRICTLY before that prediction time; otherwise the pair is not eligible.
   * A pair (origin t, target t + 6 h) is eligible for a partition only if lags t-3 h, t-6 h and the
-    target exist by exact valid time and the target was received strictly before the partition cut-off.
-    Pairs that fail this are simply not eligible (they are counted as missing/ineligible, not errors).
+    target exist by exact valid time, every feature row was available at the prediction time, and the target
+    (and, for fitted partitions, the origin and lag rows) was received strictly before the partition cut-off.
+    Pairs that fail this are not eligible.  Those lost only because a feature row arrived too late are listed
+    by `unavailable()` and printed, so they are counted, never dropped silently.
   * The test partition cannot be requested: GuardError.
 
 Entry point (prints COUNTS only, never values):
@@ -78,6 +83,8 @@ def build(raw, cutoff=cut.FINAL_CUTOFF_UTC):
             "pm25_lag3": lag3["pm2_5"] if lag3 else None, "pm25_lag6": lag6["pm2_5"] if lag6 else None,
             "target_pm25_t6": tgt["pm2_5"] if tgt else None,
             "target_receipt_utc": tgt["collected_at_utc"] if tgt else None,
+            "lag3_receipt_utc": lag3["collected_at_utc"] if lag3 else None,
+            "lag6_receipt_utc": lag6["collected_at_utc"] if lag6 else None,
             "usable_pair": int(bool(lag3 and lag6 and tgt and tgt["pm2_5"] is not None))})
     return rows
 
@@ -86,23 +93,44 @@ def load_development(conn, cutoff=cut.FINAL_CUTOFF_UTC):
     return build(load_raw(conn, cutoff), cutoff)
 
 
-def eligible(rows, partition, native_only=True):
-    """Usable pairs of one development partition.  Strict `<` on the target receipt time."""
+def features_available(r):
+    """Every feature row (origin t, t-3 h, t-6 h) was received by the prediction time = receipt of the origin row."""
+    pt = parse(r["receipt_utc"])
+    return all(r[k] is not None and parse(r[k]) < pt for k in ("lag3_receipt_utc", "lag6_receipt_utc"))
+
+
+def _in_window(r, win, native_only):
+    return r["usable_pair"] and (r["native"] or not native_only) and win.first <= r["valid_dt"] <= win.last
+
+
+def _partition(partition):
     if partition == "test" or partition.startswith("test"):
         raise GuardError("the test partition cannot be requested before the freeze tag")
-    win = cut.partitions()[partition]
+    return cut.partitions()[partition]
+
+
+def eligible(rows, partition, native_only=True):
+    """Usable pairs of one development partition.  Strict `<` on all receipt-time comparisons."""
+    win = _partition(partition)
     out = []
     for r in rows:
-        if not r["usable_pair"] or (native_only and not r["native"]):
-            continue
-        if not (win.first <= r["valid_dt"] <= win.last):
+        if not _in_window(r, win, native_only):
             continue
         tr = parse(r["target_receipt_utc"])
         if tr >= cut.FINAL_CUTOFF_UTC:
             raise GuardError("a target received at or after the final cut-off was loaded")
-        if tr < win.cutoff:
+        if not features_available(r):
+            continue
+        if tr < win.cutoff and max(parse(r["receipt_utc"]), parse(r["lag3_receipt_utc"]),
+                                   parse(r["lag6_receipt_utc"])) < win.cutoff:
             out.append(r)
     return out
+
+
+def unavailable(rows, partition, native_only=True):
+    """Pairs in the partition window whose features were NOT all available at the prediction time."""
+    win = _partition(partition)
+    return [r for r in rows if _in_window(r, win, native_only) and not features_available(r)]
 
 
 def counts(rows):
@@ -123,6 +151,8 @@ def main(argv=None):
           f"{sum(r['native'] for r in rows)}")
     print("usable pairs per partition (hourly | native): " + ", ".join(
         f"{n} {h}|{k}" for n, (h, k) in counts(rows).items()))
+    print("pairs excluded because a feature row was received after the prediction time (hourly | native): " + ", ".join(
+        f"{n} {len(unavailable(rows, n, False))}|{len(unavailable(rows, n, True))}" for n in cut.partitions()))
 
 
 if __name__ == "__main__":
