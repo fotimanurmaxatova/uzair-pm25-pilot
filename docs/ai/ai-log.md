@@ -109,8 +109,6 @@ Tool: Claude (Anthropic), AI assistant.
 
 I reviewed and adapted the suggestions to the actual repository and project requirements. I ran the commands and tests myself and checked the resulting outputs. The CP2 documentation and repository evidence were used to verify the scope of this retrospective entry. AI suggestions were treated as development assistance, not as evidence of successful execution.
 
-| 2026-11-22 | CP3 implementation review and synthetic testing | Discussed CP3 implementation requirements, reviewed code written by the author, and helped analyse preprocessing decisions, model-selection logic, synthetic tests and evaluation safeguards. Also discussed the population-standard-deviation rule in Decision 0010. | I wrote and modified the implementation myself. I shared code and command outputs for review, considered the feedback, and made the repository changes. I ran the tests locally: 18 selection tests and 128 tests in the full suite passed. I committed and pushed the changes as `11dec23`. No assessed-snapshot model selection or test-period evaluation had been run at this stage. |
-
 ### 2026-11-22: CP3 implementation review and testing
 
 Tool: ChatGPT (OpenAI), chat interface.

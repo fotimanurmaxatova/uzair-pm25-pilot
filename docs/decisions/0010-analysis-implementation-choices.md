@@ -1,6 +1,6 @@
 # 0010 - Analysis implementation choices fixed before model selection
 
-Status: Proposed (becomes Accepted when committed; the commit time is the record)
+Status: Accepted
 
 Related: decision 0009, analysis protocol, GitHub issues #8 and #15; monitoring reconciliation: GitHub issue #16. Additional issues to be created: single test evaluation script with late-freeze guard; Q1-Q4 inference and EDA.
 
@@ -101,7 +101,7 @@ The monitoring outputs were also used for collection monitoring and data-quality
 
 25. Reporting: usable and excluded pairs are reported by city and date; hourly and native pairs are not presented as independent observations; collected rows, logical requests, HTTP attempts and usable pairs are reported separately (see `docs/coverage/reconciliation-2026-11-16.txt`).
 
-## Clarifications added on 2026-11-20, before any selection run
+## Clarifications added on 2026-11-20 and 2026-11-22, before any selection run
 
 These clarifications were recorded before any model was fitted on the assessed data and before any cross-validation result was seen. The selection script had been drafted but had not been committed or run. These clarifications do not derive from any outcome value or model-performance result.
 
