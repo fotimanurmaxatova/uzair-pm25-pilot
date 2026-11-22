@@ -111,6 +111,8 @@ These clarifications were recorded before any model was fitted on the assessed d
 
 28. **Strict receipt-time comparison.** The monitoring scripts `monitoring/coverage.py` and `monitoring/prepare.py` use an inclusive `<=` comparison for the relevant outcome receipt-time cut-offs. The analysis implementation uses the strict `<` comparison required by Decision 0009. On the assessed snapshot, the compared monitoring and analysis counts are identical for the corresponding partitions, and the new feature-availability checks exclude zero pairs. The strict analysis rule remains authoritative for model selection and fitting.
 
+29. **Population standard deviation.** Ridge standardisation uses NumPy population standard deviation (`numpy.std` with `ddof=0`). This is calculated on the winsorised, imputed training-fold values only. If the standard deviation is zero, the stored scale is 1.0. The NumPy version is fixed in requirements.txt.
+
 ## Consequences
 
 The selection and evaluation code, regression tests, CV table, selected configurations, fitted primary model artefacts, preprocessing state and their SHA-256 manifest are committed before the annotated `late-freeze-YYYYMMDD-HHMM` tag is created. Both scripts are tested only with synthetic fixtures before the freeze. The first test evaluation is permitted only after the unique annotated freeze tag exists and the evaluation guard passes. All post-freeze commits are restricted to `results/`, `docs/`, and the explicitly permitted root files `README.md` and `.gitignore`. No test result may be used to change the frozen models, features, preprocessing, thresholds or hyperparameters.
