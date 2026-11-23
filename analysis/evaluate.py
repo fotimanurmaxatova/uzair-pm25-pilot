@@ -238,10 +238,20 @@ def evaluate(all_rows, dev_rows, bundles, config, reps=q5.BOOT_REPS):
 def write_predictions(path, rows, allp):
     with open(path, "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh, lineterminator="\n")
-        w.writerow(["city", "valid_utc", "valid_local", "target", "pred_full", "pred_noweather", "pred_persistence"])
+        w.writerow([
+            "city", "valid_utc", "valid_local", "receipt_utc",
+            "target_valid_utc", "target_receipt_utc", "target",
+            "pred_full", "pred_noweather", "pred_persistence"
+        ])
         for i, r in enumerate(rows):
-            w.writerow([r["city"], r["valid_utc"], r["valid_local"], r["target_pm25_t6"], float(allp["full"][i]),
-                        float(allp["noweather"][i]), float(allp["persistence"][i])])
+            target_valid_utc = (r["valid_dt"] + 6 * cut.H).strftime("%Y-%m-%dT%H:%M:%SZ")
+            w.writerow([
+                r["city"], r["valid_utc"], r["valid_local"], r["receipt_utc"],
+                target_valid_utc, r["target_receipt_utc"], r["target_pm25_t6"],
+                float(allp["full"][i]),
+                float(allp["noweather"][i]),
+                float(allp["persistence"][i])
+            ])
 
 
 def write_results(out_dir, res, label, guard, snapshot_sha256):
@@ -272,15 +282,19 @@ def run_evaluation(db_path, repo_root=prov.ROOT, post_test=False, now=None, reps
         out, label = repo / POST_REL / stamp, "POST-TEST WORK (not the single test evaluation)"
     else:
         out, label = repo / OUT_REL, "single test evaluation"
-        out.mkdir(parents=True, exist_ok=True)
-        with open(marker_path(repo), "x", encoding="utf-8", newline="\n") as fh:        # exclusive create: the test is now spent
-            json.dump({"first_test_evaluation_utc": stamp, "tag": guard["tag"], "tag_commit": guard["tag_commit"],
-                       "head": guard["head"], "snapshot_sha256": snap}, fh, indent=2)
+
     fdir = repo / FREEZE_REL
     manifest = guard["manifest"]
     config = json.loads((fdir / freeze.CONFIG_NAME).read_text(encoding="utf-8"))
     bundles = {fs: freeze.load_model(fdir / f"model_{fs}.pkl", manifest["artefacts_sha256"][f"model_{fs}.pkl"])
                for fs in freeze.FEATURE_SETS}
+
+    if not post_test:
+        out.mkdir(parents=True, exist_ok=True)
+        with open(marker_path(repo), "x", encoding="utf-8", newline="\n") as fh:
+            json.dump({"first_test_evaluation_utc": stamp, "tag": guard["tag"], "tag_commit": guard["tag_commit"],
+                       "head": guard["head"], "snapshot_sha256": snap}, fh, indent=2)
+
     all_rows, dev_rows = load_all_rows(db_path)
     res = evaluate(all_rows, dev_rows, bundles, config, reps=reps)
     write_results(out, res, label, guard, snap)

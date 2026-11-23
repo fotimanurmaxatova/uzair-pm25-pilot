@@ -1,11 +1,10 @@
 """Tests for analysis/evaluate.py: guard, eligibility, metrics, Rule B and the single evaluation (synthetic only)."""
+import csv
 import importlib.metadata as md
 import json
 from datetime import timedelta
-
 import numpy as np
 import pytest
-
 from analysis import cutoffs as cut
 from analysis import data, evaluate as ev, freeze, provenance as prov
 from tests.cp3_synth import CONFIG, SELECTED, all_and_dev, commit_all, full_week_raw, init_repo, run
@@ -239,6 +238,25 @@ def test_single_evaluation_then_post_test_only(tmp_path, monkeypatch):
     for n in ("test_metrics.json", "sensitivity_hourly.json", "error_analysis.json", "block_bootstrap.json",
               "loco.json", "test_predictions.csv", "evaluation_manifest.json"):
         assert (out / n).is_file(), n
+
+    with (out / "test_predictions.csv").open(newline="", encoding="utf-8") as fh:
+        predictions = list(csv.DictReader(fh))
+
+    expected_columns = {
+        "city", "valid_utc", "valid_local", "receipt_utc",
+        "target_valid_utc", "target_receipt_utc", "target",
+        "pred_full", "pred_noweather", "pred_persistence"
+    }
+    assert set(predictions[0]) == expected_columns
+    assert len(predictions) == 112
+
+    for row in predictions:
+        origin = data.parse(row["valid_utc"])
+        target_valid = data.parse(row["target_valid_utc"])
+        assert target_valid - origin == 6 * cut.H
+        assert row["receipt_utc"]
+        assert row["target_receipt_utc"]
+
     man = json.loads((out / "evaluation_manifest.json").read_text())
     assert man["tag"] == TAG and man["label"] == "single test evaluation"
     assert all(prov.sha256_file(out / n) == h for n, h in man["outputs_sha256"].items())
