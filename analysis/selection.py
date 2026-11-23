@@ -9,19 +9,19 @@ then smaller learning_rate.  Persistence is scored on the same origins and is no
 Data come only from analysis.data (receipt-time guard); this module cannot see test-period rows.  A fold with no
 eligible training or validation origin stops the selection (no silent skipping).
 
-Run (writes the CV table, selected configurations and a manifest; prints the CV table):
-    python -m analysis.selection --db snapshots\\assessed_snapshot.db --out results\\selection
-Do not run it before this code and its synthetic tests are committed (decision 0009 record of actual times).
+Run (decision 0011): every run writes to its own results/selection/run-NNN/ directory; the manifest is written last.
+    python -m analysis.integrity                       # dry run of the integrity checks, creates nothing
+    python -m analysis.selection --db snapshots/assessed_snapshot.db
+    python -m analysis.selection --rerun --reason "..."  # only when a run directory already exists
+Before the run: snapshot hash (file = MANIFEST.json = constant), pins, clean tree, HEAD contained in origin/main.
 """
 import argparse
 import csv
-import hashlib
 import json
-import platform
 from pathlib import Path
 
 from analysis import cutoffs as cut
-from analysis import data, modelling as m
+from analysis import data, integrity, modelling as m, provenance as prov
 from analysis.data import GuardError
 from monitoring.coverage import open_ro
 
@@ -87,52 +87,50 @@ def run_selection(rows, feature_sets=("full", "noweather")):
     return {"counts": counts, "persistence_fold_rmse": persistence, "table": table, "selected": selected}
 
 
-def sha256(path):
-    h = hashlib.sha256()
-    with open(path, "rb") as fh:
-        for chunk in iter(lambda: fh.read(1 << 16), b""):
-            h.update(chunk)
-    return h.hexdigest()
-
-
-def write_outputs(res, out_dir, db_path=None):
+def write_outputs(res, out_dir):
+    """The two result files of one run.  Never overwrites; the manifest is written afterwards by analysis.integrity."""
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
+    if any((out / n).exists() for n in integrity.OUTPUT_FILES):
+        raise SelectionError(f"{out} already holds selection outputs; a run directory is never written twice")
     with open(out / "cv_table.csv", "w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=list(res["table"][0]))
+        w = csv.DictWriter(fh, fieldnames=list(res["table"][0]), lineterminator="\n")
         w.writeheader()
         w.writerows(res["table"])
-    (out / "selected_configurations.json").write_text(json.dumps({
+    prov.write_text_lf(out / "selected_configurations.json", json.dumps({
         "criterion": "unweighted mean of per-fold RMSE on native validation origins; ties (4 decimals) to the simpler setting",
         "fold_counts": res["counts"], "persistence_fold_rmse": res["persistence_fold_rmse"],
-        "selected": res["selected"]}, indent=2), encoding="utf-8")
-    import numpy, sklearn
-    manifest = {"python": platform.python_version(), "numpy": numpy.__version__, "scikit_learn": sklearn.__version__,
-                "snapshot_sha256": sha256(db_path) if db_path else None,
-                "final_cutoff_utc": data.iso(cut.FINAL_CUTOFF_UTC),
-                "code_sha256": {p.name: sha256(p) for p in sorted(Path(__file__).parent.glob("*.py"))},
-                "outputs_sha256": {n: sha256(out / n) for n in ("cv_table.csv", "selected_configurations.json")}}
-    (out / "selection_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+        "selected": res["selected"]}, indent=2))
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description="Model selection (development period only).")
-    ap.add_argument("--db", default="snapshots/assessed_snapshot.db")
-    ap.add_argument("--out", default="results/selection")
+    ap = argparse.ArgumentParser(description="Model selection (development period only), decision 0011.")
+    ap.add_argument("--db", default=integrity.SNAPSHOT_REL)
+    ap.add_argument("--manifest", default=integrity.MANIFEST_REL)
+    ap.add_argument("--out", default="results/selection", help="base directory; the run-NNN directory is created here")
+    ap.add_argument("--rerun", action="store_true", help="needed when a run directory already exists")
+    ap.add_argument("--reason", default=None, help="non-empty reason, required with --rerun")
+    ap.add_argument("--repo", default=str(prov.ROOT))
     a = ap.parse_args(argv)
+    ctx = integrity.preflight(a.repo, a.db, a.manifest, a.out, a.rerun, a.reason)     # raises before anything is written
     conn = open_ro(a.db)
     try:
         rows = data.load_development(conn)
     finally:
         conn.close()
     res = run_selection(rows)
-    write_outputs(res, a.out, a.db)
+    write_outputs(res, ctx["run_dir"])
+    manifest = integrity.finish_run(ctx, a.db)
+    print(f"{ctx['run_dir'].name}: started {ctx['started_utc']} UTC / {ctx['started_asia_tashkent']} Asia/Tashkent; "
+          f"HEAD {ctx['git']['head'][:10]}; remote check: {ctx['git']['remote_check']}")
+    if ctx["git"].get("warning"):
+        print("WARNING: " + ctx["git"]["warning"])
     print("fold sizes (train | validation): " + ", ".join(f"fold{k} {c['train']}|{c['valid']}" for k, c in res["counts"].items()))
     print("persistence RMSE per fold: " + ", ".join(f"{v:.4f}" for v in res["persistence_fold_rmse"]))
     for r in res["table"]:
         print(f"{r['feature_set']:9s} {r['candidate']:22s} {r['fold1_rmse']:.4f} {r['fold2_rmse']:.4f} "
               f"{r['fold3_rmse']:.4f} mean {r['mean_rmse']:.4f}{'  <- selected' if r['selected'] else ''}")
-    print(f"written: {a.out}")
+    print(f"written: {ctx['run_dir']}  (manifest {manifest.name} written last)")
 
 
 if __name__ == "__main__":

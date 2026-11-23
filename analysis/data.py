@@ -61,8 +61,14 @@ def check_raw(raw, cutoff=cut.FINAL_CUTOFF_UTC):
 
 
 def build(raw, cutoff=cut.FINAL_CUTOFF_UTC):
-    """Per-row dicts with exact-valid-time lags and target (same derivations as monitoring.prepare)."""
+    """Guarded: per-row dicts with exact-valid-time lags and target (same derivations as monitoring.prepare)."""
     check_raw(raw, cutoff)
+    return derive_rows(raw)
+
+
+def derive_rows(raw):
+    """UNGUARDED row derivation.  Only analysis.evaluate and the post-test modules may call it, and only after
+    the freeze guard has passed.  Model selection and the freeze must use `build` / `load_development`."""
     by = {(r["city"], parse(r["observation_hour_utc"])): r for r in raw}
     rows = []
     for (city, t), r in by.items():

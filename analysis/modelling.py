@@ -69,10 +69,11 @@ def _col(rows, name):
 
 
 class Preprocessor:
-    def __init__(self, feature_set, scale):
+    def __init__(self, feature_set, scale, cities=None):
         self.cont = FEATURE_SETS[feature_set]["continuous"]
         self.cyc = FEATURE_SETS[feature_set]["cyclic"]
         self.scale = scale
+        self.cities = list(cities) if cities is not None else list(CITIES)    # one-hot columns (LOCO: seven cities)
         self.fitted = False
 
     def fit(self, rows):
@@ -94,7 +95,8 @@ class Preprocessor:
         self.fitted = True
         return self
 
-    def transform(self, rows):
+    def transform(self, rows, allow_unknown_city=False):
+        """allow_unknown_city: a city without its own column is encoded as all zeros (leave-one-city-out only)."""
         if not self.fitted:
             raise PreprocessError("preprocessor is not fitted")
         cols = []
@@ -106,9 +108,9 @@ class Preprocessor:
         for name in self.cyc:
             x = _col(rows, name)
             cols.append(np.where(np.isnan(x), self.median[name], x))
-        for city in CITIES:
+        for city in self.cities:
             cols.append(np.array([1.0 if r["city"] == city else 0.0 for r in rows]))
-        unknown = {r["city"] for r in rows} - set(CITIES)
+        unknown = {r["city"] for r in rows} - set(CITIES if allow_unknown_city else self.cities)
         if unknown:
             raise PreprocessError(f"unknown city: {sorted(unknown)}")
         return np.column_stack(cols)
@@ -116,7 +118,7 @@ class Preprocessor:
     def state(self):
         return {"continuous": self.cont, "cyclic": self.cyc, "scale": self.scale, "median": self.median,
                 "winsor_low": self.lo, "winsor_high": self.hi, "mean": self.mean, "std": self.std,
-                "cities": CITIES}
+                "cities": self.cities}
 
 
 def targets(rows):

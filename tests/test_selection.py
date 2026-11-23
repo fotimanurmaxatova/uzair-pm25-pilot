@@ -198,13 +198,11 @@ def test_selection_uses_only_native_origins(rows):
         assert all(r["native"] for r in tr + va)
 
 
-def test_outputs_are_written_with_manifest(tmp_path, rows):
+def test_outputs_are_written_once_and_never_overwritten(tmp_path, rows):
     res = sel.run_selection(rows)
     sel.write_outputs(res, tmp_path / "out")
     files = {p.name for p in (tmp_path / "out").iterdir()}
-    assert files == {"cv_table.csv", "selected_configurations.json", "selection_manifest.json"}
-    man = json.loads((tmp_path / "out" / "selection_manifest.json").read_text())
-    assert man["final_cutoff_utc"] == "2026-11-06T17:00:00Z" and set(man["outputs_sha256"]) == {
-        "cv_table.csv", "selected_configurations.json"}
-    assert "selection.py" in man["code_sha256"] and "data.py" in man["code_sha256"]
+    assert files == {"cv_table.csv", "selected_configurations.json"}          # the manifest is written by analysis.integrity
     assert len((tmp_path / "out" / "cv_table.csv").read_text().strip().splitlines()) == 17
+    with pytest.raises(sel.SelectionError, match="never written twice"):
+        sel.write_outputs(res, tmp_path / "out")

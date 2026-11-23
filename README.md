@@ -235,6 +235,7 @@ it excludes earlier retries and backoff delays.
 
 ```text
 src/uzair/        collector, validation, database, queries, CLI
+analysis/         CP3: guarded data layer, selection, freeze, single test evaluation, Q1-Q4 inference, EDA
 migrations/       SQL schema and city seed (applied in order)
 scripts/          scheduler script
 tests/            automated tests; tests/fixtures/ holds fake API responses
@@ -250,6 +251,7 @@ data/, logs/      databases and logs (not committed)
 monitoring/       coverage, audit, stakeholder queries, preparation, snapshot
 snapshots/        assessed SQLite snapshot, CSV exports, manifest and attribution
 derived/          generated analysis-ready data (not committed)
+results/          selection runs, freeze artefacts, evaluation, inference and EDA outputs (committed)
 ```
 
 ## Documentation
