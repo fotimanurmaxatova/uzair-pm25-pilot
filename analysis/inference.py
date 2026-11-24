@@ -19,6 +19,7 @@ weekday-only and all-hourly-rows runs.
 """
 import argparse
 import json
+import math
 from pathlib import Path
 
 import numpy as np
@@ -148,6 +149,12 @@ def estimate(rows, question, reps=REPS, seed=SEED):
 # ---------------------------------------------------------------- multiple-testing and Rule A
 def holm(pvalues):
     """Holm step-down adjusted p-values for {name: p}; None stays None."""
+    for k, p in pvalues.items():
+        if p is None:
+            continue
+        if isinstance(p, bool) or not isinstance(p, (int, float, np.integer, np.floating)) \
+                or not math.isfinite(p) or not 0.0 <= p <= 1.0:
+            raise ValueError(f"invalid p-value for {k!r}: {p!r} (must be a finite number in [0, 1] or None)")
     items = sorted(((p, k) for k, p in pvalues.items() if p is not None))
     mm, adj, run = len(items), {k: None for k in pvalues}, 0.0
     for i, (p, k) in enumerate(items):
@@ -179,8 +186,8 @@ def _try(rows, q, reps, seed):
 
 def run_questions(rows, reps=REPS, seed=SEED):
     base = sample(rows)
-    primary = {q: estimate(base, q, reps, seed) for q in QUESTIONS}
-    adj = holm({q: primary[q]["p_wcr"] for q in primary})
+    primary = {q: _try(base, q, reps, seed) for q in QUESTIONS}
+    adj = holm({q: primary[q].get("p_wcr") for q in primary})
     for q in primary:
         primary[q]["p_holm"] = adj[q]
     dates = sorted({local_date(r) for r in base})
@@ -192,8 +199,8 @@ def run_questions(rows, reps=REPS, seed=SEED):
                                                                       sens["all_eligible_hourly_rows"]["Q3"]]
     sens_b = [r["estimate"] if "estimate" in r else None for r in q3_runs]
     return {"primary_native": primary, "sensitivity": sens,
-            "rule_a": {"q3_wind_estimate": primary["Q3"]["estimate"], "sensitivity_estimates": sens_b,
-                       "threshold": RULE_A_THRESHOLD, "conclusion": rule_a(primary["Q3"]["estimate"], sens_b)},
+            "rule_a": {"q3_wind_estimate": primary["Q3"].get("estimate"), "sensitivity_estimates": sens_b,
+                       "threshold": RULE_A_THRESHOLD, "conclusion": rule_a(primary["Q3"].get("estimate"), sens_b)},
             "notes": ["descriptive associations, not predictions or causal effects",
                       "p-values, intervals and Holm values are exploratory and conditional on their assumptions",
                       "few clusters (7; 5 for Q4): inference is unreliable; Q4 weights repeat (6^5 = 7,776 < 9,999)"]}
@@ -211,7 +218,10 @@ def main(argv=None):
     out.mkdir(parents=True, exist_ok=True)
     prov.write_text_lf(out / "inference.json", json.dumps(evaluate._jsonable(res), indent=2, sort_keys=True) + "\n")
     for q, r in res["primary_native"].items():
-        print(f"{q}: estimate {r['estimate']:.3f}  se {r['se_cr1']:.3f}  p_wcr {r['p_wcr']}  n {r['n']}  clusters {r['clusters']}")
+            if "estimate" not in r:
+                print(f"{q}: NOT ESTIMABLE ({r.get('reason')})")
+                continue
+            print(f"{q}: estimate {r['estimate']:.3f}  se {r['se_cr1']:.3f}  p_wcr {r['p_wcr']}  n {r['n']}  clusters {r['clusters']}")
     print("Rule A: " + res["rule_a"]["conclusion"])
     print(f"written: {out / 'inference.json'}")
 

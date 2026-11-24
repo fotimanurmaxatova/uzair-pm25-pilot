@@ -135,3 +135,46 @@ def test_inference_cli_needs_the_test_to_be_spent(tmp_path):
     from analysis import evaluate as ev
     with pytest.raises(ev.EvaluationGuardError, match="has not been run"):
         inf.main(["--db", "nope.db", "--repo", str(tmp_path)])
+
+# ---------------------------------------------------------------- 1.3 Holm validation, 1.2 not-estimable handling
+def test_holm_keeps_none_and_counts_only_estimable_questions():
+    adj = inf.holm({"Q1": 0.01, "Q2": None, "Q3": 0.04, "Q4": 0.02})
+    assert adj["Q2"] is None
+    assert adj["Q1"] == pytest.approx(0.03)
+    assert adj["Q4"] == pytest.approx(0.04)
+    assert adj["Q3"] == pytest.approx(0.04)
+    assert inf.holm({"a": None, "b": None}) == {"a": None, "b": None}
+    assert inf.holm({}) == {}
+
+
+@pytest.mark.parametrize("bad", [float("nan"), float("inf"), -float("inf"), -0.1, 1.2])
+def test_holm_rejects_invalid_p_values(bad):
+    with pytest.raises(ValueError, match="invalid p-value"):
+        inf.holm({"a": 0.01, "b": bad})
+
+
+def test_holm_accepts_boundaries_and_stays_in_unit_interval():
+    adj = inf.holm({"a": 0.0, "b": 1.0, "c": 0.2})
+    assert adj["a"] == 0.0 and adj["b"] == 1.0
+    assert all(0.0 <= v <= 1.0 for v in adj.values())
+    ordered = [adj[k] for k in ("a", "c", "b")]          # sorted by the raw p-value: 0.0, 0.2, 1.0
+    assert ordered == sorted(ordered)                    # monotone
+
+
+def test_run_questions_on_one_day_does_not_crash_and_is_inconclusive():
+    one_day = [r for r in ALL if inf.local_date(r) == "2026-11-02"]
+    res = inf.run_questions(one_day, reps=19)
+    for q in ("Q1", "Q2", "Q3", "Q4"):
+        assert res["primary_native"][q]["estimable"] is False
+        assert res["primary_native"][q]["p_holm"] is None
+    assert res["rule_a"]["q3_wind_estimate"] is None
+    assert res["rule_a"]["conclusion"] == "inconclusive"
+
+def test_main_prints_not_estimable_instead_of_raising(tmp_path, monkeypatch, capsys):
+    from analysis import evaluate as ev
+    one_day = [r for r in ALL if inf.local_date(r) == "2026-11-02"]
+    monkeypatch.setattr(ev, "require_marker", lambda repo: None)
+    monkeypatch.setattr(ev, "load_all_rows", lambda db: (one_day, None))
+    inf.main(["--db", "x.db", "--repo", str(tmp_path)])
+    out = capsys.readouterr().out
+    assert "Q1: NOT ESTIMABLE" in out and "Rule A: inconclusive" in out
