@@ -164,6 +164,7 @@ This decision was accepted on 2026-11-24 at 22:44 (Asia/Tashkent) after implemen
 | Item | Value |
 |---|---|
 | Original decision committed | 2026-11-22 21:12:11, `a9d47e9` |
+| Acceptance commit | 2026-11-24 22:55:59 +05:00, `de6acde` |
 | `.gitattributes` committed | 2026-11-22 21:33:27, 9ee7cb9 |
 | Implementation commit | 773b0c1, 22662ae, 54472b5, 5705812, a68676f, 8515a66 |
 | Verification | 284 tests passed, 2 warnings, 2026-11-24 |

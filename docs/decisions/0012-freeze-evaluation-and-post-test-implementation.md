@@ -71,4 +71,4 @@ the results.
 
 | Event | Date and time (Asia/Tashkent) | Commit |
 |---|---|---|
-| Decision accepted | 2026-11-24 22:44:16 (+05:00) | To be recorded in follow-up commit |
+| Decision accepted | 2026-11-24 22:44:16 (+05:00) | `de6acde` (acceptance commit: 22:55:59) |
