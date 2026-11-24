@@ -69,11 +69,33 @@ def error_analysis(rows, preds):
 # ---------------------------------------------------------------- paired block bootstrap
 def block_index(rows):
     """Six-hour block number of each origin, counted from the first test origin; common to all cities."""
-    return np.array([int((r["valid_dt"] - cut.TEST_START_UTC) / (6 * cut.H)) for r in rows])
+    blocks = []
+    for r in rows:
+        dt = r["valid_dt"] - cut.TEST_START_UTC
+        if dt.total_seconds() < 0:
+            raise ValueError(f"origin before the first test origin: {r['valid_dt']}")
+        blocks.append(int(dt / (6 * cut.H)))
+    return np.array(blocks, dtype=int)
 
 
 def paired_block_bootstrap(rows, preds, reps=BOOT_REPS, seed=BOOT_SEED):
     y = m.targets(rows)
+    if not isinstance(reps, int) or isinstance(reps, bool) or reps <= 0:
+        raise ValueError("reps must be a positive integer")
+    if not np.isfinite(y).all():
+        raise ValueError("targets must contain only finite values")
+    required = set(MODELS)
+    if set(preds) != required:
+        raise ValueError(f"predictions must contain exactly {sorted(required)}; got {sorted(preds)}")
+    for name, p in preds.items():
+        arr = np.asarray(p)
+        if arr.shape != y.shape:
+            raise ValueError(
+                f"prediction length mismatch for {name}: expected {len(y)}, got shape {arr.shape}"
+            )
+        if not np.isfinite(arr).all():
+            raise ValueError(f"predictions for {name} must contain only finite values")
+
     blocks = block_index(rows)
     ub = np.unique(blocks)
     k = len(ub)

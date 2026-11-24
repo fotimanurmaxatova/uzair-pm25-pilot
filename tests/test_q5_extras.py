@@ -56,6 +56,12 @@ def test_blocks_are_six_hour_and_common_to_all_cities():
         by_time.setdefault(r["valid_dt"], set()).add(int(k))
     assert all(len(v) == 1 for v in by_time.values())             # same origin time -> same block for every city
 
+def test_block_index_rejects_origin_before_test_start():
+    row = tiny([10])[0]
+    row["valid_dt"] = cut.TEST_START_UTC - cut.H
+
+    with pytest.raises(ValueError, match="before"):
+        q5.block_index([row])
 
 def _preds(rng):
     y = m.targets(TEST)
@@ -78,6 +84,13 @@ def test_block_bootstrap_is_reproducible_and_paired():
                                             "persistence": p["persistence"]}, reps=99)
     assert same["comparisons"]["full_minus_persistence"]["ci95"] == [0.0, 0.0]
 
+def test_block_bootstrap_rejects_empty_input():
+    with pytest.raises(ValueError, match="two six-hour blocks"):
+        q5.paired_block_bootstrap(
+            [],
+            {"full": [], "noweather": [], "persistence": []},
+            reps=9,
+        )
 
 def test_block_bootstrap_needs_two_blocks():
     one = [r for r in TEST if q5.block_index([r])[0] == 0][:5]
@@ -85,6 +98,60 @@ def test_block_bootstrap_needs_two_blocks():
         q5.paired_block_bootstrap(one, {"full": m.persistence(one), "noweather": m.persistence(one),
                                         "persistence": m.persistence(one)}, reps=9)
 
+def test_block_bootstrap_rejects_prediction_length_mismatch():
+    preds = {
+        "full": np.array([1.0]),
+        "noweather": m.persistence(TEST),
+        "persistence": m.persistence(TEST),
+    }
+    with pytest.raises(ValueError, match="length"):
+        q5.paired_block_bootstrap(TEST, preds)
+
+def test_block_bootstrap_rejects_missing_model_prediction():
+    preds = {
+        "full": m.persistence(TEST),
+        "noweather": m.persistence(TEST),
+    }
+    with pytest.raises(ValueError, match="exactly"):
+        q5.paired_block_bootstrap(TEST, preds)
+
+def test_block_bootstrap_rejects_extra_model_prediction():
+    preds = {
+        "full": m.persistence(TEST),
+        "noweather": m.persistence(TEST),
+        "persistence": m.persistence(TEST),
+        "extra": m.persistence(TEST),
+    }
+    with pytest.raises(ValueError, match="exactly"):
+        q5.paired_block_bootstrap(TEST, preds)
+
+def test_block_bootstrap_rejects_non_finite_predictions():
+    preds = {
+        "full": np.array([np.nan] + [1.0] * (len(TEST) - 1)),
+        "noweather": m.persistence(TEST),
+        "persistence": m.persistence(TEST),
+    }
+    with pytest.raises(ValueError, match="finite"):
+        q5.paired_block_bootstrap(TEST, preds)
+
+def test_block_bootstrap_rejects_non_finite_targets():
+    rows = tiny([np.inf])
+    preds = {
+        "full": np.array([1.0]),
+        "noweather": np.array([1.0]),
+        "persistence": np.array([1.0]),
+    }
+    with pytest.raises(ValueError, match="targets.*finite"):
+        q5.paired_block_bootstrap(rows, preds)
+
+def test_block_bootstrap_rejects_non_positive_replications():
+    preds = {
+        "full": m.persistence(TEST),
+        "noweather": m.persistence(TEST),
+        "persistence": m.persistence(TEST),
+    }
+    with pytest.raises(ValueError, match="reps"):
+        q5.paired_block_bootstrap(TEST, preds, reps=0)
 
 def test_loco_holds_out_each_city_and_codes_it_as_all_zeros():
     city = "Bukhara"
@@ -106,3 +173,13 @@ def test_loco_result_shape_and_frozen_settings():
     assert res["pooled"]["n_test"] == 112 and "sensitivity" in res["note"]
     for c in res["cities"]:
         assert {"rmse_full", "rmse_noweather", "rmse_persistence", "skill_full", "skill_noweather"} <= set(c)
+
+@pytest.mark.parametrize("bad_len", [0, 1, 5, 111, 113])
+def test_block_bootstrap_rejects_any_wrong_prediction_length_including_broadcastable_one(bad_len):
+    p = _preds(np.random.default_rng(0))
+    n = len(TEST)                                   # 112
+    full = p["full"]
+    wrong = full[:bad_len] if bad_len < n else np.concatenate([full, full[: bad_len - n]])
+    assert len(wrong) == bad_len
+    with pytest.raises(ValueError, match="prediction length mismatch"):
+        q5.paired_block_bootstrap(TEST, {**p, "full": wrong}, reps=9)
