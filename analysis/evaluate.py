@@ -5,7 +5,9 @@ The ONLY module (with the post-test modules that call `require_marker`) that may
 Guard (all must hold, otherwise nothing is loaded and nothing is written):
   * exactly one tag matching `late-freeze-*`, named late-freeze-YYYYMMDD-HHMM, ANNOTATED, its commit an ancestor of HEAD;
   * working tree clean;
-  * every commit after the tag touches only results/, docs/, README.md or .gitignore;
+  * first run: only results/, docs/, README.md, .gitignore; --post-test:
+    nothing under analysis/, monitoring/, requirements.txt, pyproject.toml,
+    pytest.ini, results/selection/ or results/freeze/;
   * the freeze manifest equals the one in the tag commit; every frozen artefact, the snapshot and every frozen code
     file match the manifest hashes; NumPy and scikit-learn match the pins;
   * the first run is allowed only if no marker exists; a later run needs --post-test and an existing marker, and all
@@ -36,6 +38,10 @@ TAG_GLOB = "late-freeze-*"
 TAG_RE = re.compile(r"^late-freeze-\d{8}-\d{4}$")
 ALLOWED_DIRS = ("results/", "docs/")
 ALLOWED_FILES = ("README.md", ".gitignore")
+POST_TEST_FROZEN = prov.FROZEN_PREFIXES + (
+    "results/selection/",
+    "results/freeze/",
+)
 FREEZE_REL = "results/freeze"
 OUT_REL = "results/evaluation"
 POST_REL = "results/post_test"
@@ -99,18 +105,23 @@ def check_guard(repo_root, snapshot_path, freeze_rel=FREEZE_REL, out_rel=OUT_REL
         raise EvaluationGuardError(
             "the working tree is not clean (tracked or untracked changes)")
 
-    bad = [
-        f for f in prov.files_changed_after(tc, repo)
-        if not (
-            f.startswith(ALLOWED_DIRS)
-            or f in ALLOWED_FILES
-        )
-    ]
+    changed = prov.files_changed_after(tc, repo)
 
-    if bad:
-        raise EvaluationGuardError(
-            f"commits after {tag} changed files outside results/, docs/, "
-            f"README.md, .gitignore: {bad}")
+    if post_test:
+        bad = [f for f in changed if f.startswith(POST_TEST_FROZEN)]
+        if bad:
+            raise EvaluationGuardError(
+                f"commits after {tag} changed frozen code, configuration or "
+                f"selection/freeze outputs: {bad}")
+    else:
+        bad = [
+            f for f in changed
+            if not (f.startswith(ALLOWED_DIRS) or f in ALLOWED_FILES)
+        ]
+        if bad:
+            raise EvaluationGuardError(
+                f"commits after {tag} changed files outside results/, "
+                f"docs/, README.md, .gitignore: {bad}")
     man_rel = f"{freeze_rel}/{freeze.MANIFEST_NAME}"
     man_path = repo / man_rel
 

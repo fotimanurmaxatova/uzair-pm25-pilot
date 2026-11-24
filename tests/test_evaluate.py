@@ -368,3 +368,66 @@ def test_guard_rejects_missing_files_dictionary(tmp_path):
 
     with pytest.raises(ev.EvaluationGuardError, match="no valid 'files' provenance dictionary"):
         guard(repo, snap)
+
+# ---------------------------------------------------------------- post-test commit boundary
+
+
+def _spend_test(repo):
+    """Simulate a completed first evaluation (marker committed under results/)."""
+    mk = ev.marker_path(repo)
+    mk.parent.mkdir(parents=True, exist_ok=True)
+    mk.write_text("{}")
+    commit_all(repo, "first evaluation marker")
+
+
+@pytest.mark.parametrize("rel", [
+    "src/x.py",
+    "tests/new_test.py",
+    "docs/n.md",
+    "README.md",
+    "results/post_test/x.txt",
+])
+def test_post_test_guard_allows_non_frozen_commits(tmp_path, rel):
+    repo, snap = frozen_repo(tmp_path)
+    _spend_test(repo)
+
+    p = repo / rel
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text("# later work\n")
+    commit_all(repo, "later work")
+
+    assert guard(repo, snap, post_test=True)["tag"] == TAG
+
+
+@pytest.mark.parametrize("rel", [
+    "analysis/evaluate.py",
+    "analysis/new_module.py",
+    "monitoring/prepare.py",
+    "requirements.txt",
+    "pyproject.toml",
+    "pytest.ini",
+    "results/selection/run-001/cv_table.csv",
+    "results/freeze/extra.txt",
+])
+def test_post_test_guard_rejects_frozen_commits(tmp_path, rel):
+    repo, snap = frozen_repo(tmp_path)
+    _spend_test(repo)
+
+    p = repo / rel
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text("# changed\n")
+    commit_all(repo, "frozen change after tag")
+
+    with pytest.raises(ev.EvaluationGuardError, match="frozen"):
+        guard(repo, snap, post_test=True)
+
+
+def test_first_run_guard_is_still_strict_about_src_and_tests(tmp_path):
+    repo, snap = frozen_repo(tmp_path)
+
+    (repo / "src").mkdir(exist_ok=True)
+    (repo / "src" / "x.py").write_text("# x\n")
+    commit_all(repo, "cp4 code before first evaluation")
+
+    with pytest.raises(ev.EvaluationGuardError, match="outside results/"):
+        guard(repo, snap)
