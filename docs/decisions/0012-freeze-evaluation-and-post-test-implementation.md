@@ -1,7 +1,6 @@
 # 0012 - Freeze, evaluation and post-test implementation choices fixed before the selection run
 
-Status: Proposed (accepted by the commit that records its date and time; must be committed BEFORE the first
-assessed-snapshot selection run)
+**Status:** Accepted 2026-11-24 22:44 (Asia/Tashkent), committed before the first assessed-snapshot selection run.
 
 Related: decisions 0009, 0010, 0011; issues #8 and #15; analysis protocol.
 
@@ -23,8 +22,9 @@ been loaded by any of this code. They change no candidate, fold, cut-off, criter
    JSON description, `frozen_config.json` (selected configurations, selected-model fold RMSEs, persistence fold
    RMSEs) and `freeze_manifest.json` (written last, never overwritten).
 3. Evaluation guard: exactly one annotated tag `late-freeze-YYYYMMDD-HHMM`; its commit is an ancestor of HEAD; clean
-   tree; every commit after the tag touches only `results/`, `docs/`, `README.md` or `.gitignore` (checked per
-   commit); the freeze manifest equals the manifest in the tag commit; artefacts, snapshot and frozen code files
+   tree. Before the first evaluation, every commit after the tag touches only `results/`, `docs/`, `README.md`
+   or `.gitignore` (checked per commit). After the first evaluation, `--post-test` instead rejects commits after
+   the tag that touch frozen code, configuration or selection/freeze outputs (the paths defined in Decision 0011, section 8). The freeze manifest equals the manifest in the tag commit; artefacts, snapshot and frozen code files
    match their hashes; NumPy and scikit-learn match the pins. The marker `results/evaluation/FIRST_TEST_EVALUATION.json`
    is created exclusively before the test rows are loaded, so a crashed first run still counts as spent. A second run
    needs `--post-test` and writes to `results/post_test/<UTC stamp>/`, labelled post-test work.
@@ -53,6 +53,14 @@ been loaded by any of this code. They change no candidate, fold, cut-off, criter
     support".
 12. EDA: six charts. `pre_freeze` uses only the receipt-time-guarded loader; `full` needs the marker and is labelled
     "full window, after test evaluation".
+13. Accepted operational risk: after the guard and both frozen models have been loaded, the marker is created
+    exclusively before the test rows are loaded. Any subsequent failure (including test-row loading, hourly refit,
+    bootstrap or leave-one-city-out) spends the single first evaluation. Recovery uses `--post-test`, and its
+    output is labelled as post-test work. Mitigation rehearsal: on 2026-11-24, the full synthetic evaluation
+    completed with 9,999 replications in 0.84 seconds using
+    `ev.evaluate(ALL, DEV, bundles, CONFIG, reps=9999)`. Full synthetic Q1-Q4 inference and sensitivity analysis
+    completed with 9,999 replications in 15.25 seconds using `inf.run_questions(ALL, reps=9999)`.
+    Both completed without error; synthetic fixtures only.
 
 ## Consequences
 
@@ -63,4 +71,4 @@ the results.
 
 | Event | Date and time (Asia/Tashkent) | Commit |
 |---|---|---|
-| Decision committed | | |
+| Decision accepted | 2026-11-24 22:44:16 (+05:00) | To be recorded in follow-up commit |

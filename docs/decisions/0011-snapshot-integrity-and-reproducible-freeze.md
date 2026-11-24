@@ -1,6 +1,6 @@
 # 0011 - Assessed snapshot integrity and reproducible freeze protocol
 
-**Status:** Proposed (accepted only after implementation and verification; the acceptance commit records the date and time)
+**Status:** Accepted 2026-11-24 22:44 (Asia/Tashkent) after implementation and verification.
 
 **Date:** 2026-11-22
 
@@ -123,12 +123,18 @@ The freeze manifest identifies the exact selection run used and contains the req
 
 ### 8. Post-freeze restriction
 
-After the `late-freeze` tag, commits may change only `results/`, `docs/`, `README.md` and `.gitignore`.
+After the `late-freeze` tag, the commit-diff restriction depends on whether the first held-out evaluation has started.
 
-- There are no exceptions. The evaluation guard to be implemented under decision 0010 must enforce this restriction automatically and require exactly one `late-freeze-*` tag. If a change to frozen code is unavoidable, the freeze is declared invalid in a new decision and the consequences are reported.
-- The commit-diff check applies to the first evaluation. No code, including CP4 dashboard or API code, may be committed between the tag and the first evaluation.
-- Later runs with `--post-test` verify the frozen configuration and model-artefact hashes against the freeze manifest and label all output as post-test work.
-- All evaluation, inference, error-analysis, bootstrap, leave-one-city-out and sensitivity code must therefore exist, with synthetic tests, before the tag.
+- Before the first evaluation, every commit after the tag may change only `results/`, `docs/`, `README.md` and `.gitignore`. The evaluation guard checks each commit and requires exactly one annotated `late-freeze-*` tag. No code, including CP4 dashboard or API code, may be committed between the tag and the first evaluation.
+- The first evaluation creates `results/evaluation/FIRST_TEST_EVALUATION.json` exclusively before loading the test rows. Once this marker exists, later runs must use `--post-test`.
+- After the first evaluation, `--post-test` permits commits outside the frozen paths, but rejects any commit after the tag that changes:
+  - `analysis/`;
+  - `monitoring/`;
+  - `requirements.txt`, `pyproject.toml` or `pytest.ini`;
+  - `results/selection/` or `results/freeze/`.
+- The post-test guard continues to verify the frozen configuration, model artefacts, snapshot and frozen-code hashes against the freeze manifest. Post-test outputs are written to a separate directory and labelled as post-test work.
+- If a change to frozen code or configuration is unavoidable, the freeze is declared invalid in a new decision and the consequences are reported.
+- All evaluation, inference, error-analysis, bootstrap, leave-one-city-out and sensitivity code must exist, with synthetic tests, before the tag.
 
 ## Acceptance tests (synthetic data only)
 
@@ -145,6 +151,7 @@ After the `late-freeze` tag, commits may change only `results/`, `docs/`, `READM
 - The freeze manifest names the exact run directory and records the hashes of its three output files.
 - With multiple runs, the latest numbered run must be complete before the freeze can proceed. The freeze uses that run, not the run with the best cross-validation result.
 - The snapshot file is byte-identical before and after selection.
+- After the first evaluation, commits to `src/` or `tests/` do not stop `--post-test`; commits to the frozen paths do.
 
 ## Consequences
 
@@ -152,13 +159,13 @@ The assessed data, project code, dependencies, Git revision, selection outputs a
 
 ## Implementation and verification
 
-This decision remains Proposed until the safeguards are implemented and tested. It is accepted only when the implementation and verification are complete and the acceptance commit is recorded.
+This decision was accepted on 2026-11-24 at 22:44 (Asia/Tashkent) after implementation and verification (table below).
 
 | Item | Value |
 |---|---|
-| Decision committed (date, time, commit) | |
-| `.gitattributes` committed | |
-| Implementation commit | |
-| Verification (tests passed) | |
+| Original decision committed | 2026-11-22 21:12:11, `a9d47e9` |
+| `.gitattributes` committed | 2026-11-22 21:33:27, 9ee7cb9 |
+| Implementation commit | 773b0c1, 22662ae, 54472b5, 5705812, a68676f, 8515a66 |
+| Verification | 284 tests passed, 2 warnings, 2026-11-24 |
 | First assessed-snapshot selection run (UTC and Asia/Tashkent) | |
 | Freeze tag | |
