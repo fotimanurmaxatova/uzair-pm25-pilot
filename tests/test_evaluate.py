@@ -85,28 +85,47 @@ def test_evaluate_scores_all_models_on_the_same_origins_and_never_trains_on_test
     assert len(res["loco"]["cities"]) == 8 and res["block_bootstrap"]["replications"] == 199
     assert set(res["error_analysis"]["events"]) == {"35", "25", "50"}
 
-
 # ---------------------------------------------------------------- guard
+
 def frozen_repo(tmp_path, tag=True, annotated=True, attrs=False, crlf_manifest=False):
     repo = make_repo(tmp_path)
-    if attrs:                                                   # as in the real repository
-        (repo / ".gitattributes").write_text("* text=auto eol=lf\n*.db binary\n")
-        commit_all(repo, "gitattributes")
+
+    # make_repo() already creates and commits .gitattributes.
+    if attrs:
+        assert (repo / ".gitattributes").is_file()
+
     snap = repo / "snapshots" / "assessed_snapshot.db"
     snap.parent.mkdir()
     snap.write_bytes(b"snapshot bytes")
     commit_all(repo, "snapshot")
+
     base = tmp_path / "sel"
     runp = make_run(base, 1, repo, snap)
-    freeze.write_freeze(repo / "results" / "freeze", freeze.fit_frozen_models(DEV, SELECTED), runp,
-                        {"snapshot_sha256": prov.sha256_file(snap)}, prov.sha256_file(snap), repo)
-    if crlf_manifest:                                           # Windows: the file is CRLF when `git add` normalises it
+
+    freeze.write_freeze(
+        repo / "results" / "freeze",
+        freeze.fit_frozen_models(DEV, SELECTED),
+        runp,
+        {"snapshot_sha256": prov.sha256_file(snap)},
+        prov.sha256_file(snap),
+        repo,
+    )
+
+    if crlf_manifest:
         man = repo / "results" / "freeze" / "freeze_manifest.json"
         man.write_bytes(man.read_bytes().replace(b"\n", b"\r\n"))
+
     commit_all(repo, "freeze")
+
     if tag:
-        run(repo, "tag", *(["-a", TAG, "-m", "late freeze"] if annotated else [TAG]))
+        run(
+            repo,
+            "tag",
+            *(["-a", TAG, "-m", "late freeze"] if annotated else [TAG]),
+        )
+
     return repo, snap
+
 
 
 def guard(repo, snap, **kw):
@@ -281,3 +300,71 @@ def test_failed_guard_loads_nothing_and_writes_no_marker(tmp_path, monkeypatch):
     with pytest.raises(ev.EvaluationGuardError):
         ev.run_evaluation(snap, repo, reps=99)
     assert not ev.marker_path(repo).exists()
+
+def test_guard_rejects_missing_frozen_file_record(tmp_path):
+    repo, snap = frozen_repo(tmp_path)
+    man = repo / "results" / "freeze" / freeze.MANIFEST_NAME
+    manifest = json.loads(man.read_text(encoding="utf-8"))
+    manifest["files"].pop("analysis/data.py")
+    man.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+    commit_all(repo, "remove frozen file record")
+    run(repo, "tag", "-d", TAG)
+    run(repo, "tag", "-a", TAG, "-m", "updated test tag")
+
+    with pytest.raises(ev.EvaluationGuardError, match="missing or invalid provenance record"):
+        guard(repo, snap)
+
+def test_guard_rejects_missing_decision_file_record(tmp_path):
+    repo, snap = frozen_repo(tmp_path)
+    man = repo / "results" / "freeze" / freeze.MANIFEST_NAME
+    manifest = json.loads(man.read_text(encoding="utf-8"))
+
+    decision = "docs/decisions/0011-snapshot-integrity-and-reproducible-freeze.md"
+    assert decision in manifest["files"]
+
+    manifest["files"].pop(decision)
+    man.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+    commit_all(repo, "remove decision file provenance record")
+
+    run(repo, "tag", "-d", TAG)
+    run(repo, "tag", "-a", TAG, "-m", "updated test tag")
+
+    with pytest.raises(
+        ev.EvaluationGuardError,
+        match="missing or invalid provenance record",
+    ):
+        guard(repo, snap)
+
+def test_guard_rejects_missing_optional_decision_file_record(tmp_path):
+    repo, snap = frozen_repo(tmp_path)
+    man = repo / "results" / "freeze" / freeze.MANIFEST_NAME
+    manifest = json.loads(man.read_text(encoding="utf-8"))
+
+    decision = "docs/decisions/0012-freeze-evaluation-and-post-test-implementation.md"
+    assert decision in manifest["files"]
+
+    manifest["files"].pop(decision)
+    man.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+    commit_all(repo, "remove optional decision file provenance record")
+
+    run(repo, "tag", "-d", TAG)
+    run(repo, "tag", "-a", TAG, "-m", "updated test tag")
+
+    with pytest.raises(
+        ev.EvaluationGuardError,
+        match="missing or invalid provenance record",
+    ):
+        guard(repo, snap)
+
+def test_guard_rejects_missing_files_dictionary(tmp_path):
+    repo, snap = frozen_repo(tmp_path)
+    man = repo / "results" / "freeze" / freeze.MANIFEST_NAME
+    manifest = json.loads(man.read_text(encoding="utf-8"))
+    manifest.pop("files")
+    man.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+    commit_all(repo, "remove files dictionary")
+    run(repo, "tag", "-d", TAG)
+    run(repo, "tag", "-a", TAG, "-m", "updated test tag")
+
+    with pytest.raises(ev.EvaluationGuardError, match="no valid 'files' provenance dictionary"):
+        guard(repo, snap)

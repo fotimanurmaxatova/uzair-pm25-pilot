@@ -67,13 +67,17 @@ def check_selection_run(run, repo_root, snapshot_path):
     files = man.get("files")
     if not isinstance(files, dict):
         raise FreezeError("the selection manifest has no 'files' record of code hashes (0011 section 2)")
-    for rel in prov.REQUIRED_CODE_FILES:
-        rec = files.get(rel)
-        if rec is None:
-            raise FreezeError(f"the selection manifest does not record {rel}")
-        if prov.committed_blob(repo_root, rel) != rec.get("git_blob"):          # committed object, not working bytes
-            raise FreezeError(f"{rel} changed after the selection run; the freeze is refused (0011 section 6). "
-                              "Record the cause in a decision.")
+    try:
+        prov.verify_file_records(
+            files,
+            prov.REQUIRED_CODE_FILES,
+            root=repo_root,
+            rev="HEAD",
+        )
+    except prov.ProvenanceError as exc:
+        raise FreezeError(
+            f"selection provenance verification failed: {exc}"
+        ) from exc
     if man.get("snapshot_sha256") != prov.sha256_file(snapshot_path):
         raise FreezeError("the snapshot does not match the hash recorded by the selection run")
     return man
@@ -120,8 +124,8 @@ def _dump(path, obj):
 
 def write_freeze(out_dir, bundles, selection_run, run_manifest, snapshot_sha256, repo_root, now=None):
     out = Path(out_dir)
-    if (out / MANIFEST_NAME).exists():
-        raise FreezeError(f"{out / MANIFEST_NAME} already exists; a freeze is never overwritten")
+    if out.exists() and any(out.iterdir()):
+        raise FreezeError(f"{out} is not empty; a freeze is never overwritten")
     out.mkdir(parents=True, exist_ok=True)
     run = Path(selection_run)
     sel = json.loads((run / "selected_configurations.json").read_text(encoding="utf-8"))
@@ -204,7 +208,6 @@ def main(argv=None):
     print(f"final fit on {r['n_train']} eligible primary pairs (both models)")
     print(f"written: {r['manifest']}  sha256 {r['manifest_sha256']}")
     print("Next: commit results/freeze/, then tag it: git tag -a late-freeze-YYYYMMDD-HHMM -m \"late freeze <hash> <time>\"")
-
 
 if __name__ == "__main__":
     main()

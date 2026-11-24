@@ -90,3 +90,76 @@ def test_analysis_modules_write_hashed_text_with_lf_only():
             assert "lineterminator" in call, f"{path.name}: csv writer without lineterminator='\\n'"
         for call in re.findall(r"open\([^\n]*[\"'][wx][\"'][^\n]*", src):
             assert 'newline=' in call, f"{path.name}: text-mode open without newline=: {call}"
+
+def test_verify_file_records_accepts_matching_hashes(tmp_path):
+    repo = init_repo(tmp_path / "r")
+    f = repo / "a.txt"
+    f.write_bytes(b"hello\n")
+    commit_all(repo)
+
+    records = {"a.txt": prov.file_record(f)}
+    assert prov.verify_file_records(records, ("a.txt",), repo) is True
+
+
+def test_verify_file_records_rejects_wrong_sha256(tmp_path):
+    repo = init_repo(tmp_path / "r")
+    f = repo / "a.txt"
+    f.write_bytes(b"hello\n")
+    commit_all(repo)
+
+    records = {"a.txt": prov.file_record(f)}
+    records["a.txt"]["sha256"] = "0" * 64
+
+    with pytest.raises(prov.ProvenanceError, match="SHA-256 mismatch"):
+        prov.verify_file_records(records, ("a.txt",), repo)
+
+
+def test_verify_file_records_rejects_wrong_git_blob(tmp_path):
+    repo = init_repo(tmp_path / "r")
+    f = repo / "a.txt"
+    f.write_bytes(b"hello\n")
+    commit_all(repo)
+
+    records = {"a.txt": prov.file_record(f)}
+    records["a.txt"]["git_blob"] = "0" * 40
+
+    with pytest.raises(prov.ProvenanceError, match="Git blob mismatch"):
+        prov.verify_file_records(records, ("a.txt",), repo)
+
+
+@pytest.mark.parametrize("records", [
+    {},
+    {"a.txt": None},
+    {"a.txt": {"git_blob": "0" * 40}},
+    {"a.txt": {"sha256": "0" * 64}},
+])
+def test_verify_file_records_rejects_incomplete_records(tmp_path, records):
+    repo = init_repo(tmp_path / "r")
+    f = repo / "a.txt"
+    f.write_bytes(b"hello\n")
+    commit_all(repo)
+
+    with pytest.raises(prov.ProvenanceError):
+        prov.verify_file_records(records, ("a.txt",), repo)
+
+def test_verify_file_records_rejects_file_missing_from_commit(tmp_path):
+    repo = init_repo(tmp_path / "r")
+    f = repo / "a.txt"
+    f.write_bytes(b"hello\n")
+    commit_all(repo)
+
+    records = {"a.txt": prov.file_record(f)}
+
+    run(repo, "rm", "a.txt")
+    commit_all(repo, "remove file")
+
+    with pytest.raises(
+        prov.ProvenanceError,
+        match="cannot read committed provenance file",
+    ):
+        prov.verify_file_records(
+            records,
+            ("a.txt",),
+            root=repo,
+            rev="HEAD",
+        )

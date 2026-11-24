@@ -58,56 +58,163 @@ def require_marker(repo_root, out_rel=OUT_REL):
                                    f"({out_rel}/{MARKER} missing); post-test analyses are not allowed before it")
 
 
-def check_guard(repo_root, snapshot_path, freeze_rel=FREEZE_REL, out_rel=OUT_REL, post_test=False, check_env=True):
+
+def check_guard(repo_root, snapshot_path, freeze_rel=FREEZE_REL, out_rel=OUT_REL,
+                post_test=False, check_env=True):
     repo = Path(repo_root)
+
     mk = marker_path(repo, out_rel).is_file()
+
     if mk and not post_test:
-        raise EvaluationGuardError("the first test evaluation has already run; a second run needs --post-test "
-                                   "and all its output is labelled post-test work")
+        raise EvaluationGuardError(
+            "the first test evaluation has already run; a second run needs "
+            "--post-test and all its output is labelled post-test work")
+
     if post_test and not mk:
-        raise EvaluationGuardError("--post-test needs an existing first evaluation (marker missing)")
+        raise EvaluationGuardError(
+            "--post-test needs an existing first evaluation (marker missing)")
+
     tags = prov.list_tags(TAG_GLOB, repo)
+
     if len(tags) != 1:
-        raise EvaluationGuardError(f"exactly one {TAG_GLOB} tag is required, found {len(tags)}: {tags}")
+        raise EvaluationGuardError(
+            f"exactly one {TAG_GLOB} tag is required, found {len(tags)}: {tags}")
+
     tag = tags[0]
+
     if not TAG_RE.match(tag):
-        raise EvaluationGuardError(f"tag {tag} is not named late-freeze-YYYYMMDD-HHMM")
+        raise EvaluationGuardError(
+            f"tag {tag} is not named late-freeze-YYYYMMDD-HHMM")
+
     if prov.tag_object_type(tag, repo) != "tag":
         raise EvaluationGuardError(f"tag {tag} is not annotated")
+
     tc = prov.tag_commit(tag, repo)
+
     if not prov.is_ancestor(tc, "HEAD", repo):
-        raise EvaluationGuardError(f"the commit of {tag} is not an ancestor of HEAD")
+        raise EvaluationGuardError(
+            f"the commit of {tag} is not an ancestor of HEAD")
+
     if not prov.is_clean(repo):
-        raise EvaluationGuardError("the working tree is not clean (tracked or untracked changes)")
-    bad = [f for f in prov.files_changed_after(tc, repo) if not (f.startswith(ALLOWED_DIRS) or f in ALLOWED_FILES)]
+        raise EvaluationGuardError(
+            "the working tree is not clean (tracked or untracked changes)")
+
+    bad = [
+        f for f in prov.files_changed_after(tc, repo)
+        if not (
+            f.startswith(ALLOWED_DIRS)
+            or f in ALLOWED_FILES
+        )
+    ]
+
     if bad:
-        raise EvaluationGuardError(f"commits after {tag} changed files outside results/, docs/, README.md, .gitignore: {bad}")
+        raise EvaluationGuardError(
+            f"commits after {tag} changed files outside results/, docs/, "
+            f"README.md, .gitignore: {bad}")
     man_rel = f"{freeze_rel}/{freeze.MANIFEST_NAME}"
     man_path = repo / man_rel
+
     if not man_path.is_file():
         raise EvaluationGuardError(f"{man_rel} is missing")
-    manifest = json.loads(man_path.read_text(encoding="utf-8"))
-    if json.loads(prov.show_file(tc, man_rel, repo).decode("utf-8")) != manifest:      # content, not line endings
-        raise EvaluationGuardError("the freeze manifest differs from the one in the tag commit")
+
+    try:
+        manifest = json.loads(
+            man_path.read_text(encoding="utf-8"))
+
+        tagged_manifest = json.loads(
+            prov.show_file(tc, man_rel, repo).decode("utf-8"))
+
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise EvaluationGuardError(
+            f"the freeze manifest is missing, unreadable or invalid: {exc}") from exc
+
+    if not isinstance(manifest, dict):
+        raise EvaluationGuardError(
+            "the freeze manifest must be a JSON object")
+
+    if tagged_manifest != manifest:
+        raise EvaluationGuardError(
+            "the freeze manifest differs from the one in the tag commit")
+
     try:
         freeze.verify_artefacts(repo / freeze_rel, manifest)
     except freeze.FreezeError as exc:
         raise EvaluationGuardError(str(exc)) from exc
-    if prov.sha256_file(snapshot_path) != manifest.get("snapshot_sha256"):
-        raise EvaluationGuardError("the snapshot does not match the frozen snapshot hash")
-    for rel, rec in (manifest.get("files") or {}).items():
-        if rel.startswith(prov.FROZEN_PREFIXES):
-            try:
-                cur = prov.committed_blob(repo, rel)
-            except prov.ProvenanceError:
-                cur = None
-            if cur != rec.get("git_blob"):                      # committed object at HEAD; the tree is already clean
-                raise EvaluationGuardError(f"frozen file changed or missing: {rel}")
+
+    expected_snapshot = manifest.get("snapshot_sha256")
+
+    if (
+        not isinstance(expected_snapshot, str)
+        or not re.fullmatch(r"[0-9a-f]{64}", expected_snapshot)):
+        raise EvaluationGuardError(
+            "the freeze manifest has a missing or invalid snapshot SHA-256")
+
+    try:
+        actual_snapshot = prov.sha256_file(snapshot_path)
+    except OSError as exc:
+        raise EvaluationGuardError(
+            f"cannot read the assessed snapshot: {exc}") from exc
+
+    if actual_snapshot != expected_snapshot:
+        raise EvaluationGuardError(
+            "the snapshot does not match the frozen snapshot hash")
+
+    # Derive the required frozen paths from the clean repository.
+    # Do not trust the manifest to tell us which files must be present.
+    analysis_dir = repo / "analysis"
+
+    expected_paths = {
+        p.relative_to(repo).as_posix()
+        for p in analysis_dir.glob("*.py")
+        if p.is_file()}
+
+    expected_paths.update(prov.REQUIRED_CODE_FILES)
+    expected_paths.update(prov.CONFIG_FILES)
+    expected_paths.update(prov.DECISION_FILES)
+
+    optional_decision = (
+        "docs/decisions/0012-freeze-evaluation-and-post-test-implementation.md")
+    try:
+        tree_paths = prov.git(
+            ["ls-tree", "-r", "--name-only", tc, "--", optional_decision],
+            repo,).stdout.splitlines()
+    except prov.ProvenanceError as exc:
+        raise EvaluationGuardError(
+            f"cannot inspect optional decision file in freeze tag: {exc}") from exc
+
+    if optional_decision in tree_paths:
+        expected_paths.add(optional_decision)
+
+    files = manifest.get("files")
+
+    if not isinstance(files, dict):
+        raise EvaluationGuardError(
+            "the freeze manifest has no valid 'files' provenance dictionary")
+
+    try:
+        prov.verify_file_records(
+            files,
+            tuple(sorted(expected_paths)),
+            root=repo,
+            rev=tc,)
+    except prov.ProvenanceError as exc:
+        raise EvaluationGuardError(
+            f"frozen code provenance verification failed: {exc}") from exc
+
     if check_env:
         problems = prov.check_pins(repo / "requirements.txt")
+
         if problems:
-            raise EvaluationGuardError("environment differs from the pins: " + "; ".join(problems))
-    return {"tag": tag, "tag_commit": tc, "head": prov.head(repo), "manifest": manifest}
+            raise EvaluationGuardError(
+                "environment differs from the pins: "
+                + "; ".join(problems))
+
+    return {
+        "tag": tag,
+        "tag_commit": tc,
+        "head": prov.head(repo),
+        "manifest": manifest,
+    }
 
 
 # ---------------------------------------------------------------- data
