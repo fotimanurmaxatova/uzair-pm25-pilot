@@ -1,0 +1,54 @@
+{
+  "blocks": 6,
+  "comparisons": {
+    "full_minus_noweather": {
+      "ci95": [
+        -0.45225196795477896,
+        2.186264617583957
+      ],
+      "rmse_difference": 0.749716107284871,
+      "share_replications_first_lower": 0.1333133313331333
+    },
+    "full_minus_persistence": {
+      "ci95": [
+        -3.2706910878193796,
+        1.502306561145149
+      ],
+      "rmse_difference": -0.7464368097121881,
+      "share_replications_first_lower": 0.6772677267726772
+    },
+    "noweather_minus_persistence": {
+      "ci95": [
+        -4.54915424969036,
+        0.9867920862588653
+      ],
+      "rmse_difference": -1.496152916997059,
+      "share_replications_first_lower": 0.802080208020802
+    }
+  },
+  "label": "single test evaluation",
+  "note": "indicative only: the test covers two calendar days",
+  "replications": 9999,
+  "rmse": {
+    "full": 8.122264540336964,
+    "noweather": 7.372548433052093,
+    "persistence": 8.868701350049152
+  },
+  "seed": 20261122,
+  "skill": {
+    "full": {
+      "ci95": [
+        -0.23752169131505751,
+        0.3101488588793138
+      ],
+      "skill": 0.08416528872156137
+    },
+    "noweather": {
+      "ci95": [
+        -0.1436514723828104,
+        0.43848007281728174
+      ],
+      "skill": 0.16870033818297048
+    }
+  }
+}

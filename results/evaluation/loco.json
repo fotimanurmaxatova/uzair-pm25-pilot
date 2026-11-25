@@ -1,0 +1,94 @@
+{
+  "cities": [
+    {
+      "city": "Tashkent",
+      "n_test": 11,
+      "rmse_full": 11.628436882644476,
+      "rmse_noweather": 11.715053007862661,
+      "rmse_persistence": 14.288838619387828,
+      "skill_full": 0.1861874017622106,
+      "skill_noweather": 0.18012559873361034,
+      "training_cities": 7
+    },
+    {
+      "city": "Samarkand",
+      "n_test": 11,
+      "rmse_full": 11.897531270526668,
+      "rmse_noweather": 3.982482129596879,
+      "rmse_persistence": 5.076684673359896,
+      "skill_full": -1.3435631787334428,
+      "skill_noweather": 0.21553486461447724,
+      "training_cities": 7
+    },
+    {
+      "city": "Bukhara",
+      "n_test": 11,
+      "rmse_full": 4.277316981726068,
+      "rmse_noweather": 4.6340120141571814,
+      "rmse_persistence": 4.1157126854399,
+      "skill_full": -0.03926520353519192,
+      "skill_noweather": -0.12593185392917783,
+      "training_cities": 7
+    },
+    {
+      "city": "Andijan",
+      "n_test": 11,
+      "rmse_full": 7.885608114481126,
+      "rmse_noweather": 10.058495754683635,
+      "rmse_persistence": 13.396675299898448,
+      "skill_full": 0.4113757377891436,
+      "skill_noweather": 0.249179700969547,
+      "training_cities": 7
+    },
+    {
+      "city": "Namangan",
+      "n_test": 11,
+      "rmse_full": 8.157769282755005,
+      "rmse_noweather": 5.529017529520005,
+      "rmse_persistence": 5.676586682473576,
+      "skill_full": -0.4370905861337526,
+      "skill_noweather": 0.025996106676075104,
+      "training_cities": 7
+    },
+    {
+      "city": "Fergana",
+      "n_test": 11,
+      "rmse_full": 7.018040305773683,
+      "rmse_noweather": 6.392125776597658,
+      "rmse_persistence": 11.60427037383613,
+      "skill_full": 0.3952191667649273,
+      "skill_noweather": 0.4491574592220954,
+      "training_cities": 7
+    },
+    {
+      "city": "Nukus",
+      "n_test": 11,
+      "rmse_full": 5.509864324016845,
+      "rmse_noweather": 6.0524302163156,
+      "rmse_persistence": 3.063717290541612,
+      "skill_full": -0.7984245286035503,
+      "skill_noweather": -0.9755185098183898,
+      "training_cities": 7
+    },
+    {
+      "city": "Urgench",
+      "n_test": 11,
+      "rmse_full": 7.78897791123651,
+      "rmse_noweather": 5.1425699933087925,
+      "rmse_persistence": 5.1583119155574355,
+      "skill_full": -0.5099858323311166,
+      "skill_noweather": 0.003051758502847668,
+      "training_cities": 7
+    }
+  ],
+  "label": "single test evaluation",
+  "note": "post-freeze sensitivity analysis; frozen hyperparameters; not a replacement for the primary models",
+  "pooled": {
+    "n_test": 88,
+    "rmse_full": 8.397015256469617,
+    "rmse_noweather": 7.161156327096956,
+    "rmse_persistence": 8.868701350049152,
+    "skill_full": 0.053185474959862256,
+    "skill_noweather": 0.19253608341910544
+  }
+}

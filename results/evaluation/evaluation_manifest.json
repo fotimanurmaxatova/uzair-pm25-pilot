@@ -1,0 +1,24 @@
+{
+  "environment": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "pytest": "8.3.3",
+    "python": "3.12.6",
+    "scikit-learn": "1.9.1",
+    "setuptools": null
+  },
+  "head": "77bf09aa21e57bb120117d6df4bfd9737d8bb191",
+  "label": "single test evaluation",
+  "outputs_sha256": {
+    "block_bootstrap.json": "b6ceb1bf90b9a8f268452df1a0e6aa932b1423934aace74bd00612ccad956ee1",
+    "error_analysis.json": "2d640f9e78f620dd2ee1f1a3bb470b4a589068d289a5e764f9bc527499c98843",
+    "loco.json": "97e291f3a403f4152502ce8fc35eaec3cf08a1ff40f3e3c1a4e52383de1f9539",
+    "sensitivity_hourly.json": "9f1e833794139e064dd517a62ea9d8ddcd78dd4773ce0fb790bdf6d7359889f4",
+    "test_metrics.json": "e9756d11138dbbd74ef304bc13a4f326f1493fef12270dc8b640af77b72953aa",
+    "test_predictions.csv": "9d90b112c5a77a06739db8fd876792f05d9e98bf9b02a394c8b2208db5d54916"
+  },
+  "snapshot_sha256": "9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2",
+  "tag": "late-freeze-20261125-0954",
+  "tag_commit": "817614f67f39894fecf5795b63fb7cb7d3c0924b"
+}

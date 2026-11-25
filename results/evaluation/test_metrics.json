@@ -1,0 +1,43 @@
+{
+  "label": "primary native three-hourly test evaluation (retrospective held-out; late freeze)",
+  "metrics": {
+    "full": {
+      "mae": 6.222956205606747,
+      "n": 88,
+      "r2": 0.1310616440547313,
+      "rmse": 8.122264540336964,
+      "skill_vs_persistence": 0.08416528872156137
+    },
+    "noweather": {
+      "mae": 5.466100088617477,
+      "n": 88,
+      "r2": 0.2840709649080132,
+      "rmse": 7.372548433052093,
+      "skill_vs_persistence": 0.16870033818297048
+    },
+    "persistence": {
+      "mae": 6.497727272727272,
+      "n": 88,
+      "r2": -0.0359881034149947,
+      "rmse": 8.868701350049152,
+      "skill_vs_persistence": 0.0
+    }
+  },
+  "pairs": {
+    "collected_rows_in_window": 104,
+    "eligible_pairs": 88,
+    "feature_row_received_after_prediction_time": 0,
+    "maximum_pairs": 112,
+    "no_usable_pair": 16
+  },
+  "rule_b": {
+    "folds_full_beats_noweather": 2,
+    "folds_full_beats_persistence": 3,
+    "full_at_least_10pct_below_persistence_test": false,
+    "full_beats_noweather_test": false,
+    "full_skill_vs_persistence_test": 0.08416528872156137,
+    "note": "exploratory pilot screening result (0009 item 7); not a causal or general-forecasting claim",
+    "promising": false,
+    "weather_adds_information": false
+  }
+}

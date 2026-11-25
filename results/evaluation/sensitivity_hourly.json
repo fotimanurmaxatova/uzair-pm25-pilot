@@ -1,0 +1,34 @@
+{
+  "label": "SENSITIVITY: all eligible hourly rows; frozen hyperparameters refitted",
+  "metrics": {
+    "full": {
+      "mae": 6.654121463005561,
+      "n": 302,
+      "r2": 0.042448147137569725,
+      "rmse": 8.49036082868249,
+      "skill_vs_persistence": 0.053247384659248054
+    },
+    "noweather": {
+      "mae": 5.433229854627088,
+      "n": 302,
+      "r2": 0.2700474002335128,
+      "rmse": 7.412971439812474,
+      "skill_vs_persistence": 0.1733861210728035
+    },
+    "persistence": {
+      "mae": 6.530132450331125,
+      "n": 302,
+      "r2": -0.06829027273353505,
+      "rmse": 8.967876815029097,
+      "skill_vs_persistence": 0.0
+    }
+  },
+  "n_train": 816,
+  "pairs": {
+    "collected_rows_in_window": 328,
+    "eligible_pairs": 302,
+    "feature_row_received_after_prediction_time": 0,
+    "maximum_pairs": 336,
+    "no_usable_pair": 26
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "by_city": {
+    "Andijan": {
+      "full": {
+        "mae": 6.10518227789969,
+        "mean_residual": -2.1483842448890935,
+        "n": 11,
+        "rmse": 8.30366028968301
+      },
+      "noweather": {
+        "mae": 8.143152993926556,
+        "mean_residual": -4.89632416326285,
+        "n": 11,
+        "rmse": 10.423058196458747
+      },
+      "persistence": {
+        "mae": 10.018181818181818,
+        "mean_residual": -1.3636363636363635,
+        "n": 11,
+        "rmse": 13.396675299898448
+      }
+    },
+    "Bukhara": {
+      "full": {
+        "mae": 3.3336965252602897,
+        "mean_residual": -0.233729502442179,
+        "n": 11,
+        "rmse": 3.9456316635300546
+      },
+      "noweather": {
+        "mae": 3.896487921817577,
+        "mean_residual": -0.42345748237869396,
+        "n": 11,
+        "rmse": 4.21652568279102
+      },
+      "persistence": {
+        "mae": 3.4272727272727277,
+        "mean_residual": 1.3363636363636362,
+        "n": 11,
+        "rmse": 4.1157126854399
+      }
+    },
+    "Fergana": {
+      "full": {
+        "mae": 11.153127943003069,
+        "mean_residual": -11.118711338947243,
+        "n": 11,
+        "rmse": 12.686107580044952
+      },
+      "noweather": {
+        "mae": 10.638869258488983,
+        "mean_residual": -9.441200669750904,
+        "n": 11,
+        "rmse": 12.020658949180811
+      },
+      "persistence": {
+        "mae": 10.245454545454544,
+        "mean_residual": -4.918181818181818,
+        "n": 11,
+        "rmse": 11.60427037383613
+      }
+    },
+    "Namangan": {
+      "full": {
+        "mae": 6.710392701182619,
+        "mean_residual": -6.710392701182619,
+        "n": 11,
+        "rmse": 7.731060915237194
+      },
+      "noweather": {
+        "mae": 4.955688206834949,
+        "mean_residual": -3.7178952760392034,
+        "n": 11,
+        "rmse": 5.969655698994321
+      },
+      "persistence": {
+        "mae": 4.781818181818182,
+        "mean_residual": -1.272727272727273,
+        "n": 11,
+        "rmse": 5.676586682473576
+      }
+    },
+    "Nukus": {
+      "full": {
+        "mae": 4.121692559940737,
+        "mean_residual": 2.562770337919124,
+        "n": 11,
+        "rmse": 5.5884552319265355
+      },
+      "noweather": {
+        "mae": 2.1682375599775283,
+        "mean_residual": -1.589253540697297,
+        "n": 11,
+        "rmse": 3.111119184921547
+      },
+      "persistence": {
+        "mae": 2.6454545454545455,
+        "mean_residual": 0.9363636363636364,
+        "n": 11,
+        "rmse": 3.063717290541612
+      }
+    },
+    "Samarkand": {
+      "full": {
+        "mae": 3.8183040029688455,
+        "mean_residual": -3.401871859889955,
+        "n": 11,
+        "rmse": 4.351946342106556
+      },
+      "noweather": {
+        "mae": 3.0580064414947192,
+        "mean_residual": -2.2663890732151017,
+        "n": 11,
+        "rmse": 3.755773418473512
+      },
+      "persistence": {
+        "mae": 4.5636363636363635,
+        "mean_residual": -1.6363636363636365,
+        "n": 11,
+        "rmse": 5.076684673359896
+      }
+    },
+    "Tashkent": {
+      "full": {
+        "mae": 8.583640525340035,
+        "mean_residual": -5.178095482682292,
+        "n": 11,
+        "rmse": 10.735042351677162
+      },
+      "noweather": {
+        "mae": 7.673341463819526,
+        "mean_residual": -3.4985419789126073,
+        "n": 11,
+        "rmse": 9.306434723949007
+      },
+      "persistence": {
+        "mae": 11.963636363636363,
+        "mean_residual": -2.363636363636364,
+        "n": 11,
+        "rmse": 14.288838619387828
+      }
+    },
+    "Urgench": {
+      "full": {
+        "mae": 5.957613109258688,
+        "mean_residual": 0.6418381144076076,
+        "n": 11,
+        "rmse": 7.5586133074331965
+      },
+      "noweather": {
+        "mae": 3.1950168625799806,
+        "mean_residual": -2.797812696140219,
+        "n": 11,
+        "rmse": 4.2295245145654095
+      },
+      "persistence": {
+        "mae": 4.336363636363637,
+        "mean_residual": 0.5545454545454546,
+        "n": 11,
+        "rmse": 5.1583119155574355
+      }
+    }
+  },
+  "by_local_hour": {
+    "11": {
+      "full": {
+        "mae": 6.718633811010458,
+        "mean_residual": -0.13263822239835132,
+        "n": 8,
+        "rmse": 7.89914401979252
+      },
+      "noweather": {
+        "mae": 3.583138850754078,
+        "mean_residual": -0.9471637466643077,
+        "n": 8,
+        "rmse": 4.476887870360852
+      },
+      "persistence": {
+        "mae": 4.975,
+        "mean_residual": 1.9,
+        "n": 8,
+        "rmse": 5.418025470593508
+      }
+    },
+    "14": {
+      "full": {
+        "mae": 5.960976022139015,
+        "mean_residual": 1.863839472009138,
+        "n": 8,
+        "rmse": 7.798679779997177
+      },
+      "noweather": {
+        "mae": 4.876778803928418,
+        "mean_residual": 4.245348429531361,
+        "n": 8,
+        "rmse": 6.235659969243035
+      },
+      "persistence": {
+        "mae": 12.587499999999999,
+        "mean_residual": 12.587499999999999,
+        "n": 8,
+        "rmse": 15.416509008202862
+      }
+    },
+    "17": {
+      "full": {
+        "mae": 4.140229119040329,
+        "mean_residual": -2.1948064735803263,
+        "n": 8,
+        "rmse": 5.273263783574381
+      },
+      "noweather": {
+        "mae": 2.060828542387733,
+        "mean_residual": 0.8696345598029025,
+        "n": 8,
+        "rmse": 2.5814130018886816
+      },
+      "persistence": {
+        "mae": 7.5125,
+        "mean_residual": 7.5125,
+        "n": 8,
+        "rmse": 9.267213712869689
+      }
+    },
+    "2": {
+      "full": {
+        "mae": 6.012142755756996,
+        "mean_residual": -5.843647376232475,
+        "n": 16,
+        "rmse": 7.3946596540230995
+      },
+      "noweather": {
+        "mae": 6.833526947411562,
+        "mean_residual": -6.591317357330781,
+        "n": 16,
+        "rmse": 8.46627999356854
+      },
+      "persistence": {
+        "mae": 5.518750000000001,
+        "mean_residual": -5.1312500000000005,
+        "n": 16,
+        "rmse": 6.599763253329622
+      }
+    },
+    "20": {
+      "full": {
+        "mae": 6.590734918667902,
+        "mean_residual": -6.027552201258219,
+        "n": 8,
+        "rmse": 7.951874627578469
+      },
+      "noweather": {
+        "mae": 6.487809510293756,
+        "mean_residual": -6.3218556905687215,
+        "n": 8,
+        "rmse": 8.101788477391297
+      },
+      "persistence": {
+        "mae": 5.525,
+        "mean_residual": -4.475,
+        "n": 8,
+        "rmse": 8.25030302473794
+      }
+    },
+    "23": {
+      "full": {
+        "mae": 10.717964920896772,
+        "mean_residual": -10.717964920896772,
+        "n": 8,
+        "rmse": 12.918434804785282
+      },
+      "noweather": {
+        "mae": 10.466866023950503,
+        "mean_residual": -10.4629594932419,
+        "n": 8,
+        "rmse": 13.752814492925053
+      },
+      "persistence": {
+        "mae": 10.3625,
+        "mean_residual": -10.3625,
+        "n": 8,
+        "rmse": 13.559821164012451
+      }
+    },
+    "5": {
+      "full": {
+        "mae": 4.391232274962423,
+        "mean_residual": -1.6562802759166284,
+        "n": 16,
+        "rmse": 5.990924655459239
+      },
+      "noweather": {
+        "mae": 4.3895953970155475,
+        "mean_residual": -2.2899562054266456,
+        "n": 16,
+        "rmse": 5.124537284358967
+      },
+      "persistence": {
+        "mae": 3.1000000000000005,
+        "mean_residual": -0.7125000000000002,
+        "n": 16,
+        "rmse": 4.143217348872734
+      }
+    },
+    "8": {
+      "full": {
+        "mae": 6.758614704240448,
+        "mean_residual": -1.4862826407119512,
+        "n": 16,
+        "rmse": 9.038727600087936
+      },
+      "noweather": {
+        "mae": 5.102717277311772,
+        "mean_residual": -4.493954946945092,
+        "n": 16,
+        "rmse": 6.389564124680008
+      },
+      "persistence": {
+        "mae": 6.637499999999999,
+        "mean_residual": -3.737499999999999,
+        "n": 16,
+        "rmse": 8.333816652650812
+      }
+    }
+  },
+  "by_observed_level": {
+    "15-35": {
+      "full": {
+        "mae": 5.977526935785549,
+        "mean_residual": -5.016971926116569,
+        "n": 29,
+        "rmse": 7.802412285223548
+      },
+      "noweather": {
+        "mae": 5.899292172790286,
+        "mean_residual": -3.0107912511681807,
+        "n": 29,
+        "rmse": 7.645392107846696
+      },
+      "persistence": {
+        "mae": 6.651724137931034,
+        "mean_residual": -0.20344827586206915,
+        "n": 29,
+        "rmse": 8.288151077041373
+      }
+    },
+    "35-50": {
+      "full": {
+        "mae": 9.342558740193214,
+        "mean_residual": 5.651308805013576,
+        "n": 4,
+        "rmse": 10.26512882425655
+      },
+      "noweather": {
+        "mae": 10.713867721579614,
+        "mean_residual": 2.1255966037801146,
+        "n": 4,
+        "rmse": 11.665579336579773
+      },
+      "persistence": {
+        "mae": 19.15,
+        "mean_residual": 15.6,
+        "n": 4,
+        "rmse": 20.729930052945186
+      }
+    },
+    "<15": {
+      "full": {
+        "mae": 6.125484181724364,
+        "mean_residual": -2.8830071421354,
+        "n": 55,
+        "rmse": 8.111183060732204
+      },
+      "noweather": {
+        "mae": 4.856033889110933,
+        "mean_residual": -4.293255705738343,
+        "n": 55,
+        "rmse": 6.8007243410554725
+      },
+      "persistence": {
+        "mae": 5.496363636363637,
+        "mean_residual": -2.772727272727273,
+        "n": 55,
+        "rmse": 7.6402165604719015
+      }
+    }
+  },
+  "definition": "residual = observed - predicted; local hour of the forecast origin; level bins on the observed target",
+  "events": {
+    "25": {
+      "full": {
+        "correct_negatives": 64,
+        "false_alarms": 14,
+        "forecast_events": 23,
+        "hits": 9,
+        "missed_events": 1,
+        "observed_events": 10,
+        "threshold": 25
+      },
+      "noweather": {
+        "correct_negatives": 67,
+        "false_alarms": 11,
+        "forecast_events": 21,
+        "hits": 10,
+        "missed_events": 0,
+        "observed_events": 10,
+        "threshold": 25
+      },
+      "persistence": {
+        "correct_negatives": 69,
+        "false_alarms": 9,
+        "forecast_events": 13,
+        "hits": 4,
+        "missed_events": 6,
+        "observed_events": 10,
+        "threshold": 25
+      }
+    },
+    "35": {
+      "full": {
+        "correct_negatives": 78,
+        "false_alarms": 6,
+        "forecast_events": 7,
+        "hits": 1,
+        "missed_events": 3,
+        "observed_events": 4,
+        "threshold": 35
+      },
+      "noweather": {
+        "correct_negatives": 79,
+        "false_alarms": 5,
+        "forecast_events": 6,
+        "hits": 1,
+        "missed_events": 3,
+        "observed_events": 4,
+        "threshold": 35
+      },
+      "persistence": {
+        "correct_negatives": 79,
+        "false_alarms": 5,
+        "forecast_events": 6,
+        "hits": 1,
+        "missed_events": 3,
+        "observed_events": 4,
+        "threshold": 35
+      }
+    },
+    "50": {
+      "full": {
+        "correct_negatives": 88,
+        "false_alarms": 0,
+        "forecast_events": 0,
+        "hits": 0,
+        "missed_events": 0,
+        "observed_events": 0,
+        "threshold": 50
+      },
+      "noweather": {
+        "correct_negatives": 87,
+        "false_alarms": 1,
+        "forecast_events": 1,
+        "hits": 0,
+        "missed_events": 0,
+        "observed_events": 0,
+        "threshold": 50
+      },
+      "persistence": {
+        "correct_negatives": 88,
+        "false_alarms": 0,
+        "forecast_events": 0,
+        "hits": 0,
+        "missed_events": 0,
+        "observed_events": 0,
+        "threshold": 50
+      }
+    }
+  },
+  "label": "single test evaluation"
+}
