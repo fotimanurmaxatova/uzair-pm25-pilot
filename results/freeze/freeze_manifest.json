@@ -1,0 +1,122 @@
+{
+  "artefacts_sha256": {
+    "frozen_config.json": "a941d26172a0b820bb31220d818e1257d08887ca5b377a46369592a560fcf190",
+    "model_full.json": "5244698793dfbe7f4306615e6095f04d2899e4ed5742d1bf5d53b9e388597e7d",
+    "model_full.pkl": "ad1525d889bbd478c0a6460b98e6469536abf12c378e85822c4170941182563e",
+    "model_noweather.json": "2e33affa2da9103c326b80254ebb86e6994b89bd9a9d2511b868bc19302ec6b6",
+    "model_noweather.pkl": "ec4e68bceecc8a6ea0be0ca652ecd0d41bbcce9dd6b6af2ec0473a4cf8070476"
+  },
+  "branch": "main",
+  "created_asia_tashkent": "2026-11-25 09:52:31",
+  "created_utc": "2026-11-25T04:52:31Z",
+  "environment": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "pytest": "8.3.3",
+    "python": "3.12.6",
+    "scikit-learn": "1.9.1",
+    "setuptools": null
+  },
+  "files": {
+    "analysis/__init__.py": {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "analysis/cutoffs.py": {
+      "git_blob": "3561c7d73c057c03432051d9fe68aae003f96671",
+      "sha256": "bf4849e613cb25274efb68301c801be89f1a2f759c9ec79b08980c941c3ec08e"
+    },
+    "analysis/data.py": {
+      "git_blob": "e4a59fb5ed1c00bdd5ce3f6f5832c1c149f60647",
+      "sha256": "b87b96001b406b085c0b383a305ab3a56b141d9f1777e1b792b3df3f8598fd93"
+    },
+    "analysis/eda.py": {
+      "git_blob": "b9a2e6f6ccc8b62d1824b88187259cab935fc056",
+      "sha256": "7c46eb5fff1faca0528fafbfe1979e312f88dabe64979e2220b866211ba79645"
+    },
+    "analysis/evaluate.py": {
+      "git_blob": "3e6809bbb76ef3d43120eeaa0ed047143054eab7",
+      "sha256": "875e5024b0c56913f45b7b386f133a54c77b2c4d753d44fef91c79f7dc94453d"
+    },
+    "analysis/freeze.py": {
+      "git_blob": "9d9804bbd8c0d6da414a9841dfd6436040874754",
+      "sha256": "06c8803bed84398a16632f28f6051e58ce909f5a11df2d7b231f652da65464f4"
+    },
+    "analysis/inference.py": {
+      "git_blob": "a11e5da2b152195243f1b3914f926ccc839a6595",
+      "sha256": "561a06f92826637f0381a1d895334c1926893788444a35185a320243f0a5b1e7"
+    },
+    "analysis/integrity.py": {
+      "git_blob": "4e702b65fc56f39c13b7919b96ce7bdb2e17feba",
+      "sha256": "9b4619b044f4d99ab856139675377ee1bd74f5156d4913a82499e357d12eebba"
+    },
+    "analysis/modelling.py": {
+      "git_blob": "0e7ffe730d658863f3a97e87c3ffdce9dab83f1f",
+      "sha256": "692ecf8910c2b3fe186919db0a5f8bba38a2ac959dd73ca7106392bd1b6b3dd6"
+    },
+    "analysis/provenance.py": {
+      "git_blob": "38d701f85bf565307444912fa68591ab6847f0a6",
+      "sha256": "96beb7d6c11e260cce1205dbfa245d25324c82bd59e27523a2056ba8b8aabc86"
+    },
+    "analysis/q5_extras.py": {
+      "git_blob": "f770440dac7d5066c0dc42b1d4712b36e029fac3",
+      "sha256": "8e3952433eda922a604ef24b00b769e8072955b64abc883647eecff3b15639f0"
+    },
+    "analysis/selection.py": {
+      "git_blob": "22aea02d6783188e279bb2bec0245dacbcee7138",
+      "sha256": "24f39a2129a5483ed1d8d47fd55e50f7073f704fcff8c44120f25cf1a66f4565"
+    },
+    "docs/decisions/0009-late-model-freeze.md": {
+      "git_blob": "62771125c3709ab8212aa9f5f0dcbef5f84f1568",
+      "sha256": "ee17287d695572676793493dd37ca245997cf67e1ced56fb365768c89f327e4e"
+    },
+    "docs/decisions/0010-analysis-implementation-choices.md": {
+      "git_blob": "7d97f06a9f24df49387c9d6f178717f9f2f4f163",
+      "sha256": "87b5cb9cd39df3d55615ba55f9f5456900fbf6b26e00e2e60b90e16b52995fd7"
+    },
+    "docs/decisions/0011-snapshot-integrity-and-reproducible-freeze.md": {
+      "git_blob": "13d77fade2954996c16eca5c77d585fada64f765",
+      "sha256": "1321731d537e25e81294f559028df1a7da1c91abd0552e95be7c5455193fe5a2"
+    },
+    "docs/decisions/0012-freeze-evaluation-and-post-test-implementation.md": {
+      "git_blob": "2956b506f17eb4fda805f6f0bb0c7b6d447a1951",
+      "sha256": "a11e4cb164764664341377954ca3b5e08151c4d6e2780f93cbbb42ba813d8cb0"
+    },
+    "monitoring/coverage.py": {
+      "git_blob": "3d2727f2852f5a68baf0e45f2b73118eeb007e79",
+      "sha256": "860c0557156f234982ec371b32e9ed9d5739efb5afa256c890996b882d32cf7e"
+    },
+    "monitoring/prepare.py": {
+      "git_blob": "f95d98031f9168f7d6c6948afc2f65beeed122ae",
+      "sha256": "e68a7ee0f37a60edfb70a43360e669052b2ae85e41a274e193d20a411423cf80"
+    },
+    "pyproject.toml": {
+      "git_blob": "f103225724ad497449a0ba56deeb980eb4d66abc",
+      "sha256": "53dbda4badca065bff4d0c984cf2cde93a9bb4c6a75e63f0feb28ac822635acc"
+    },
+    "pytest.ini": {
+      "git_blob": "97a0030918b97990e0f03b6353788af2bdbb9b8b",
+      "sha256": "599706f13c3c764ace40db54fa4d4caad8b4baf56ce9688d8626aa8180cf9628"
+    },
+    "requirements.txt": {
+      "git_blob": "a3e7303406d792a19fd51b6fa662b1d94a809556",
+      "sha256": "88f4b7073dafecf64226b7a231f867a4cbe5979b39665491d62bfc82d3dc52f8"
+    }
+  },
+  "final_cutoff_utc": "2026-11-06T17:00:00Z",
+  "label": "late freeze",
+  "n_train": {
+    "full": 248,
+    "noweather": 248
+  },
+  "parent_commit": "6026e257336f4ac02a3a13a17e0bd70cb472838e",
+  "selection_manifest_snapshot_sha256": "9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2",
+  "selection_outputs_sha256": {
+    "cv_table.csv": "4f00eadb01bbcf1a09d1a98a5a3f14de10a47c36465a4553b193032ca1e51c1a",
+    "selected_configurations.json": "b9b7992951c9441b56c5eec051b904155a8133e58796da994d6dec70da17311f",
+    "selection_manifest.json": "1da890bf35c7203b6366554e45ab69975c0f50cbbdd73d7a47b64c6fb7faeed4"
+  },
+  "selection_run": "run-001",
+  "snapshot_sha256": "9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2"
+}

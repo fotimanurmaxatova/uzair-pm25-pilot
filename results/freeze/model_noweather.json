@@ -1,0 +1,66 @@
+{
+  "feature_set": "noweather",
+  "n_iter": 100,
+  "n_train": 248,
+  "preprocessor_state": {
+    "cities": [
+      "Tashkent",
+      "Samarkand",
+      "Bukhara",
+      "Andijan",
+      "Namangan",
+      "Fergana",
+      "Nukus",
+      "Urgench"
+    ],
+    "continuous": [
+      "pm2_5",
+      "pm25_lag3",
+      "pm25_lag6",
+      "nitrogen_dioxide"
+    ],
+    "cyclic": [
+      "hour_sin",
+      "hour_cos"
+    ],
+    "mean": {
+      "nitrogen_dioxide": 10.384076612903225,
+      "pm25_lag3": 20.884967741935483,
+      "pm25_lag6": 21.22609677419355,
+      "pm2_5": 20.488596774193546
+    },
+    "median": {
+      "hour_cos": -0.25881904510252063,
+      "hour_sin": 0.258819045102521,
+      "nitrogen_dioxide": 7.35,
+      "pm25_lag3": 17.8,
+      "pm25_lag6": 18.3,
+      "pm2_5": 17.0
+    },
+    "scale": false,
+    "std": {
+      "nitrogen_dioxide": 9.075252383752636,
+      "pm25_lag3": 13.772209917037983,
+      "pm25_lag6": 13.806274565491284,
+      "pm2_5": 13.867013156035693
+    },
+    "winsor_high": {
+      "nitrogen_dioxide": 45.37000000000001,
+      "pm25_lag3": 59.33,
+      "pm25_lag6": 59.33,
+      "pm2_5": 59.33
+    },
+    "winsor_low": {
+      "nitrogen_dioxide": 0.747,
+      "pm25_lag3": 2.694,
+      "pm25_lag6": 2.694,
+      "pm2_5": 2.694
+    }
+  },
+  "spec": {
+    "learning_rate": 0.05,
+    "max_depth": 3,
+    "model": "hgb"
+  },
+  "train_fingerprint": "b732cb2ae703c9e5f5d816380d479a3209c4d6c8f97b2ac5595a0604ad9afa73"
+}

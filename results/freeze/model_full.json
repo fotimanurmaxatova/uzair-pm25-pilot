@@ -1,0 +1,129 @@
+{
+  "coef": [
+    7.001380888677417,
+    -1.3010677924907708,
+    0.6963253932855528,
+    0.8052474629672197,
+    2.379380732428799,
+    -0.5861586628613055,
+    -0.15948578468118096,
+    -1.863085122608542,
+    -1.9777572933586978,
+    -1.64277776787725,
+    -1.791595473484909,
+    2.092310389509288,
+    -3.143503708242877,
+    -1.728650163740354,
+    0.32731353256311774,
+    -5.153756768254161,
+    -0.8539009794879506,
+    1.2750984242639158,
+    0.5999924613852196,
+    5.338782458828219,
+    -0.7260503502556329,
+    -0.8074787790426488
+  ],
+  "feature_set": "full",
+  "intercept": 21.318146517494185,
+  "n_train": 248,
+  "preprocessor_state": {
+    "cities": [
+      "Tashkent",
+      "Samarkand",
+      "Bukhara",
+      "Andijan",
+      "Namangan",
+      "Fergana",
+      "Nukus",
+      "Urgench"
+    ],
+    "continuous": [
+      "pm2_5",
+      "pm25_lag3",
+      "pm25_lag6",
+      "nitrogen_dioxide",
+      "temperature_2m",
+      "relative_humidity_2m",
+      "precipitation_mm",
+      "wind_speed_ms",
+      "surface_pressure_hpa",
+      "pressure_change_3h"
+    ],
+    "cyclic": [
+      "hour_sin",
+      "hour_cos",
+      "wind_dir_sin",
+      "wind_dir_cos"
+    ],
+    "mean": {
+      "nitrogen_dioxide": 10.384076612903225,
+      "pm25_lag3": 20.884967741935483,
+      "pm25_lag6": 21.22609677419355,
+      "pm2_5": 20.488596774193546,
+      "precipitation_mm": 0.00547983870967742,
+      "pressure_change_3h": -0.061693548387095676,
+      "relative_humidity_2m": 58.403225806451616,
+      "surface_pressure_hpa": 974.788875,
+      "temperature_2m": 12.961766129032258,
+      "wind_speed_ms": 1.6986270161290322
+    },
+    "median": {
+      "hour_cos": -0.25881904510252063,
+      "hour_sin": 0.258819045102521,
+      "nitrogen_dioxide": 7.35,
+      "pm25_lag3": 17.8,
+      "pm25_lag6": 18.3,
+      "pm2_5": 17.0,
+      "precipitation_mm": 0.0,
+      "pressure_change_3h": -0.10000000000002274,
+      "relative_humidity_2m": 60.0,
+      "surface_pressure_hpa": 968.3499999999999,
+      "temperature_2m": 12.45,
+      "wind_dir_cos": -0.09584210300765589,
+      "wind_dir_sin": 0.3826688609525929,
+      "wind_speed_ms": 1.51
+    },
+    "scale": true,
+    "std": {
+      "nitrogen_dioxide": 9.075252383752636,
+      "pm25_lag3": 13.772209917037983,
+      "pm25_lag6": 13.806274565491284,
+      "pm2_5": 13.867013156035693,
+      "precipitation_mm": 0.024820313870278665,
+      "pressure_change_3h": 1.0792417116737296,
+      "relative_humidity_2m": 20.041657968099887,
+      "surface_pressure_hpa": 24.111991840924183,
+      "temperature_2m": 4.5193604959195905,
+      "wind_speed_ms": 1.007909355501389
+    },
+    "winsor_high": {
+      "nitrogen_dioxide": 45.37000000000001,
+      "pm25_lag3": 59.33,
+      "pm25_lag6": 59.33,
+      "pm2_5": 59.33,
+      "precipitation_mm": 0.15300000000000014,
+      "pressure_change_3h": 2.6529999999999747,
+      "relative_humidity_2m": 95.0,
+      "surface_pressure_hpa": 1015.7,
+      "temperature_2m": 22.965,
+      "wind_speed_ms": 4.7877
+    },
+    "winsor_low": {
+      "nitrogen_dioxide": 0.747,
+      "pm25_lag3": 2.694,
+      "pm25_lag6": 2.694,
+      "pm2_5": 2.694,
+      "precipitation_mm": 0.0,
+      "pressure_change_3h": -2.35300000000002,
+      "relative_humidity_2m": 18.0,
+      "surface_pressure_hpa": 934.547,
+      "temperature_2m": 1.941,
+      "wind_speed_ms": 0.17880000000000001
+    }
+  },
+  "spec": {
+    "alpha": 10,
+    "model": "ridge"
+  },
+  "train_fingerprint": "b732cb2ae703c9e5f5d816380d479a3209c4d6c8f97b2ac5595a0604ad9afa73"
+}
