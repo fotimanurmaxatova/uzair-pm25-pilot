@@ -168,8 +168,8 @@ This decision was accepted on 2026-11-24 at 22:44 (Asia/Tashkent) after implemen
 | `.gitattributes` committed | 2026-11-22 21:33:27, 9ee7cb9 |
 | Implementation commit | 773b0c1, 22662ae, 54472b5, 5705812, a68676f, 8515a66 |
 | Verification | 284 tests passed, 2 warnings, 2026-11-24 |
-| First assessed-snapshot selection run (UTC and Asia/Tashkent) | |
-| Freeze tag | |
+| First assessed-snapshot selection run (UTC and Asia/Tashkent) | 2026-11-25 03:46:46 UTC / 2026-11-25 08:46:46 Asia/Tashkent | dbac3ff |
+| Freeze tag | `late-freeze-20261125-0954` (commit `817614f`, 2026-11-25 09:54:42 Asia/Tashkent) |
 
 ## Clarification of section 7 (2026-11-25)
 
