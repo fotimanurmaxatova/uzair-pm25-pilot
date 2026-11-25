@@ -1,0 +1,87 @@
+# CP3 recorded demo evidence
+
+This file summarises outputs already generated and verified during the CP3 workflow. It is a recorded evidence summary from the development repository, not a claim that the complete workflow was rerun from a clean checkout.
+
+## 1. Repository and submission
+
+- Branch: `main`
+- Working tree: clean
+- Current HEAD: `3589c9e36c8c74ba417580c3b98dccd91c525935`
+- Current HEAD commit: `docs: record CP3 submission evidence`
+- Submission tag: `cp3-submission` (annotated)
+- Submission tag target: `49d555beb284f4e2bbc67791b23d26c5efb1e393`
+- Late-freeze tag: `late-freeze-20261125-0954`
+- Late-freeze target: `817614f67f39894fecf5795b63fb7cb7d3c0924b`
+
+The evidence-register commit was made after the submission tag. Therefore, the current branch HEAD and the submission tag target are different.
+
+## 2. Model selection
+
+- Selection run: `run-001`
+- Selection start: 2026-11-25 08:46:46 Asia/Tashkent
+- Primary data: native three-hourly observations
+- Validation folds: 3
+- Selected full model: Ridge, alpha = 10
+- Selected no-weather model: HistGradientBoosting, max_depth = 3, learning_rate = 0.05
+- Full model mean validation RMSE: 7.9095
+- No-weather model mean validation RMSE: 8.6081
+- Selection manifest recorded a clean working tree and a successful remote check at selection time.
+- Snapshot SHA-256: `9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2`
+
+## 3. Held-out test evaluation
+
+The first and single held-out test evaluation was recorded at 2026-11-25 06:25:42 UTC. The evaluation was performed against the late-freeze tag. The evaluation was not rerun for this demo.
+
+- Eligible native three-hourly pairs: 88 of 112 maximum
+- Collected rows in test window: 104
+- Feature rows received after prediction time: 0
+
+| Model | RMSE | MAE | R² |
+|---|---:|---:|---:|
+| Full | 8.1223 | 6.2230 | 0.1311 |
+| No-weather | 7.3725 | 5.4661 | 0.2841 |
+| Persistence | 8.8687 | 6.4977 | -0.0360 |
+
+Rule B result:
+- `promising`: false
+- `weather_adds_information`: false
+- Full model skill versus persistence: 8.42%
+- Full model did not meet the 10% improvement threshold.
+- Full model did not outperform the no-weather model on the test set.
+
+This is an exploratory pilot screening result, not a causal or general-forecasting claim.
+
+## 4. Post-test inference
+
+The recorded inference output contains Q1–Q4 and sensitivity analyses.
+
+- Primary native sample: 424 complete cases for Q1–Q3, with 7 city clusters.
+- Q4 sample: 312 complete cases and 5 clusters.
+- Bootstrap replications: 9,999.
+- Rule A conclusion: `no support`.
+- Q4 has 7,776 distinct cluster-weight combinations for 9,999 replications; repeated weights limit the reliability of this inference.
+
+The inference results are descriptive associations, not predictions or causal effects. P-values and intervals are exploratory and conditional on their assumptions.
+
+## 5. Full-window EDA
+
+- Mode: `full`
+- Rows used: 1,311
+- Six charts generated:
+  1. PM2.5 time series
+  2. PM2.5 by city
+  3. Diurnal profile
+  4. PM2.5 versus wind
+  5. PM2.5 versus humidity
+  6. Coverage by city and day
+- `eda_manifest.json` records SHA-256 hashes for all six chart files.
+
+## 6. Verification and provenance
+
+- Full test suite: 286 passed (recorded verification).
+- Selection and evaluation manifests record their respective Git commits, snapshot identity, environment versions and output hashes.
+- Evaluation output hashes are recorded in `results/evaluation/evaluation_manifest.json`.
+- Selection output hashes are recorded in `results/selection/run-001/selection_manifest.json`.
+- Full-window EDA chart hashes are recorded in `results/eda/full/eda_manifest.json`.
+
+No held-out test evaluation was rerun while preparing this demo summary.
