@@ -61,7 +61,7 @@ Entries are added by later commits when each event happens. They are not back-da
 | Data snapshot and manifest committed | 2026-11-11 16:13 | 4771474 |
 | This decision committed | 2026-11-11 01:03:29 | 801cc20 |
 | Selection script committed | 2026-11-22 19:44:21 | 11dec23 |
-| Selection run | | |
+| Selection run (started) | 2026-11-25 08:46:46 | dbac3ff |
 | Frozen configurations committed and tagged (`late freeze`) | | |
 | Single test evaluation run | | |
 

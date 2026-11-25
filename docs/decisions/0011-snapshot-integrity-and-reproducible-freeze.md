@@ -170,3 +170,14 @@ This decision was accepted on 2026-11-24 at 22:44 (Asia/Tashkent) after implemen
 | Verification | 284 tests passed, 2 warnings, 2026-11-24 |
 | First assessed-snapshot selection run (UTC and Asia/Tashkent) | |
 | Freeze tag | |
+
+## Clarification of section 7 (2026-11-25)
+
+Section 7 says that the selection outputs and freeze artefacts are committed in one commit. The implemented workflow, following sections 3 and 5, uses two commits:
+
+1. The completed selection run `results/selection/run-001` is committed and pushed. The freeze process requires a clean working tree and verifies the selection run against the committed HEAD.
+2. The generated `results/freeze/` artefacts are committed separately. This second commit receives the annotated tag `late-freeze-YYYYMMDD-HHMM`.
+
+The tagged commit's tree therefore contains the CV table, selected configurations, selection manifest, final-fit artefacts, preprocessing state and freeze manifest. The selection commit is an ancestor of the tagged freeze commit.
+
+This clarification documents the implemented commit order. It does not change the selection, freeze, evaluation or provenance requirements.
