@@ -1,0 +1,57 @@
+{
+  "criterion": "unweighted mean of per-fold RMSE on native validation origins; ties (4 decimals) to the simpler setting",
+  "fold_counts": {
+    "1": {
+      "train": 64,
+      "valid": 40,
+      "excluded_feature_unavailable_train": 0,
+      "excluded_feature_unavailable_valid": 0
+    },
+    "2": {
+      "train": 128,
+      "valid": 40,
+      "excluded_feature_unavailable_train": 0,
+      "excluded_feature_unavailable_valid": 0
+    },
+    "3": {
+      "train": 192,
+      "valid": 40,
+      "excluded_feature_unavailable_train": 0,
+      "excluded_feature_unavailable_valid": 0
+    }
+  },
+  "persistence_fold_rmse": [
+    10.153533867575367,
+    15.947876034130688,
+    8.52079808468667
+  ],
+  "selected": {
+    "full": {
+      "candidate": "ridge_alpha10",
+      "spec": {
+        "model": "ridge",
+        "alpha": 10
+      },
+      "fold_rmse": [
+        7.1550390067706315,
+        10.781176772405688,
+        5.792284418317989
+      ],
+      "mean_rmse": 7.909500065831437
+    },
+    "noweather": {
+      "candidate": "hgb_depth3_lr0.05",
+      "spec": {
+        "model": "hgb",
+        "max_depth": 3,
+        "learning_rate": 0.05
+      },
+      "fold_rmse": [
+        9.394379018435599,
+        10.390746936442358,
+        6.039295003987633
+      ],
+      "mean_rmse": 8.608140319621864
+    }
+  }
+}

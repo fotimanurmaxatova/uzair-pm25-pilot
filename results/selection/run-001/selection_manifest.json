@@ -1,0 +1,161 @@
+{
+  "environment": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "pytest": "8.3.3",
+    "python": "3.12.6",
+    "scikit-learn": "1.9.1",
+    "setuptools": null
+  },
+  "files": {
+    ".gitattributes": {
+      "git_blob": "4cd42544247a7e77a1f0c89eb94c5d0fd2c3ede7",
+      "sha256": "9a2cd1883769fbe7d0e81e6ca94e365e761579b89fd356aaeb92301cfe8bf9b4",
+      "working_bytes_match_blob": true
+    },
+    "analysis/__init__.py": {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_bytes_match_blob": true
+    },
+    "analysis/cutoffs.py": {
+      "git_blob": "3561c7d73c057c03432051d9fe68aae003f96671",
+      "sha256": "bf4849e613cb25274efb68301c801be89f1a2f759c9ec79b08980c941c3ec08e",
+      "working_bytes_match_blob": true
+    },
+    "analysis/data.py": {
+      "git_blob": "e4a59fb5ed1c00bdd5ce3f6f5832c1c149f60647",
+      "sha256": "b87b96001b406b085c0b383a305ab3a56b141d9f1777e1b792b3df3f8598fd93",
+      "working_bytes_match_blob": true
+    },
+    "analysis/eda.py": {
+      "git_blob": "b9a2e6f6ccc8b62d1824b88187259cab935fc056",
+      "sha256": "7c46eb5fff1faca0528fafbfe1979e312f88dabe64979e2220b866211ba79645",
+      "working_bytes_match_blob": true
+    },
+    "analysis/evaluate.py": {
+      "git_blob": "3e6809bbb76ef3d43120eeaa0ed047143054eab7",
+      "sha256": "875e5024b0c56913f45b7b386f133a54c77b2c4d753d44fef91c79f7dc94453d",
+      "working_bytes_match_blob": true
+    },
+    "analysis/freeze.py": {
+      "git_blob": "9d9804bbd8c0d6da414a9841dfd6436040874754",
+      "sha256": "06c8803bed84398a16632f28f6051e58ce909f5a11df2d7b231f652da65464f4",
+      "working_bytes_match_blob": true
+    },
+    "analysis/inference.py": {
+      "git_blob": "a11e5da2b152195243f1b3914f926ccc839a6595",
+      "sha256": "561a06f92826637f0381a1d895334c1926893788444a35185a320243f0a5b1e7",
+      "working_bytes_match_blob": true
+    },
+    "analysis/integrity.py": {
+      "git_blob": "4e702b65fc56f39c13b7919b96ce7bdb2e17feba",
+      "sha256": "9b4619b044f4d99ab856139675377ee1bd74f5156d4913a82499e357d12eebba",
+      "working_bytes_match_blob": true
+    },
+    "analysis/modelling.py": {
+      "git_blob": "0e7ffe730d658863f3a97e87c3ffdce9dab83f1f",
+      "sha256": "692ecf8910c2b3fe186919db0a5f8bba38a2ac959dd73ca7106392bd1b6b3dd6",
+      "working_bytes_match_blob": true
+    },
+    "analysis/provenance.py": {
+      "git_blob": "38d701f85bf565307444912fa68591ab6847f0a6",
+      "sha256": "96beb7d6c11e260cce1205dbfa245d25324c82bd59e27523a2056ba8b8aabc86",
+      "working_bytes_match_blob": true
+    },
+    "analysis/q5_extras.py": {
+      "git_blob": "f770440dac7d5066c0dc42b1d4712b36e029fac3",
+      "sha256": "8e3952433eda922a604ef24b00b769e8072955b64abc883647eecff3b15639f0",
+      "working_bytes_match_blob": true
+    },
+    "analysis/selection.py": {
+      "git_blob": "22aea02d6783188e279bb2bec0245dacbcee7138",
+      "sha256": "24f39a2129a5483ed1d8d47fd55e50f7073f704fcff8c44120f25cf1a66f4565",
+      "working_bytes_match_blob": true
+    },
+    "docs/decisions/0009-late-model-freeze.md": {
+      "git_blob": "758ef9549ced5da90485f8b40cc5d124241d659d",
+      "sha256": "ff45d0f17d5166fe5e881a79cc473da531913836af5e379a95282ac1643f3830",
+      "working_bytes_match_blob": true
+    },
+    "docs/decisions/0010-analysis-implementation-choices.md": {
+      "git_blob": "7d97f06a9f24df49387c9d6f178717f9f2f4f163",
+      "sha256": "87b5cb9cd39df3d55615ba55f9f5456900fbf6b26e00e2e60b90e16b52995fd7",
+      "working_bytes_match_blob": true
+    },
+    "docs/decisions/0011-snapshot-integrity-and-reproducible-freeze.md": {
+      "git_blob": "86360ac5c1b9e29d05c0b36eaad15f503cde955a",
+      "sha256": "9e47756f555c56582c8295274acba22ec5aeff6c18cc3227781a3ef5ac301b50",
+      "working_bytes_match_blob": true
+    },
+    "docs/decisions/0012-freeze-evaluation-and-post-test-implementation.md": {
+      "git_blob": "2956b506f17eb4fda805f6f0bb0c7b6d447a1951",
+      "sha256": "a11e4cb164764664341377954ca3b5e08151c4d6e2780f93cbbb42ba813d8cb0",
+      "working_bytes_match_blob": true
+    },
+    "monitoring/coverage.py": {
+      "git_blob": "3d2727f2852f5a68baf0e45f2b73118eeb007e79",
+      "sha256": "860c0557156f234982ec371b32e9ed9d5739efb5afa256c890996b882d32cf7e",
+      "working_bytes_match_blob": true
+    },
+    "monitoring/prepare.py": {
+      "git_blob": "f95d98031f9168f7d6c6948afc2f65beeed122ae",
+      "sha256": "e68a7ee0f37a60edfb70a43360e669052b2ae85e41a274e193d20a411423cf80",
+      "working_bytes_match_blob": true
+    },
+    "pyproject.toml": {
+      "git_blob": "f103225724ad497449a0ba56deeb980eb4d66abc",
+      "sha256": "53dbda4badca065bff4d0c984cf2cde93a9bb4c6a75e63f0feb28ac822635acc",
+      "working_bytes_match_blob": true
+    },
+    "pytest.ini": {
+      "git_blob": "97a0030918b97990e0f03b6353788af2bdbb9b8b",
+      "sha256": "599706f13c3c764ace40db54fa4d4caad8b4baf56ce9688d8626aa8180cf9628",
+      "working_bytes_match_blob": true
+    },
+    "requirements.txt": {
+      "git_blob": "a3e7303406d792a19fd51b6fa662b1d94a809556",
+      "sha256": "88f4b7073dafecf64226b7a231f867a4cbe5979b39665491d62bfc82d3dc52f8",
+      "working_bytes_match_blob": true
+    },
+    "snapshots/MANIFEST.json": {
+      "git_blob": "990806c5431a3f0c32ab925fec99a2e395618491",
+      "sha256": "bbcdd09d1a18be539e98c96f2b6b5cd60154d65a74ce14a9cf23c2c2148e04fb",
+      "working_bytes_match_blob": true
+    }
+  },
+  "final_cutoff_utc": "2026-11-06T17:00:00Z",
+  "git": {
+    "branch": "main",
+    "head": "6e2e9271be2c2f71058b5b7d86ddec6e7b063902",
+    "origin_main": "6e2e9271be2c2f71058b5b7d86ddec6e7b063902",
+    "remote_check": "passed",
+    "tree": "fddd93da8691a4b44d42d148c494970ae29c2489",
+    "working_tree_clean": true
+  },
+  "outputs_sha256": {
+    "cv_table.csv": "4f00eadb01bbcf1a09d1a98a5a3f14de10a47c36465a4553b193032ca1e51c1a",
+    "selected_configurations.json": "b9b7992951c9441b56c5eec051b904155a8133e58796da994d6dec70da17311f"
+  },
+  "pinned_packages_checked": [
+    "numpy",
+    "scikit-learn"
+  ],
+  "previous_run": null,
+  "rerun": false,
+  "rerun_reason": null,
+  "run": "run-001",
+  "run_number": 1,
+  "snapshot": {
+    "expected_constant_sha256": "9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2",
+    "manifest_entry_sha256": "9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2",
+    "snapshot_bytes": 2498560,
+    "snapshot_manifest_created_utc": "2026-11-11T11:08:40Z",
+    "snapshot_manifest_sha256": "bbcdd09d1a18be539e98c96f2b6b5cd60154d65a74ce14a9cf23c2c2148e04fb",
+    "snapshot_sha256": "9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2"
+  },
+  "snapshot_sha256": "9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2",
+  "started_asia_tashkent": "2026-11-25 08:46:46",
+  "started_utc": "2026-11-25T03:46:46Z"
+}
