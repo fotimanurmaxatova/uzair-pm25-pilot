@@ -167,7 +167,7 @@ This decision was accepted on 2026-11-24 at 22:44 (Asia/Tashkent) after implemen
 | Acceptance commit | 2026-11-24 22:55:59 +05:00, `de6acde` |
 | `.gitattributes` committed | 2026-11-22 21:33:27, 9ee7cb9 |
 | Implementation commit | 773b0c1, 22662ae, 54472b5, 5705812, a68676f, 8515a66 |
-| Verification | 284 tests passed, 2 warnings, 2026-11-24 |
+| Verification | 286 tests passed, including 2 synthetic freeze-workflow tests, 2026-11-25 |
 | First assessed-snapshot selection run (UTC and Asia/Tashkent) | 2026-11-25 03:46:46 UTC / 2026-11-25 08:46:46 Asia/Tashkent | dbac3ff |
 | Freeze tag | `late-freeze-20261125-0954` (commit `817614f`, 2026-11-25 09:54:42 Asia/Tashkent) |
 
@@ -181,3 +181,5 @@ Section 7 says that the selection outputs and freeze artefacts are committed in 
 The tagged commit's tree therefore contains the CV table, selected configurations, selection manifest, final-fit artefacts, preprocessing state and freeze manifest. The selection commit is an ancestor of the tagged freeze commit.
 
 This clarification documents the implemented commit order. It does not change the selection, freeze, evaluation or provenance requirements.
+
+The clarification above was added on 2026-11-25 at approximately 09:48 Asia/Tashkent, after the selection run had started at 08:46:46 Asia/Tashkent and before the freeze commit at 09:54:42 Asia/Tashkent. This timing is recorded explicitly for provenance. The clarification documents the implemented workflow and does not retrospectively change the original selection or freeze rules.

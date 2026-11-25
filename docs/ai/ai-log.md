@@ -166,3 +166,9 @@ fixtures only; it was not an assessed-snapshot evaluation.
 
 No assessed-snapshot model selection, freeze or test-period evaluation
 had been run by the end of this work.
+
+## 2026-11-25: Minor documentation and consistency review
+
+Tool: ChatGPT (OpenAI), chat interface.
+
+ChatGPT was used for limited review and guidance on a few minor documentation and consistency issues. All project code, tests, selection, freeze operations, Git actions and substantive project documentation were prepared and carried out by me.
