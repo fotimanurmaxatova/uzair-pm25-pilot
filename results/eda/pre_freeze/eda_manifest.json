@@ -1,0 +1,13 @@
+{
+  "files_sha256": {
+    "01_pm25_time_series.png": "5d298ce0ac59123901c0af496479fc8aac77bc99967eef4537ab3f0a6de97731",
+    "02_pm25_by_city.png": "af14cb2c7980a2f6feee666c7ed4e347fbdc9e247a94a1b80ff308ac65775720",
+    "03_diurnal_profile.png": "71cae773aad3b077e207f4addd69fea4b2939d96bd767fc3acc4651b959e1dea",
+    "04_pm25_vs_wind.png": "97ab6a37245116fd44d13646779273ac85faaae0534b66aad97e115ab5533f4b",
+    "05_pm25_vs_humidity.png": "6463abc8ba7c3c18b991a6699c0a4c09d13f725df25e9b90312892a2c20723f2",
+    "06_coverage_by_city_day.png": "4afb07ad3b3163e9c95485330d5011d313459f7f3a7c0d16abf1d0746e19ec06"
+  },
+  "label": "pre-freeze data only (received before 6 Nov 22:00 local)",
+  "mode": "pre_freeze",
+  "rows_used": 936
+}
