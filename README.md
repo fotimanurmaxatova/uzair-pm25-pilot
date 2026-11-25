@@ -15,7 +15,10 @@ Implemented: data collection, validation, provenance, SQLite storage,
 hourly scheduling, automated tests, coverage reporting, post-collection
 quality audits, stakeholder queries and reproducible assessed snapshots.
 
-Next: late model freeze under decision 0009, analysis (Q1 to Q5), dashboard/API and final report.
+Status (2026-11-24): CP2 collection and snapshot are complete. CP3
+implementation, evaluation safeguards and synthetic tests are in place.
+Assessed-snapshot model selection, the late-freeze tag and the single
+held-out test evaluation have not yet been run.
 
 ## Requirements
 
@@ -165,30 +168,21 @@ or analysed before the late model freeze.
 
 The versioned `snapshots/` directory contains:
 
-- `assessed_snapshot.db` — SQLite online-backup copy of the assessed database,
-  including raw response bodies.
-- `MANIFEST.json` — creation time, source database name, row counts,
-  raw-response hash-check result and SHA-256 hashes of the snapshot files.
+- `assessed_snapshot.db` — SQLite online-backup copy of the assessed database, including raw response bodies.
+- `MANIFEST.json` — creation time, source database name, row counts, raw-response hash-check result and SHA-256 hashes of the snapshot files.
 - `ATTRIBUTION.md` — attribution statement for the redistributed data.
-- `cities.csv`, `collector_versions.csv`, `collection_runs.csv`,
-  `observations.csv` and `quarantine.csv` — CSV exports of the corresponding
-  database tables.
+- `cities.csv`, `collector_versions.csv`, `collection_runs.csv`, `observations.csv` and `quarantine.csv` — CSV exports of the corresponding database tables.
 - `collection_log.txt` — copy of the assessed collection log.
 
-Raw response bodies are retained inside the SQLite database and are not
-exported into a separate CSV file. The snapshot creation process verifies
-all stored raw-response hashes before writing the snapshot.
+Raw response bodies are retained inside the SQLite database and are not exported into a separate CSV file. The snapshot creation process verifies all stored raw-response hashes before writing the snapshot.
 
-To create or refresh a snapshot from the original assessed database
-(maintainer operation; requires access to the collection machine's files):
+To create or refresh a snapshot from the original assessed database (maintainer operation; requires access to the collection machine's files):
 
 ```cmd
 python -m monitoring.snapshot --db C:\UzAir_collect\data\assessed.db --log C:\UzAir_collect\logs\assessed.log --out snapshots
 ```
 
-The snapshot is redistributed under CC BY 4.0. See
-[Data sources and attribution](#data-sources-and-attribution) and
-`snapshots/ATTRIBUTION.md` for attribution details.
+The snapshot is redistributed under CC BY 4.0. See [Data sources and attribution](#data-sources-and-attribution) and `snapshots/ATTRIBUTION.md` for attribution details.
 
 ### Assessed snapshot quality summary
 
@@ -204,9 +198,79 @@ Post-collection audit:
 - No shared grid cells between cities for either endpoint.
 - No city pair met the 50% identical-value similarity threshold.
 
-These are results for the versioned assessed snapshot, not guarantees
-about future collections. API latency measures the final HTTP attempt;
-it excludes earlier retries and backoff delays.
+These are results for the versioned assessed snapshot, not guarantees about future collections. API latency measures the final HTTP attempt; it excludes earlier retries and backoff delays.
+
+## CP3 analysis pipeline (decisions 0009–0012)
+
+All CP3 analysis commands use the versioned assessed snapshot by default. The analysis sequence is guarded to preserve the held-out test period.
+
+### 1. Pre-selection integrity check
+
+Run the dry-run checks before model selection:
+
+```cmd
+python -m analysis.integrity
+```
+
+This command checks repository and snapshot integrity and creates no files. Resolve any reported issue before continuing.
+
+### 2. Development-period model selection
+
+```cmd
+python -m analysis.selection
+```
+
+The command creates a numbered run directory under `results/selection/` (for example, `run-001`). Commit the completed selection output before running the freeze step.
+
+### 3. Final fit and freeze
+
+```cmd
+python -m analysis.freeze
+```
+
+The command uses the assessed snapshot and selection results by default. It writes freeze artefacts and a manifest under `results/freeze/`. Commit these outputs, then create the annotated `late-freeze-YYYYMMDD-HHMM` tag for the completed freeze.
+
+### 4. Between the freeze tag and the first test evaluation
+
+Before the first evaluation, commits after the freeze tag may change only `results/`, `docs/`, `README.md` and `.gitignore`. Do not commit code or configuration changes in this interval.
+
+### 5. Single held-out test evaluation
+
+```cmd
+python -m analysis.evaluate
+```
+
+The first evaluation creates `results/evaluation/FIRST_TEST_EVALUATION.json` before loading test rows. A failure after this marker is created still spends the first evaluation. Commit the evaluation output.
+
+Subsequent evaluation runs must use:
+
+```cmd
+python -m analysis.evaluate --post-test
+```
+
+Post-test outputs are labelled separately. The post-test guard prevents changes to frozen analysis code, configuration, selection and freeze artefacts.
+
+### 6. Inference and exploratory analysis
+
+Q1–Q4 inference is run after the single test evaluation:
+
+```cmd
+python -m analysis.inference
+```
+
+Pre-freeze EDA uses only rows received before the final-fit cutoff:
+
+```cmd
+python -m analysis.eda --mode pre_freeze
+```
+
+Full-window EDA, including the test period, is allowed only after the first test evaluation:
+
+```cmd
+python -m analysis.eda --mode full
+```
+
+Commit generated outputs under `results/` and retain the distinction between pre-freeze and post-evaluation analysis.
 
 ## Data sources and attribution
 

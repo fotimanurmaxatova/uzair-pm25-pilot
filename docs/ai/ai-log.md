@@ -126,3 +126,43 @@ My verification and contribution:
 I wrote and modified the project code myself. I shared relevant code and command outputs for review, considered the feedback, and made the repository changes. I ran the tests locally using the project's virtual environment. The selection tests returned 18 passed, and the full test suite returned 128 passed. I checked the changes and committed and pushed them as `11dec23`.
 
 No assessed-snapshot model selection or test-period evaluation had been run at this stage. ChatGPT provided discussion and review support; it did not write the implementation or independently execute the project commands.
+
+### 2026-11-24: CP3 evaluation guard, decisions and verification
+
+Tool: ChatGPT (OpenAI), chat interface.
+
+Purpose: Review and complete the CP3 evaluation safeguards and decision
+documentation before assessed-snapshot model selection.
+
+Assistance provided:
+- Reviewed the evaluation guard and post-test behaviour, including the
+  distinction between frozen paths and files that may change after the
+  first test evaluation.
+- Helped identify gaps in regression-test coverage and review the
+  implementation against Decisions 0011 and 0012.
+- Helped check the CLI interfaces and prepare accurate CP3 pipeline
+  documentation.
+
+My verification and contribution:
+
+I reviewed the suggestions, made the repository changes myself, and ran the commands locally. The full test suite returned 284 passed with 2 warnings. I checked the Git diff and decision documentation and verified the CLI help outputs. ChatGPT provided review, explanations and command guidance; it did not independently modify the repository or execute project commands.
+
+Tool: Claude (Anthropic), AI assistant.
+
+Assistance provided:
+- Conducted repository reviews of the CP3 decisions, protocol,
+  provenance, freeze and evaluation implementation.
+- Ran tests and a synthetic rehearsal of evaluation and inference using
+  9,999 replications.
+- Proposed the post-test guard rule, related regression-test changes
+  and wording for Decisions 0011 and 0012.
+
+My verification and contribution:
+
+I reviewed and adapted the suggestions to the repository and project
+requirements, made the final documentation and code changes, and
+verified the results locally. The synthetic rehearsal used synthetic
+fixtures only; it was not an assessed-snapshot evaluation.
+
+No assessed-snapshot model selection, freeze or test-period evaluation
+had been run by the end of this work.
