@@ -1,0 +1,733 @@
+{
+  "notes": [
+    "descriptive associations, not predictions or causal effects",
+    "p-values, intervals and Holm values are exploratory and conditional on their assumptions",
+    "few clusters (7; 5 for Q4): inference is unreliable; Q4 weights repeat (6^5 = 7,776 < 9,999)"
+  ],
+  "primary_native": {
+    "Q1": {
+      "ci95_bootstrap_t": [
+        -0.1062375355144366,
+        1.7197650262740916
+      ],
+      "cities": 8,
+      "clusters": 7,
+      "complete_cases": 424,
+      "distinct_weight_combinations": 279936,
+      "dropped_incomplete": 0,
+      "estimate": 0.8067637453798274,
+      "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+      "n": 424,
+      "p_holm": 0.0424042404240424,
+      "p_wcr": 0.0212021202120212,
+      "replications": 9999,
+      "rows_in_sample": 424,
+      "se_cr1": 0.47704452181975676,
+      "seed": 20261123,
+      "t": 1.6911707576104384,
+      "valid_replications_restricted": 9999,
+      "weights_repeat": false
+    },
+    "Q2": {
+      "ci95_bootstrap_t": [
+        0.8593781013899645,
+        2.6232083108946105
+      ],
+      "cities": 8,
+      "clusters": 7,
+      "complete_cases": 424,
+      "distinct_weight_combinations": 279936,
+      "dropped_incomplete": 0,
+      "estimate": 1.7412932061422874,
+      "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+      "n": 424,
+      "p_holm": 0.0144014401440144,
+      "p_wcr": 0.0036003600360036,
+      "replications": 9999,
+      "rows_in_sample": 424,
+      "se_cr1": 0.3186817760117064,
+      "seed": 20261123,
+      "t": 5.464050150386771,
+      "valid_replications_restricted": 9999,
+      "weights_repeat": false
+    },
+    "Q3": {
+      "ci95_bootstrap_t": [
+        0.15621945942808135,
+        1.8147523581026008
+      ],
+      "cities": 8,
+      "clusters": 7,
+      "complete_cases": 424,
+      "distinct_weight_combinations": 279936,
+      "dropped_incomplete": 0,
+      "estimate": 0.985485908765341,
+      "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+      "n": 424,
+      "p_holm": 0.021902190219021903,
+      "p_wcr": 0.007300730073007301,
+      "replications": 9999,
+      "rows_in_sample": 424,
+      "se_cr1": 0.43554359646307117,
+      "seed": 20261123,
+      "t": 2.262657324704574,
+      "valid_replications_restricted": 9999,
+      "weights_repeat": false
+    },
+    "Q4": {
+      "ci95_bootstrap_t": [
+        -14.825515733304663,
+        -4.77974742459006
+      ],
+      "cities": 8,
+      "clusters": 5,
+      "complete_cases": 312,
+      "distinct_weight_combinations": 7776,
+      "dropped_incomplete": 0,
+      "estimate": -9.802631578947361,
+      "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+      "n": 312,
+      "p_holm": 0.0424042404240424,
+      "p_wcr": 0.0221022102210221,
+      "replications": 9999,
+      "rows_in_sample": 312,
+      "se_cr1": 2.3218604400070655,
+      "seed": 20261123,
+      "t": -4.22188664315997,
+      "valid_replications_restricted": 9999,
+      "weights_repeat": true
+    }
+  },
+  "rule_a": {
+    "conclusion": "no support",
+    "q3_wind_estimate": 0.985485908765341,
+    "sensitivity_estimates": [
+      0.9379981603153806,
+      0.5925403844860859,
+      1.1114600428089807,
+      1.2151938136935034,
+      1.0221281165178144,
+      1.149272187520074,
+      1.1129842347861043,
+      1.1814437689273347,
+      1.0641838249591546
+    ],
+    "threshold": -2.0
+  },
+  "sensitivity": {
+    "all_eligible_hourly_rows": {
+      "Q1": {
+        "ci95_bootstrap_t": [
+          -0.005331795023071351,
+          1.579498925309137
+        ],
+        "cities": 8,
+        "clusters": 7,
+        "complete_cases": 1311,
+        "distinct_weight_combinations": 279936,
+        "dropped_incomplete": 0,
+        "estimate": 0.7870835651430328,
+        "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+        "n": 1311,
+        "p_wcr": 0.022002200220022004,
+        "replications": 9999,
+        "rows_in_sample": 1311,
+        "se_cr1": 0.41896253152378965,
+        "seed": 20261123,
+        "t": 1.878649057901113,
+        "valid_replications_restricted": 9999,
+        "weights_repeat": false
+      },
+      "Q2": {
+        "ci95_bootstrap_t": [
+          0.854742240466764,
+          2.711477181549064
+        ],
+        "cities": 8,
+        "clusters": 7,
+        "complete_cases": 1311,
+        "distinct_weight_combinations": 279936,
+        "dropped_incomplete": 0,
+        "estimate": 1.783109711007914,
+        "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+        "n": 1311,
+        "p_wcr": 0.004100410041004101,
+        "replications": 9999,
+        "rows_in_sample": 1311,
+        "se_cr1": 0.331020719965427,
+        "seed": 20261123,
+        "t": 5.386701204668241,
+        "valid_replications_restricted": 9999,
+        "weights_repeat": false
+      },
+      "Q3": {
+        "ci95_bootstrap_t": [
+          0.4390422096909794,
+          1.6893254402273299
+        ],
+        "cities": 8,
+        "clusters": 7,
+        "complete_cases": 1311,
+        "distinct_weight_combinations": 279936,
+        "dropped_incomplete": 0,
+        "estimate": 1.0641838249591546,
+        "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+        "n": 1311,
+        "p_wcr": 0.005900590059005901,
+        "replications": 9999,
+        "rows_in_sample": 1311,
+        "se_cr1": 0.3333530703589663,
+        "seed": 20261123,
+        "t": 3.19236245165885,
+        "valid_replications_restricted": 9999,
+        "weights_repeat": false
+      }
+    },
+    "leave_one_day_out": {
+      "2026-11-02": {
+        "Q1": {
+          "ci95_bootstrap_t": [
+            -0.4427409326395899,
+            2.164646661754129
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 368,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 0.8609528645572695,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 368,
+          "p_wcr": 0.08970897089708971,
+          "replications": 9999,
+          "rows_in_sample": 368,
+          "se_cr1": 0.5397450817772114,
+          "seed": 20261123,
+          "t": 1.5951101614903493,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q2": {
+          "ci95_bootstrap_t": [
+            0.42423573109722446,
+            2.9636391240408044
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 368,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.6939374275690144,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 368,
+          "p_wcr": 0.0093009300930093,
+          "replications": 9999,
+          "rows_in_sample": 368,
+          "se_cr1": 0.36611732428706223,
+          "seed": 20261123,
+          "t": 4.626761191559583,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q3": {
+          "ci95_bootstrap_t": [
+            0.06317048923099189,
+            1.8128258313997694
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 368,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 0.9379981603153806,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 368,
+          "p_wcr": 0.039703970397039705,
+          "replications": 9999,
+          "rows_in_sample": 368,
+          "se_cr1": 0.48987072314161456,
+          "seed": 20261123,
+          "t": 1.9147871387370479,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        }
+      },
+      "2026-11-03": {
+        "Q1": {
+          "ci95_bootstrap_t": [
+            -0.015620154210049253,
+            0.7821570696841177
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 0.3832684577370342,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.0481048104810481,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.18885925054592437,
+          "seed": 20261123,
+          "t": 2.029386734455117,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q2": {
+          "ci95_bootstrap_t": [
+            0.5120592316560242,
+            2.84854094116816
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.6803000864120923,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.0098009800980098,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.3695640693713101,
+          "seed": 20261123,
+          "t": 4.5467084753952465,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q3": {
+          "ci95_bootstrap_t": [
+            0.3975240401808929,
+            0.787556728791279
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 0.5925403844860859,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.011001100110011002,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.1658610728190017,
+          "seed": 20261123,
+          "t": 3.5725102606366486,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        }
+      },
+      "2026-11-04": {
+        "Q1": {
+          "ci95_bootstrap_t": [
+            -0.4776921813558481,
+            2.2149707448985225
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 0.8686392817713373,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.14361436143614362,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.5861944381383755,
+          "seed": 20261123,
+          "t": 1.4818279145226019,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q2": {
+          "ci95_bootstrap_t": [
+            1.1825501392652176,
+            2.662742276003533
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.9226462076343753,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.0067006700670067,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.279796307852415,
+          "seed": 20261123,
+          "t": 6.871592489521053,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q3": {
+          "ci95_bootstrap_t": [
+            0.20430441854145664,
+            2.0186156670765047
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.1114600428089807,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.028102810281028102,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.47020949112471766,
+          "seed": 20261123,
+          "t": 2.363755015132561,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        }
+      },
+      "2026-11-05": {
+        "Q1": {
+          "ci95_bootstrap_t": [
+            -0.23919173995400045,
+            1.8860226448840918
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 0.8234154524650457,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.023602360236023603,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.559165346293192,
+          "seed": 20261123,
+          "t": 1.47257954721911,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q2": {
+          "ci95_bootstrap_t": [
+            0.406683625341433,
+            2.668835508656324
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.5377595669988784,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.006400640064006401,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.33815902134494186,
+          "seed": 20261123,
+          "t": 4.547445047844145,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q3": {
+          "ci95_bootstrap_t": [
+            -0.04945730882419408,
+            2.479844936211201
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.2151938136935034,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.028302830283028303,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.5567399579529982,
+          "seed": 20261123,
+          "t": 2.1826955229897367,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        }
+      },
+      "2026-11-06": {
+        "Q1": {
+          "ci95_bootstrap_t": [
+            -0.29182891065065797,
+            2.1075858340495603
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 0.9078784616994513,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.050805080508050805,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.5923741070842473,
+          "seed": 20261123,
+          "t": 1.5326099686702428,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q2": {
+          "ci95_bootstrap_t": [
+            0.7322632129980413,
+            2.8779276954614934
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.8050954542297672,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.0053005300530053,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.39151512337300737,
+          "seed": 20261123,
+          "t": 4.610538256296175,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q3": {
+          "ci95_bootstrap_t": [
+            0.030838083642747094,
+            2.0134181493928818
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.0221281165178144,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.013201320132013201,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.5172739324508012,
+          "seed": 20261123,
+          "t": 1.9759899975532418,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        }
+      },
+      "2026-11-07": {
+        "Q1": {
+          "ci95_bootstrap_t": [
+            -0.22358131988971186,
+            1.8155246058439833
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 0.7959716429771357,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.027602760276027604,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.5519234008911944,
+          "seed": 20261123,
+          "t": 1.4421777400484832,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q2": {
+          "ci95_bootstrap_t": [
+            1.2780570600719288,
+            2.6574206563112583
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.9677388581915936,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.0063006300630063005,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.2766127761447414,
+          "seed": 20261123,
+          "t": 7.1136947671641435,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q3": {
+          "ci95_bootstrap_t": [
+            -0.08524828103571713,
+            2.3837926560758653
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 360,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.149272187520074,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 360,
+          "p_wcr": 0.054205420542054204,
+          "replications": 9999,
+          "rows_in_sample": 360,
+          "se_cr1": 0.5534491025389598,
+          "seed": 20261123,
+          "t": 2.0765634676210745,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        }
+      },
+      "2026-11-08": {
+        "Q1": {
+          "ci95_bootstrap_t": [
+            0.007768258031568331,
+            2.2197844126225563
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 376,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.1137763353270622,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 376,
+          "p_wcr": 0.030803080308030802,
+          "replications": 9999,
+          "rows_in_sample": 376,
+          "se_cr1": 0.5665502372817194,
+          "seed": 20261123,
+          "t": 1.965891569776596,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q2": {
+          "ci95_bootstrap_t": [
+            0.587460909761369,
+            2.6662618526511994
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 376,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.6268613812062842,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 376,
+          "p_wcr": 0.0063006300630063005,
+          "replications": 9999,
+          "rows_in_sample": 376,
+          "se_cr1": 0.3321368967195665,
+          "seed": 20261123,
+          "t": 4.898165176089707,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        },
+        "Q3": {
+          "ci95_bootstrap_t": [
+            0.18834373661020043,
+            2.037624732962008
+          ],
+          "cities": 8,
+          "clusters": 6,
+          "complete_cases": 376,
+          "distinct_weight_combinations": 46656,
+          "dropped_incomplete": 0,
+          "estimate": 1.1129842347861043,
+          "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+          "n": 376,
+          "p_wcr": 0.013201320132013201,
+          "replications": 9999,
+          "rows_in_sample": 376,
+          "se_cr1": 0.4900187150433792,
+          "seed": 20261123,
+          "t": 2.2713096471990397,
+          "valid_replications_restricted": 9999,
+          "weights_repeat": false
+        }
+      }
+    },
+    "weekday_only": {
+      "Q1": {
+        "ci95_bootstrap_t": [
+          -0.408312293113402,
+          2.763093451622892
+        ],
+        "cities": 8,
+        "clusters": 5,
+        "complete_cases": 312,
+        "distinct_weight_combinations": 7776,
+        "dropped_incomplete": 0,
+        "estimate": 1.177390579254745,
+        "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+        "n": 312,
+        "p_wcr": 0.061906190619061906,
+        "replications": 9999,
+        "rows_in_sample": 312,
+        "se_cr1": 0.7272305428654228,
+        "seed": 20261123,
+        "t": 1.6190059545843722,
+        "valid_replications_restricted": 9999,
+        "weights_repeat": true
+      },
+      "Q2": {
+        "ci95_bootstrap_t": [
+          0.8278971115589346,
+          2.92063189377543
+        ],
+        "cities": 8,
+        "clusters": 5,
+        "complete_cases": 312,
+        "distinct_weight_combinations": 7776,
+        "dropped_incomplete": 0,
+        "estimate": 1.8742645026671823,
+        "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+        "n": 312,
+        "p_wcr": 0.016101610161016102,
+        "replications": 9999,
+        "rows_in_sample": 312,
+        "se_cr1": 0.31020446591111217,
+        "seed": 20261123,
+        "t": 6.042029398778047,
+        "valid_replications_restricted": 9999,
+        "weights_repeat": true
+      },
+      "Q3": {
+        "ci95_bootstrap_t": [
+          -0.9418246715335801,
+          3.3047122093882493
+        ],
+        "cities": 8,
+        "clusters": 5,
+        "complete_cases": 312,
+        "distinct_weight_combinations": 7776,
+        "dropped_incomplete": 0,
+        "estimate": 1.1814437689273347,
+        "interval_note": "symmetric bootstrap-t interval from the unrestricted wild cluster bootstrap",
+        "n": 312,
+        "p_wcr": 0.038003800380038005,
+        "replications": 9999,
+        "rows_in_sample": 312,
+        "se_cr1": 0.6577727421820586,
+        "seed": 20261123,
+        "t": 1.7961275880908032,
+        "valid_replications_restricted": 9999,
+        "weights_repeat": true
+      }
+    }
+  }
+}

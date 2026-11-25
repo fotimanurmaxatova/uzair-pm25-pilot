@@ -1,0 +1,13 @@
+{
+  "files_sha256": {
+    "01_pm25_time_series.png": "8a2f450c7027b3741ccee2107048d52fe00e7aae120623b211d07a316e01c99d",
+    "02_pm25_by_city.png": "f277545cd925afe61413700781347d877b343890c24a77a9d316311487aa1d52",
+    "03_diurnal_profile.png": "ad2ccd51596feefc478f37b4a5d5fea9b9d82c101df7818ac0ff3a0c899667ad",
+    "04_pm25_vs_wind.png": "67b348af080d0490f04ea4c566dda1a84c6718dcd018fd71782e39660aacd7a0",
+    "05_pm25_vs_humidity.png": "6d2660418cc873abbb63515d640646ac63113127d91960a3cb13899cadd0e797",
+    "06_coverage_by_city_day.png": "adb715a9ec11980cf97c0b0f192755287f0985d266c281f0b8881b40f9f2555c"
+  },
+  "label": "full window, after test evaluation",
+  "mode": "full",
+  "rows_used": 1311
+}
