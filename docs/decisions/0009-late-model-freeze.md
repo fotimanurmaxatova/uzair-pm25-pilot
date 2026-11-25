@@ -63,7 +63,7 @@ Entries are added by later commits when each event happens. They are not back-da
 | Selection script committed | 2026-11-22 19:44:21 | 11dec23 |
 | Selection run (started) | 2026-11-25 08:46:46 | dbac3ff |
 | Frozen configurations committed and tagged (`late freeze`) | 2026-11-25 09:54:42 | 817614f (`late-freeze-20261125-0954`) |
-| Single test evaluation run | | |
+| Single test evaluation run | 2026-11-25 11:25:42 | 7297549 |
 
 ## Consequences
 
