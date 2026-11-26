@@ -1,0 +1,89 @@
+CP3 clean-checkout verification
+Date: 2026-11-26
+Platform: Windows
+Repository: uzair-pm25-cp3-clean-checkout
+Checkout: annotated tag cp3-submission
+Tag object: 677d5aa73ef3426836c754b8c108b9cd9d2eb6ea
+Peeled commit / HEAD: 49d555beb284f4e2bbc67791b23d26c5efb1e393
+
+Environment:
+  Python: 3.12.6
+  Project requirement: >=3.10
+  numpy: 2.5.5
+  pandas: 3.1.1
+  scikit-learn: 1.9.1
+  matplotlib: 3.11.2
+  pytest: 8.3.3
+
+Verification results:
+
+1. Dependency installation
+   Command: python -m venv .venv
+   Command: .venv\Scripts\python.exe -m pip install -r requirements.txt
+   Result: Successfully installed all project dependencies.
+
+2. Automated tests
+   Command: .venv\Scripts\python.exe -m pytest -q
+   Result: 286 passed in 104.89s.
+
+3. Snapshot verification
+   Command: .venv\Scripts\python.exe -m uzair.cli --db snapshots\assessed_snapshot.db verify
+   Result: checked 2638 raw responses, 0 hash mismatches.
+
+4. Integrity dry-run
+   Initial default output path was refused because results/selection/run-001 already existed.
+   No rerun was requested and no existing selection output was changed.
+   Command:
+   .venv\Scripts\python.exe -m analysis.integrity --out results\selection-clean-checkout-verification
+   Result:
+   snapshot sha256 OK: 9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2
+   environment OK: numpy 2.5.5, scikit-learn 1.9.1
+   git: HEAD 49d555beb2 branch HEAD tree clean; remote check: passed
+   files recorded: 23; next run directory would be run-001
+   The dry-run created no run directory.
+
+5. Full-window EDA
+   Command: .venv\Scripts\python.exe -m analysis.eda --mode full
+   Result: 6 charts written; full window, after test evaluation; 1311 rows.
+
+6. Post-test evaluation
+   Command: .venv\Scripts\python.exe -m analysis.evaluate --post-test
+   Result:
+   POST-TEST WORK (not the single test evaluation)
+   Output: results\post_test\20261126T082430Z
+   Primary native pairs:
+     maximum_pairs: 112
+     collected_rows_in_window: 104
+     no_usable_pair: 16
+     feature_row_received_after_prediction_time: 0
+     eligible_pairs: 88
+   full:        RMSE 8.1223, MAE 6.2230, skill 0.0842
+   noweather:   RMSE 7.3725, MAE 5.4661, skill 0.1687
+   persistence: RMSE 8.8687, MAE 6.4977, skill 0.0000
+   Rule B:
+     full_skill_vs_persistence_test: 0.08416528872156137
+     full_at_least_10pct_below_persistence_test: false
+     folds_full_beats_persistence: 3
+     promising: false
+     full_beats_noweather_test: false
+     folds_full_beats_noweather: 2
+     weather_adds_information: false
+
+   The first held-out test evaluation was not rerun.
+   Existing and newly generated post-test artefacts were preserved outside
+   the clean checkout after verification.
+
+7. Final repository state
+   Command: git status --short
+   Result: clean (no output).
+
+Notes:
+- The checkout was detached at the cp3-submission tag, as expected.
+- No frozen submission files or existing selection run were modified.
+- The initial integrity guard refusal was due to the existing run-001.
+  A separate output path allowed the read-only dry-run to complete.
+- The post-test evaluation required a clean working tree. Existing
+  untracked post-test artefacts were preserved outside the checkout;
+  evaluation then completed successfully.
+- The evaluation is labelled post-test work and is not the single
+  held-out test evaluation.

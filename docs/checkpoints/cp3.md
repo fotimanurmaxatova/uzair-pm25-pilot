@@ -144,7 +144,34 @@ The independent clean-checkout verification was performed from the `cp3-submissi
 | EDA workflow | EDA completes and produces chart outputs | Six charts were reported in the clean-checkout run; the specific EDA mode was not recorded |
 | Post-test evaluation | Recorded held-out metrics and Rule B outcome are reproduced without rerunning the first evaluation | Metrics and Rule B outcome reproduced; outputs written to `/tmp` |
 
-These were post-tag verification checks. They did not modify the frozen submission tag or rerun the first held-out test evaluation. The detailed clean-checkout terminal output was not retained in the repository, so this table records the reported verification results rather than an attached reproducibility log.
+These were post-tag verification checks. They did not modify the frozen submission tag or rerun the first held-out test evaluation. The detailed terminal output for this Linux verification was not retained.
+
+### Additional clean-checkout verification (Windows, 26 November 2026)
+
+A separate verification was performed from the annotated `cp3-submission` tag in a fresh Windows clone using Python 3.12.6 (the project requires Python >=3.10).
+
+The full terminal record is retained in `docs/checkpoints/cp3-clean-checkout-2026-11-26.txt`.
+
+| Verification | Actual result |
+|---|---|
+| Dependency installation | All project dependencies installed successfully |
+| Full automated test suite | 286 passed in 104.89 seconds |
+| Snapshot verification | 2,638 raw responses checked; 0 hash mismatches |
+| Integrity dry-run | Successful using a separate output path; the existing `results/selection/run-001` correctly prevented an unintended duplicate run |
+| Full-window EDA | Six charts generated from 1,311 rows |
+| Post-test evaluation | Completed with 88 eligible primary native pairs |
+| Final Git state | Clean working tree |
+
+The post-test evaluation reported:
+
+- Full model: RMSE 8.1223, MAE 6.2230, skill 0.0842.
+- No-weather model: RMSE 7.3725, MAE 5.4661, skill 0.1687.
+- Persistence: RMSE 8.8687, MAE 6.4977, skill 0.0000.
+- Rule B: `promising: false`; `weather_adds_information: false`.
+
+The original single held-out test evaluation was not rerun. The post-test evaluation was explicitly labelled as post-test work and its generated artefacts were preserved outside the clean checkout after verification. The existing selection output and frozen submission files were not modified.
+
+The Windows verification used a detached checkout at the annotated `cp3-submission` tag, as expected. The integrity dry-run used a separate output path because the existing `run-001` directory was already present; no new selection run was created.
 
 The first held-out evaluation marker records the original evaluation time as 25 November 2026 at 11:25:42 Tashkent time. The evaluation manifest records the freeze tag and assessed snapshot hash. The original evaluation was not rerun during the subsequent post-test analysis.
 
