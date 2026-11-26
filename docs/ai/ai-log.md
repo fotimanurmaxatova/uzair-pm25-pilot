@@ -172,3 +172,46 @@ had been run by the end of this work.
 Tool: ChatGPT (OpenAI), chat interface.
 
 ChatGPT was used for limited review and guidance on a few minor documentation and consistency issues. All project code, tests, selection, freeze operations, Git actions and substantive project documentation were prepared and carried out by me.
+
+### 2026-11-22 to 2026-11-24: CP3 repository review support
+
+Tool: Claude (Anthropic), chat interface and Claude Code.
+
+Purpose: Obtain additional review feedback on the CP3 decisions, protocol and analysis implementation before the assessed selection run.
+
+Assistance provided:
+- Reviewed parts of the CP3 protocol, analysis code, freeze provenance and evaluation safeguards.
+- Pointed out potential issues involving prediction and target timestamps, non-estimable Q1–Q4 inference, paired block bootstrap input validation, and freeze and evaluation provenance.
+- Provided suggestions for regression tests and documentation improvements.
+
+My verification and contribution:
+
+I checked the reported issues against the actual code and project requirements. I implemented the changes myself, added or updated the relevant tests, and reviewed the resulting diffs. The related implementation commits were:
+
+- `22662ae` — prediction timestamps
+- `54472b5` — non-estimable Q1–Q4 results and Holm p-value checks
+- `5705812` — bootstrap input validation
+- `a68676f` — freeze and provenance safeguards
+
+I ran the tests and checked the changes locally. Claude provided review feedback and explanations; I made the final implementation decisions and repository changes. Its suggestions were not treated as verified evidence without my own checks.
+
+### 2026-11-26: CP3 closing review
+
+Tool: Claude (Anthropic), chat interface and Claude Code.
+
+Purpose: Review whether the CP3 checkpoint documentation and evidence were ready to close against the assignment brief and the Module Leader's written instructions.
+
+Assistance provided:
+- Reviewed the CP3 checkpoint report, README and evidence-register wording.
+- Helped identify documentation gaps concerning the value statement, sample sufficiency, test-pair coverage and clean-checkout evidence.
+- Suggested wording to clarify the distinction between the frozen submission tag and later documentation or post-test work.
+
+My verification and contribution:
+
+I checked the relevant repository files, Git history, tags and recorded analysis outputs myself. I decided which suggested changes were appropriate, edited the documentation and ran the verification commands.
+
+I also performed the independent clean-checkout verification from the `cp3-submission` tag in a fresh Linux clone using Python 3.13.18. The full test suite returned 286 passed in 41 seconds. Snapshot verification processed 2,638 raw responses with 0 hash mismatches. The duplicate-run guard correctly refused a second selection run, Q1–Q4 results matched within 1e-12, and the post-test evaluation reproduced the recorded metrics and Rule B outcome. The original held-out evaluation was not rerun.
+
+I updated the README, CP3 checkpoint report, demo-output note and evidence register. These documentation changes were committed as `66cec4d` (`docs: finalise CP3 checkpoint evidence`). The `cp3-submission` and `late-freeze-20261125-0954` tags were left unchanged.
+
+Claude provided review suggestions and wording assistance. I independently checked the evidence, made the final decisions and carried out the repository changes and verification.
