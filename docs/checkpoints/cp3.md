@@ -44,23 +44,15 @@ All three models were scored on the same 88 eligible native three-hourly test pa
 | Full (Ridge, α = 10) | 8.12 | 6.22 | 0.13 | +8.4% |
 | No-weather (HGB, depth = 3, learning rate = 0.05) | 7.37 | 5.47 | 0.28 | +16.9% |
 
-The 88 eligible native test pairs were distributed evenly across all eight cities. Coverage by local date and city was:
+Of the 112 possible native test origins (14 per city), 104 were collected and 88 had an eligible usable t+6 h pair. The exclusion pattern was identical across all eight cities, verified against the assessed snapshot:
 
-| City | 7 Nov 2026 | 8 Nov 2026 | Total |
-|---|---:|---:|---:|
-| Andijan | 8 | 3 | 11 |
-| Bukhara | 8 | 3 | 11 |
-| Fergana | 8 | 3 | 11 |
-| Namangan | 8 | 3 | 11 |
-| Nukus | 8 | 3 | 11 |
-| Samarkand | 8 | 3 | 11 |
-| Tashkent | 8 | 3 | 11 |
-| Urgench | 8 | 3 | 11 |
-| **Total** | **64** | **24** | **88** |
+| Local date | Possible origins | Collected origins | No collected t+6 h target | Origin not collected |
+|---|---:|---:|---:|---:|
+| 7 Nov 2026 | 64 | 64 | 0 | 0 |
+| 8 Nov 2026 | 48 | 40 | 16 | 8 |
+| **Total** | **112** | **104** | **16** | **8** |
 
-The 16 collected origins without an eligible usable target pair are included in the overall exclusion count above; their city-by-date distribution is not established by this prediction-level summary and is therefore not inferred here.
-
-There were 104 collected native origins in the test window, against a protocol maximum of 112. Of these, 88 had eligible usable target pairs and 16 did not have a usable pair. No usable feature row was received at or after its prediction time.
+On 8 November, the 11:00 and 14:00 local origins were collected in every city, but their t+6 h targets were not collected (16 pairs in total). The 17:00 local origin was not collected in any city (8 origins). All 24 exclusions therefore occurred on 8 November; none occurred on 7 November. This pattern is consistent with the shared end-of-window collection gaps recorded in `docs/incidents/2026-11-08-missed-polls.md`. The incident report records two missed scheduled polls at 17:05 and 18:05 local time, but states that their root cause is unknown; no specific cause, such as laptop sleep, is inferred here. No usable feature row was received at or after its prediction time.
 
 The hourly sensitivity analysis is reported separately: 302 of 336 possible hourly pairs were usable.
 
