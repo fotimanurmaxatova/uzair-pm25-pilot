@@ -1,0 +1,10 @@
+{
+  "head": "c6c861418b607e3a0636579bcb7e1982aabe76c7",
+  "label": "post-test inference",
+  "outputs_sha256": {
+    "inference.json": "4ff87d040ff034febf900f0d25736072f4e2d1f763b74626e43e95d514e60718"
+  },
+  "snapshot_sha256": "9ff58bb40ffc09ed2a7ff929d7a2f6ecce85b12b9c5bcdf55ef427ae1693d6c2",
+  "tag": "cp3-submission",
+  "tag_commit": "677d5aa73ef3426836c754b8c108b9cd9d2eb6ea"
+}
