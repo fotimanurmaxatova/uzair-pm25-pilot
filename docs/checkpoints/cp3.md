@@ -8,14 +8,14 @@
 
 ## Value statement
 
-This component enables the university student support and campus safety office to assess whether weather variables provide enough evidence to justify a longer air-quality study. It does so through a guarded and reproducible analysis workflow covering model selection, final fitting and freeze, one retrospective held-out evaluation, and Q1–Q4 statistical inference.
+This component enables the university student support and campus safety office to decide whether a longer prospective study of weather-based PM2.5 monitoring is justified. It uses a guarded and reproducible workflow covering receipt-time model selection, final fitting and freeze, one retrospective held-out evaluation, Q1–Q4 statistical inference, and exploratory screening under predefined Rules A and B.
 
-The predefined screening rules produced two explicit outcomes:
+The workflow produces an auditable evidence base and two explicit screening outcomes:
 
-- **Rule A — no support:** the primary Q3 wind estimate was positive (approximately +0.99 µg/m³ per m/s), and all nine sensitivity estimates were also positive. The result did not meet the predefined negative wind-effect threshold of −2 µg/m³ per m/s.
-- **Rule B — not promising:** the full model achieved approximately 8.4% skill against persistence, below the predefined 10% threshold. It also failed to outperform the matched no-weather model on the held-out test set.
+- **Rule A — no support:** the primary Q3 wind estimate was positive (+0.99 µg/m³ per m/s), rather than meeting the predefined negative-effect threshold of −2 µg/m³ per m/s. All nine sensitivity estimates were also positive.
+- **Rule B — not promising:** the full model achieved 8.4% skill against persistence, below the predefined 10% threshold, and did not outperform the no-weather model on the held-out test set.
 
-These are exploratory pilot screening results. They do not establish causal effects, public-health or safety conclusions, or general forecasting performance.
+The specific benefit is a documented, reproducible screening decision about whether a longer study is justified, rather than an unsupported operational, causal, public-health or safety claim. These are exploratory pilot results and do not establish general forecasting performance.
 
 ## What this checkpoint covers (brief: statistical analysis and decision support)
 
@@ -44,9 +44,33 @@ All three models were scored on the same 88 eligible native three-hourly test pa
 | Full (Ridge, α = 10) | 8.12 | 6.22 | 0.13 | +8.4% |
 | No-weather (HGB, depth = 3, learning rate = 0.05) | 7.37 | 5.47 | 0.28 | +16.9% |
 
+The 88 eligible native test pairs were distributed evenly across all eight cities. Coverage by local date and city was:
+
+| City | 7 Nov 2026 | 8 Nov 2026 | Total |
+|---|---:|---:|---:|
+| Andijan | 8 | 3 | 11 |
+| Bukhara | 8 | 3 | 11 |
+| Fergana | 8 | 3 | 11 |
+| Namangan | 8 | 3 | 11 |
+| Nukus | 8 | 3 | 11 |
+| Samarkand | 8 | 3 | 11 |
+| Tashkent | 8 | 3 | 11 |
+| Urgench | 8 | 3 | 11 |
+| **Total** | **64** | **24** | **88** |
+
+The 16 collected origins without an eligible usable target pair are included in the overall exclusion count above; their city-by-date distribution is not established by this prediction-level summary and is therefore not inferred here.
+
 There were 104 collected native origins in the test window, against a protocol maximum of 112. Of these, 88 had eligible usable target pairs and 16 did not have a usable pair. No usable feature row was received at or after its prediction time.
 
 The hourly sensitivity analysis is reported separately: 302 of 336 possible hourly pairs were usable.
+
+## Sample sufficiency
+
+The approved collection target of at least 1,000 valid scheduled rows out of 1,344 was met: 1,311 valid rows (97.5%). This is a collection target, not a statistical power claim.
+
+The analytical samples are smaller and temporally clustered. Q1–Q3 use 424 native three-hourly rows across 7 day-clusters; Q4 uses 312 weekday rows across 5 clusters; and the held-out evaluation uses 88 eligible native pairs out of a possible 112, covering two weekend days.
+
+The sample is considered sufficient only for the approved exploratory screening purpose. It does not support claims of precise effects, general forecasting performance or independence between observations.
 
 ### Rule B — predictive screening
 
@@ -83,7 +107,7 @@ The estimates describe associations in the pilot data. They do not establish cau
 
 - **Purpose:** verify that the analysis is reproducible, respects the frozen protocol and temporal safeguards, and preserves the single-use held-out evaluation.
 - **Inputs:** `snapshots/assessed_snapshot.db`, committed `results/` artefacts, and synthetic fixtures in `tests/`.
-- **Environment:** Python 3.12.3 with the repository's pinned dependencies.
+- **Reference environment:** Python 3.12.3 with the repository's pinned dependencies. The separately recorded Linux clean-checkout verification used Python 3.13.18; these are distinct verification environments.
 
 ### Clean-checkout commands
 
@@ -116,7 +140,19 @@ python3 -m venv .venv
 
 ### Recorded verification
 
-The recorded full-suite result was **286 passed** using the pinned environment. This is the recorded verification evidence; it should not be represented as a new clean-checkout run unless a separate clean-checkout run is performed and its output retained.
+The independent clean-checkout verification was performed from the `cp3-submission` tag in a fresh Linux clone using Python 3.13.18 and a fresh virtual environment.
+
+| Verification | Expected result | Actual result |
+|---|---|---|
+| Dependency installation | Pinned requirements install successfully | Completed |
+| Full automated test suite | All tests pass | 286 passed in 41 seconds |
+| Snapshot verification (`uzair.cli verify`) | All raw responses verified; no hash mismatches | 2,638 raw responses processed; 0 hash mismatches |
+| Duplicate-run integrity guard | Existing selection run prevents an unintended second run | Correctly refused a second run because `run-001` already existed |
+| Q1–Q4 inference | Results reproduce the recorded estimates and Holm-adjusted results | Matched within 1e-12 |
+| EDA workflow | EDA completes and produces chart outputs | Six charts were reported in the clean-checkout run; the specific EDA mode was not recorded |
+| Post-test evaluation | Recorded held-out metrics and Rule B outcome are reproduced without rerunning the first evaluation | Metrics and Rule B outcome reproduced; outputs written to `/tmp` |
+
+These were post-tag verification checks. They did not modify the frozen submission tag or rerun the first held-out test evaluation. The detailed clean-checkout terminal output was not retained in the repository, so this table records the reported verification results rather than an attached reproducibility log.
 
 The first held-out evaluation marker records the original evaluation time as 25 November 2026 at 11:25:42 Tashkent time. The evaluation manifest records the freeze tag and assessed snapshot hash. The original evaluation was not rerun during the subsequent post-test analysis.
 

@@ -13,7 +13,7 @@ estimate, not a measured concentration or a health-safety judgement.
 
 Implemented: data collection, validation, provenance, SQLite storage, monitoring, stakeholder queries, assessed-snapshot verification, and the CP3 statistical analysis pipeline.
 
-Status (2026-11-25): CP1 and CP2 are complete. CP3 model selection, final fit and freeze, the single retrospective held-out evaluation, post-test inference, and full-window EDA are complete. The freeze is recorded by `late-freeze-20261125-0954`. The CP3 submission report and evidence register are being finalised. The held-out evaluation must not be rerun.
+Status (2026-11-26): CP1, CP2, and the CP3 analytical workflow are complete. CP3 model selection, final fit and freeze, the single retrospective held-out evaluation, post-test inference, and full-window EDA are complete. The freeze is recorded by `late-freeze-20261125-0954`. The CP3 checkpoint report is complete; README and evidence-register documentation are undergoing final review. The held-out evaluation must not be rerun.
 
 ## Requirements
 

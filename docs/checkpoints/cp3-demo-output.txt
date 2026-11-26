@@ -6,8 +6,8 @@ This file summarises outputs already generated and verified during the CP3 workf
 
 - Branch: `main`
 - Working tree: clean
-- Current HEAD: `3589c9e36c8c74ba417580c3b98dccd91c525935`
-- Current HEAD commit: `docs: record CP3 submission evidence`
+- HEAD at demo preparation time: `3589c9e36c8c74ba417580c3b98dccd91c525935`
+- HEAD commit at demo preparation time: `docs: record CP3 submission evidence`
 - Submission tag: `cp3-submission` (annotated)
 - Submission tag target: `49d555beb284f4e2bbc67791b23d26c5efb1e393`
 - Late-freeze tag: `late-freeze-20261125-0954`
