@@ -190,6 +190,7 @@ The test suite increased to 286 passing tests in the recorded verification. The 
 - Q1's restricted wild-cluster p-value and symmetric bootstrap-t interval give different significance indications; both are reported transparently.
 - Q4's five-cluster bootstrap repeats Webb-weight combinations.
 - The results are exploratory and do not establish causal effects, safety conclusions or general forecasting performance.
+- Request accounting and its limits are documented in `docs/checkpoints/cp2.md` (section "Request accounting and retry-timing limits"), including the 8 unpaired air-quality responses and the frozen collector's retry-timing limitation.
 
 CP4 will focus on integrating the system, including the dashboard/API, final attribution (issue #7) and the final project report.
 

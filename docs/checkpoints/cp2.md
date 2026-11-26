@@ -83,6 +83,12 @@ At the Module Leader's request, `monitoring/reconcile.py` reconciles logical col
 
 The implementation and its five synthetic tests are in `monitoring/reconcile.py` and `tests/test_reconcile.py`. The full test suite passed: 98 tests.
 
+### Request accounting and retry-timing limits
+
+The reconciliation found 8 successful air-quality responses without a matching weather response, and 0 successful weather responses without a matching air-quality response. These are unpaired responses, not additional valid observations. Source: `docs/coverage/reconciliation-2026-11-16.txt`.
+
+The frozen CP1 collector (`0726522`) records `latency_ms` for the final HTTP attempt only; it does not retain per-retry timestamps or latency measurements. Its 2, 4 and 8 second exponential backoff intervals are fixed code delays, not measured retry timings. Therefore, individual retry timing cannot be audited retrospectively and cannot be added to the frozen collector. The reconciled totals (88 retries and 2,744 HTTP attempts) remain available, but per-retry timing does not.
+
 ### Archived monitoring scripts
 Four supplementary scripts copied from outside the collector clone on 2026-11-16 are retained in `tools/monitoring-scripts/`: `check_assessed.py`, `incidents.py`, `retries.py` and `compare_backups.py`. Each copy is labelled with its archival date. The original files were not modified.
 
