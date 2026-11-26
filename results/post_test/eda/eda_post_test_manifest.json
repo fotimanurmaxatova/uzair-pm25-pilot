@@ -1,0 +1,88 @@
+{
+  "charts": {
+    "01_pm25_time_series.png": {
+      "caption": "Native three-hourly modelled PM2.5 observations over the assessed week by city.",
+      "n": 424,
+      "sha256": "503518e847ec026618c02de0b111c20a57ee9c068d51813cd2adde9685291b98",
+      "source": "Weather data by Open-Meteo.com; air quality from CAMS Global via the Open-Meteo Air Quality API; derived values are labelled derived."
+    },
+    "02_pm25_by_city.png": {
+      "caption": "Distribution of native three-hourly modelled PM2.5 values differs across the eight cities.",
+      "n": 424,
+      "sha256": "058d77b2414775ec35dbd31f32f77e7c2c9ac4ea0f0f9956e45a029f7c8efd60",
+      "source": "Weather data by Open-Meteo.com; air quality from CAMS Global via the Open-Meteo Air Quality API; derived values are labelled derived."
+    },
+    "03_diurnal_profile.png": {
+      "caption": "Mean modelled PM2.5 is summarised by local hour across all cities.",
+      "n": 424,
+      "sha256": "d5bc75f998f130c42db1c88b09975d148bb8d4bd52c4d595f7a8c9b376eda9d2",
+      "source": "Weather data by Open-Meteo.com; air quality from CAMS Global via the Open-Meteo Air Quality API; derived values are labelled derived."
+    },
+    "04_pm25_vs_wind.png": {
+      "caption": "Wind-speed values are plotted against modelled PM2.5 for native rows with both fields present.",
+      "n": 424,
+      "sha256": "a3d6101ed28348b62b0fb0deb3bcbf949a6d01f6ca104d185c4725f38dd5c4c8",
+      "source": "Weather data by Open-Meteo.com; air quality from CAMS Global via the Open-Meteo Air Quality API; derived values are labelled derived."
+    },
+    "05_pm25_vs_humidity.png": {
+      "caption": "Relative-humidity values are plotted against modelled PM2.5 for native rows with both fields present.",
+      "n": 424,
+      "sha256": "f52f6b2854d639a02ae1625cfb49bec59048813e52c7706c6037d170be925554",
+      "source": "Weather data by Open-Meteo.com; air quality from CAMS Global via the Open-Meteo Air Quality API; derived values are labelled derived."
+    },
+    "06_coverage_by_city_day.png": {
+      "caption": "The heatmap counts collected rows for each city and local day.",
+      "n": 1311,
+      "sha256": "15af7e15380bef0da02462ad6f957d5c23c19eb2cbe6cc63ba58cdf03d58f80a",
+      "source": "Weather data by Open-Meteo.com; air quality from CAMS Global via the Open-Meteo Air Quality API; derived values are labelled derived."
+    },
+    "07_weather_pollutant_missingness.png": {
+      "caption": "Null counts for weather and pollutant variables across all assessed rows; zero means complete coverage.",
+      "n": 1311,
+      "sha256": "c5f3cc7e08444844c2d9dddf88c13720c71365e97030b7f4ce337aa0cd06d810",
+      "source": "Weather data by Open-Meteo.com; air quality from CAMS Global via the Open-Meteo Air Quality API; derived values are labelled derived."
+    }
+  },
+  "guard_head": "7846e92b3cdb1b858297f61771784c31f67f5c20",
+  "label": "post-test annotated copies; original charts in results/eda/full unchanged",
+  "missing_counts": {
+    "nitrogen_dioxide": 0,
+    "ozone": 0,
+    "pm10": 0,
+    "pm2_5": 0,
+    "precipitation_mm": 0,
+    "relative_humidity_2m": 0,
+    "surface_pressure_hpa": 0,
+    "temperature_2m": 0,
+    "wind_direction_deg": 0,
+    "wind_speed_ms": 0
+  },
+  "mode": "post_test",
+  "original_eda_files_sha256_before_and_after": {
+    "01_pm25_time_series.png": "8a2f450c7027b3741ccee2107048d52fe00e7aae120623b211d07a316e01c99d",
+    "02_pm25_by_city.png": "f277545cd925afe61413700781347d877b343890c24a77a9d316311487aa1d52",
+    "03_diurnal_profile.png": "ad2ccd51596feefc478f37b4a5d5fea9b9d82c101df7818ac0ff3a0c899667ad",
+    "04_pm25_vs_wind.png": "67b348af080d0490f04ea4c566dda1a84c6718dcd018fd71782e39660aacd7a0",
+    "05_pm25_vs_humidity.png": "6d2660418cc873abbb63515d640646ac63113127d91960a3cb13899cadd0e797",
+    "06_coverage_by_city_day.png": "adb715a9ec11980cf97c0b0f192755287f0985d266c281f0b8881b40f9f2555c",
+    "eda_manifest.json": "6df06e0637311ac3dd3e8931749f72cef719e4538573c318808d5f42fa116918"
+  },
+  "original_eda_unchanged": true,
+  "pollutant_features": [
+    "pm2_5",
+    "pm10",
+    "nitrogen_dioxide",
+    "ozone"
+  ],
+  "rows_used": 1311,
+  "tag": "late-freeze-20261125-0954",
+  "tag_commit": "817614f67f39894fecf5795b63fb7cb7d3c0924b",
+  "weather_features": [
+    "temperature_2m",
+    "relative_humidity_2m",
+    "precipitation_mm",
+    "wind_speed_ms",
+    "wind_direction_deg",
+    "surface_pressure_hpa"
+  ]
+}
